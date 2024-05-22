@@ -8,8 +8,9 @@ How to run each program?
    * `git clone --depth 1 --no-checkout git@github.com:Radglay/cpp_qa.git`
    * `cd cpp_qa ` 
    * `git sparse-checkout set [relative_path_to_directory]` remove the `https://github.com/Radglay/cpp_qa/tree/main/` part from the URL
-   * `git checkout`  
-5) To build and run program use provided commands:
+   * `git checkout`
+4) CD to downloaded directory with code  
+5) Build and run program with provided commands:
    * `cmake -S .`
    * `cmake --build .`
    * `./main`
