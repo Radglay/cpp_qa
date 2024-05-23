@@ -1,0 +1,3 @@
+[submodule "CppCodeInHTMLEmbeding"]
+	path = CppCodeInHTMLEmbeding
+	url = git@github.com:Radglay/CppCodeInHTMLEmbeding.git
