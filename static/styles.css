@@ -1,0 +1,57 @@
+.project {
+    position: relative;
+}
+
+.file-name {
+    margin: 0;
+    color: white;
+}
+
+.file {
+    padding: 0;
+    margin: 10px;
+    width: 140ch;
+}
+
+.file pre {
+    margin: 0;
+}
+
+.source {
+    border: 1px solid rgb(50, 50, 185);
+}
+
+.source .file-name
+{
+    background-color: rgb(50, 50, 185);
+}
+
+.header {
+    border: 1px solid rgb(130, 27, 198);
+}
+
+.header .file-name
+{
+    background-color: rgb(130, 27, 198);
+}
+
+.cmake {
+    border: 1px solid rgb(100, 98, 99);
+}
+
+.cmake .file-name
+{
+    background-color: rgb(100, 98, 99);
+}
+
+.result-title
+{
+    color: white;
+    background-color: rgb(42, 41, 41);
+    width: 100ch;
+}
+
+.result-value pre
+{
+    margin: 0;
+}
