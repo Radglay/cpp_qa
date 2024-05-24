@@ -35,30 +35,27 @@
 
 project(cpp_qa VERSION 1.0 LANGUAGES CXX)
 
-add_executable(main main.cpp)</code></pre>
+add_executable(main main.cpp class.cpp)</code></pre>
     </div>
     <div class="source file">
      <p class="file-name">
-      source2.cpp
+      class.cpp
      </p>
      <pre><code>#include "class.h"
+#include &lt;iostream&gt;
 
-void test2()
-{
-    Person::print1();
-    Person::print2();
-}</code></pre>
-    </div>
-    <div class="source file">
-     <p class="file-name">
-      source1.cpp
-     </p>
-     <pre><code>#include "class.h"
 
-void test1()
+void Outer::outer_func()
 {
-    Person::print1();
-    Person::print2();
+   int x1 = inner_x;
+   inner_func();
+}
+
+int Outer::Inner::inner_x;
+
+void Outer::Inner::inner_func()
+{
+    std::cout &lt;&lt; "inner_func()\n";
 }</code></pre>
     </div>
     <div class="header file">
@@ -67,55 +64,48 @@ void test1()
      </p>
      <pre><code>#pragma once
 
-#include &lt;string&gt;
-#include &lt;iostream&gt;
 
-
-class Person
+class Outer
 {
 public:
-    static inline void print1();
-    static void print2();
-};
+    void outer_func();
 
-inline void Person::print1()
-{
-    std::cout &lt;&lt; "print1()\n";
-}
+    class Inner
+    {
+    public:
+        Inner() = default;
 
-inline void Person::print2()
-{
-    std::cout &lt;&lt; "print2()\n";
-}</code></pre>
+        static int inner_x;
+        static void inner_func();
+    };
+};</code></pre>
     </div>
     <div class="main file">
      <p class="file-name">
       main.cpp
      </p>
-     <pre><code>void test1();
-void test2();
+     <pre><code>#include "class.h"
+
 
 int main()
 {
-    test1();
-    test2();
-
-    return 0;
-}</code></pre>
+    // Inner inner;
+    Outer::Inner inner;
+};</code></pre>
     </div>
    </div>
    <div class="result-container">
-    <a class="online-compiler-link" href="https://godbolt.org/z/W4hrMnhP4">
+    <a class="online-compiler-link" href="https://godbolt.org/z/89E41n915">
      online-compiler-link
     </a>
     <div class="result-value">
      <div class="result-title" onclick="toggleResult(event)">
       Result:
      </div>
-     <pre style="display: none">print1()
-print2()
-print1()
-print2()
+     <pre style="display: none">error: 'inner_x' was not declared in this scope; did you mean 'Inner'?
+    7 |    int x1 = inner_x;
+error: 'inner_func' was not declared in this scope; did you mean 'outer_func'?
+    8 |    inner_func();
 </pre>
     </div>
    </div>

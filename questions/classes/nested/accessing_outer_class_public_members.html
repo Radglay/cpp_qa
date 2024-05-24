@@ -35,30 +35,26 @@
 
 project(cpp_qa VERSION 1.0 LANGUAGES CXX)
 
-add_executable(main main.cpp)</code></pre>
+add_executable(main main.cpp class.cpp)</code></pre>
     </div>
     <div class="source file">
      <p class="file-name">
-      source2.cpp
+      class.cpp
      </p>
      <pre><code>#include "class.h"
+#include &lt;iostream&gt;
 
-void test2()
-{
-    Person::print1();
-    Person::print2();
-}</code></pre>
-    </div>
-    <div class="source file">
-     <p class="file-name">
-      source1.cpp
-     </p>
-     <pre><code>#include "class.h"
 
-void test1()
+void Outer::outer_func()
 {
-    Person::print1();
-    Person::print2();
+    std::cout &lt;&lt; "outer_func()\n";
+}
+
+
+void Outer::Inner::inner_func()
+{
+    int x1 = outer_x;
+    outer_func();
 }</code></pre>
     </div>
     <div class="header file">
@@ -67,55 +63,49 @@ void test1()
      </p>
      <pre><code>#pragma once
 
-#include &lt;string&gt;
-#include &lt;iostream&gt;
 
-
-class Person
+class Outer
 {
 public:
-    static inline void print1();
-    static void print2();
-};
+    int outer_x;
 
-inline void Person::print1()
-{
-    std::cout &lt;&lt; "print1()\n";
-}
+    void outer_func();
 
-inline void Person::print2()
-{
-    std::cout &lt;&lt; "print2()\n";
-}</code></pre>
+    class Inner
+    {
+    public:
+        Inner() = default;
+
+        void inner_func();
+    };
+};</code></pre>
     </div>
     <div class="main file">
      <p class="file-name">
       main.cpp
      </p>
-     <pre><code>void test1();
-void test2();
+     <pre><code>#include "class.h"
+
 
 int main()
 {
-    test1();
-    test2();
-
-    return 0;
-}</code></pre>
+    // Inner inner;
+    Outer::Inner inner;
+};</code></pre>
     </div>
    </div>
    <div class="result-container">
-    <a class="online-compiler-link" href="https://godbolt.org/z/W4hrMnhP4">
+    <a class="online-compiler-link" href="https://godbolt.org/z/7fc9r8Pz8">
      online-compiler-link
     </a>
     <div class="result-value">
      <div class="result-title" onclick="toggleResult(event)">
       Result:
      </div>
-     <pre style="display: none">print1()
-print2()
-print1()
-print2()
+     <pre style="display: none">class.cpp:13:14: error: invalid use of non-static data member 'Outer::outer_x'
+   13 |     int x1 = outer_x;
+class.cpp:14:15: error: cannot call member function 'void Outer::outer_func()' without object
+   14 |     outer_func();
 </pre>
     </div>
    </div>
