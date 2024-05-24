@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="no-cache" http-equiv="cache-control"/>
+  <meta content="0" http-equiv="expires"/>
+  <meta content="no-cache" http-equiv="pragma"/>
+  <link href="/cpp_qa/static/styles.css" rel="stylesheet"/>
+  <script>
+   function toggleResult(event)
+        {
+            const parentNode = event.target.parentNode;
+            let preTag = parentNode.getElementsByTagName("pre")[0];
+
+            if (preTag.style.display == "none") {
+                preTag.style.display = "block";
+            } else {
+                preTag.style.display = "none";
+            }
+
+        }
+  </script>
+  <title>
+  </title>
+ </head>
+ <body>
+  <div class="content">
+   <div class="project">
+    <div class="cmake file">
+     <p class="file-name">
+      CMakeLists.txt
+     </p>
+     <pre><code>cmake_minimum_required(VERSION 3.5)
+
+project(cpp_qa VERSION 1.0 LANGUAGES CXX)
+
+add_executable(main main.cpp source1.cpp source2.cpp)</code></pre>
+    </div>
+    <div class="source file">
+     <p class="file-name">
+      source2.cpp
+     </p>
+     <pre><code>#include "class.h"
+
+void test2()
+{
+    Person::print();
+}</code></pre>
+    </div>
+    <div class="source file">
+     <p class="file-name">
+      source1.cpp
+     </p>
+     <pre><code>#include "class.h"
+
+void test1()
+{
+    Person::print();
+}</code></pre>
+    </div>
+    <div class="header file">
+     <p class="file-name">
+      class.h
+     </p>
+     <pre><code>#pragma once
+
+#include &lt;string&gt;
+#include &lt;iostream&gt;
+
+
+class Person
+{
+public:
+    static void print();
+};</code></pre>
+    </div>
+    <div class="main file">
+     <p class="file-name">
+      main.cpp
+     </p>
+     <pre><code>void test1();
+void test2();
+
+int main()
+{
+    test1();
+    test2();
+
+    return 0;
+}</code></pre>
+    </div>
+   </div>
+   <div class="result-container">
+    <a class="online-compiler-link" href="https://godbolt.org/z/P6d4P7rd1">
+     online-compiler-link
+    </a>
+    <div class="result-value">
+     <div class="result-title" onclick="toggleResult(event)">
+      Result:
+     </div>
+     <pre style="display: none">source1.cpp:5:(.text+0x5): undefined reference to `Person::print()'
+source2.cpp:5:(.text+0x5): undefined reference to `Person::print()'
+</pre>
+    </div>
+   </div>
+  </div>
+ </body>
+</html>
