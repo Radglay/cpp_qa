@@ -2,4 +2,4 @@
 ```
 private A func
 ```
-**godbolt**: https://godbolt.org/z/PGaoxf85G
+**godbolt**: https://godbolt.org/z/d189WWqxx

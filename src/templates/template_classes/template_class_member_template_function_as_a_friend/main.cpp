@@ -1,4 +1,4 @@
-#include "function.h"
+#include "class.h"
 
 
 int main()
