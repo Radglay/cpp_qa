@@ -3,8 +3,8 @@
 
 int main()
 {
-    GrandDerived grand;
-    grand.virt_func();
+    Derived derived;
+    derived.virt_func();
   
     return 0;
 }

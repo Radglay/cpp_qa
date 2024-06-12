@@ -13,7 +13,10 @@ public:
 };
 
 class Derived : private Base
-{};
+{
+public:
+    using Base::virt_func;
+};
 
 class GrandDerived : public Derived
 {
