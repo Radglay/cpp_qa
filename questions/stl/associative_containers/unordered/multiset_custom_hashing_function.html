@@ -1,0 +1,85 @@
+<html>
+ <head>
+  <script>
+   function toggleResult(event)
+    {
+        const parentNode = event.target.parentNode;
+        let preTag = parentNode.getElementsByTagName("pre")[0];
+
+        if (preTag.style.display == "none") {
+            preTag.style.display = "block";
+        } else {
+            preTag.style.display = "none";
+        }
+    }
+  </script>
+ </head>
+ <body>
+  <div>
+   <div class="main file" style="border:1px solid rgb(144, 13, 13);padding:0; margin: 10px; width:140ch;">
+    <p class="file-name" style="margin:0; color:white;background-color: rgb(144, 13, 13);">
+     main.cpp
+    </p>
+    <pre style="margin:0;"><code>#include &lt;iostream&gt;
+#include &lt;unordered_set&gt;
+#include &lt;utility&gt;
+
+
+
+template &lt;typename Key, typename Comparator&gt;
+void print_buckets(const std::unordered_multiset&lt;Key,Comparator&gt; uset)
+{
+    for (int i = 0; i &lt; uset.bucket_count(); ++i)
+    {
+        auto temp = uset.begin(i);
+        auto end = uset.end(i);
+
+        std::cout &lt;&lt; "bucket [" &lt;&lt; i &lt;&lt; "]: ";
+        for (; temp != end; ++temp)
+            std::cout &lt;&lt; *temp &lt;&lt; ' ';
+        std::cout &lt;&lt; '\n';
+    }
+}
+
+struct CustomHash
+{
+    std::size_t operator() (int k) const
+    {
+        return k % 5;
+    }
+};
+
+int main()
+{
+    auto custom_hash = [](int i) { return i % 5; };
+    std::unordered_multiset&lt;int, CustomHash&gt; uset { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+
+    print_buckets(uset);
+
+
+    return 0;
+}</code></pre>
+   </div>
+   <a class="online-compiler-link" href="https://godbolt.org/z/v8d3eE1bE">
+    online-compiler-link
+   </a>
+   <div class="result-value">
+    <div class="result-title" onclick="toggleResult(event)" style="color:white;background-color: rgb(42, 41, 41);width: 100ch;">
+     Result:
+    </div>
+    <pre style="display: none">bucket [0]: 10 5 
+bucket [1]: 6 1 
+bucket [2]: 7 2 
+bucket [3]: 8 3 
+bucket [4]: 9 4 
+bucket [5]: 
+bucket [6]: 
+bucket [7]: 
+bucket [8]: 
+bucket [9]: 
+bucket [10]: 
+</pre>
+   </div>
+  </div>
+ </body>
+</html>

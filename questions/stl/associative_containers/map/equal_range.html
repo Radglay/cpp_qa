@@ -1,0 +1,73 @@
+<html>
+ <head>
+  <script>
+   function toggleResult(event)
+    {
+        const parentNode = event.target.parentNode;
+        let preTag = parentNode.getElementsByTagName("pre")[0];
+
+        if (preTag.style.display == "none") {
+            preTag.style.display = "block";
+        } else {
+            preTag.style.display = "none";
+        }
+    }
+  </script>
+ </head>
+ <body>
+  <div>
+   <div class="main file" style="border:1px solid rgb(144, 13, 13);padding:0; margin: 10px; width:140ch;">
+    <p class="file-name" style="margin:0; color:white;background-color: rgb(144, 13, 13);">
+     main.cpp
+    </p>
+    <pre style="margin:0;"><code>#include &lt;iostream&gt;
+#include &lt;map&gt;
+#include &lt;string&gt;
+#include &lt;utility&gt;
+
+
+template &lt;typename Key, typename Value, typename Comparator&gt;
+std::ostream&amp; operator&lt;&lt; (std::ostream&amp; out, const std::map&lt;Key, Value, Comparator&gt; map)
+{
+    for (auto&amp; e : map)
+        out &lt;&lt; '{' &lt;&lt; e.first &lt;&lt; " : " &lt;&lt; e.second &lt;&lt; '}' &lt;&lt; '\n';
+    return out;
+}
+
+
+
+int main()
+{
+    std::map&lt;int, std::string&gt; map1 {
+        { 1, "map1_1"},
+        { 2, "map1_2"},
+        { 3, "map1_3"},
+        { 4, "map1_4"}
+    };
+
+
+    auto iters = map1.equal_range(1);
+    auto it_lower = map1.lower_bound(1);
+    auto it_upper = map1.upper_bound(1);
+    
+    std::cout &lt;&lt; std::boolalpha;
+    std::cout &lt;&lt; "lower: " &lt;&lt; it_lower-&gt;first &lt;&lt; ", upper: " &lt;&lt; it_upper-&gt;first &lt;&lt; '\n';
+    std::cout &lt;&lt; (it_lower == iters.first) &lt;&lt; ' ' &lt;&lt; (it_upper == iters.second) &lt;&lt; '\n';
+
+    return 0;
+}</code></pre>
+   </div>
+   <a class="online-compiler-link" href="https://godbolt.org/z/co36vG8eK">
+    online-compiler-link
+   </a>
+   <div class="result-value">
+    <div class="result-title" onclick="toggleResult(event)" style="color:white;background-color: rgb(42, 41, 41);width: 100ch;">
+     Result:
+    </div>
+    <pre style="display: none">lower: 1, upper: 2
+true true
+</pre>
+   </div>
+  </div>
+ </body>
+</html>

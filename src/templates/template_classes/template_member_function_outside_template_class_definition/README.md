@@ -1,5 +1,5 @@
 **result**:
-```
+ 
 class.h:15:6: error: no declaration matches 'void Base<T>::templateMember()'
    15 | void Base<T>::templateMember()
       |      ^~~~~~~
@@ -8,5 +8,5 @@ class.h:15:6: error: no declaration matches 'void Base<T>::templateMember()'
       |          ^~~~~~~~~~~~~~
 /app/class.h:7:7: note: 'class Base<T>' defined here
     7 | class Base
-```
+ 
 **godbolt**: https://godbolt.org/z/adroo6oPn

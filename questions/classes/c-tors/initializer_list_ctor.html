@@ -1,0 +1,126 @@
+<html>
+ <head>
+  <script>
+   function toggleResult(event)
+    {
+        const parentNode = event.target.parentNode;
+        let preTag = parentNode.getElementsByTagName("pre")[0];
+
+        if (preTag.style.display == "none") {
+            preTag.style.display = "block";
+        } else {
+            preTag.style.display = "none";
+        }
+    }
+  </script>
+ </head>
+ <body>
+  <div>
+   <div class="cmake file" style="border: 1px solid rgb(100, 98, 99);padding:0; margin: 10px; width:140ch;">
+    <p class="file-name" style="margin:0; color:white;background-color: rgb(100, 98, 99);">
+     CMakeLists.txt
+    </p>
+    <pre style="margin:0;"><code>cmake_minimum_required(VERSION 3.5)
+
+project(cpp_qa VERSION 1.0 LANGUAGES CXX)
+
+add_executable(main main.cpp)</code></pre>
+   </div>
+   <div class="header file" style="border: 1px solid rgb(130, 27, 198);padding:0; margin: 10px; width:140ch;">
+    <p class="file-name" style="margin:0; color:white;background-color: rgb(130, 27, 198);">
+     class.h
+    </p>
+    <pre style="margin:0;"><code>#pragma once
+
+#include &lt;iostream&gt;
+#include &lt;initializer_list&gt;
+
+
+template &lt;typename T&gt;
+class Container
+{
+public:
+    Container();
+    Container(int n);
+    Container(int n, const T&amp; t);
+    Container(std::initializer_list&lt;T&gt; list);
+};
+
+
+template &lt;typename T&gt; Container&lt;T&gt;::Container()
+{
+    std::cout &lt;&lt; "Default C-Tor\n";
+}
+
+template &lt;typename T&gt; Container&lt;T&gt;::Container(int n)
+{
+    std::cout &lt;&lt; "int C-Tor\n";
+}
+
+template &lt;typename T&gt; Container&lt;T&gt;::Container(int n, const T&amp; t)
+{
+    std::cout &lt;&lt; "int, const T&amp; C-Tor\n";
+}
+
+template &lt;typename T&gt; Container&lt;T&gt;::Container(std::initializer_list&lt;T&gt; list)
+{
+    std::cout &lt;&lt; "std::initializer_list C-Tor\n";
+}</code></pre>
+   </div>
+   <div class="main file" style="border:1px solid rgb(144, 13, 13);padding:0; margin: 10px; width:140ch;">
+    <p class="file-name" style="margin:0; color:white;background-color: rgb(144, 13, 13);">
+     main.cpp
+    </p>
+    <pre style="margin:0;"><code>#include "class.h"
+#include &lt;initializer_list&gt;
+
+int main()
+{
+    Container&lt;int&gt; c1;
+    // Container&lt;int&gt; c2 (); // function declaration...
+    Container&lt;int&gt; c3 {};
+
+    Container&lt;int&gt; c5 { 1 };
+    Container&lt;int&gt; c6 { 1, 2 };
+
+    Container&lt;int&gt; c7 (1);
+    Container&lt;int&gt; c8 (1, 2);
+
+    Container&lt;int&gt; c9 = { 1 };
+    Container&lt;int&gt; c10 = { 1, 2 };
+
+    Container&lt;int&gt; c11 = ( 1 );
+    Container&lt;int&gt; c12 = ( 1, 2 );
+    Container&lt;int&gt; c13 = ( 1, 2, 3, 4, 5, 6, 7 );
+    Container&lt;int&gt; c14 = { 1, 2, 3, 4, 5, 6, 7 };
+    Container&lt;int&gt; c15 (std::initializer_list&lt;int&gt;{1, 2, 3});
+
+    return 0;
+};</code></pre>
+   </div>
+   <a class="online-compiler-link" href="https://godbolt.org/z/6qbPr33rb">
+    online-compiler-link
+   </a>
+   <div class="result-value">
+    <div class="result-title" onclick="toggleResult(event)" style="color:white;background-color: rgb(42, 41, 41);width: 100ch;">
+     Result:
+    </div>
+    <pre style="display: none">Default C-Tor
+Default C-Tor
+std::initializer_list C-Tor
+std::initializer_list C-Tor
+int C-Tor
+int, const T&amp; C-Tor
+std::initializer_list C-Tor
+std::initializer_list C-Tor
+int C-Tor
+int C-Tor
+int C-Tor
+std::initializer_list C-Tor
+std::initializer_list C-Tor
+ 
+</pre>
+   </div>
+  </div>
+ </body>
+</html>

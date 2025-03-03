@@ -1,0 +1,87 @@
+<html>
+ <head>
+  <script>
+   function toggleResult(event)
+    {
+        const parentNode = event.target.parentNode;
+        let preTag = parentNode.getElementsByTagName("pre")[0];
+
+        if (preTag.style.display == "none") {
+            preTag.style.display = "block";
+        } else {
+            preTag.style.display = "none";
+        }
+    }
+  </script>
+ </head>
+ <body>
+  <div>
+   <div class="cmake file" style="border: 1px solid rgb(100, 98, 99);padding:0; margin: 10px; width:140ch;">
+    <p class="file-name" style="margin:0; color:white;background-color: rgb(100, 98, 99);">
+     CMakeLists.txt
+    </p>
+    <pre style="margin:0;"><code>cmake_minimum_required(VERSION 3.5)
+
+project(cpp_qa VERSION 1.0 LANGUAGES CXX)
+
+add_executable(main main.cpp)</code></pre>
+   </div>
+   <div class="header file" style="border: 1px solid rgb(130, 27, 198);padding:0; margin: 10px; width:140ch;">
+    <p class="file-name" style="margin:0; color:white;background-color: rgb(130, 27, 198);">
+     class.h
+    </p>
+    <pre style="margin:0;"><code>#pragma once
+
+
+template &lt;typename T&gt;
+class Base
+{
+public:
+    class Nested;
+};
+
+template &lt;typename T&gt;
+class Base&lt;T&gt;::Nested
+{
+public:
+    int x;
+};</code></pre>
+   </div>
+   <div class="main file" style="border:1px solid rgb(144, 13, 13);padding:0; margin: 10px; width:140ch;">
+    <p class="file-name" style="margin:0; color:white;background-color: rgb(144, 13, 13);">
+     main.cpp
+    </p>
+    <pre style="margin:0;"><code>#include "class.h"
+#include &lt;iostream&gt;
+#include &lt;typeinfo&gt;
+
+
+int main()
+{
+    auto hash1 = typeid(Base&lt;int&gt;::Nested).hash_code();
+    auto hash2 = typeid(Base&lt;double&gt;::Nested).hash_code();
+    
+    std::cout &lt;&lt; hash1 &lt;&lt; '\n';
+    std::cout &lt;&lt; hash2 &lt;&lt; '\n';
+    std::cout &lt;&lt; (hash1 == hash2) &lt;&lt; '\n';
+
+    return 0;
+}
+s</code></pre>
+   </div>
+   <a class="online-compiler-link" href="https://godbolt.org/z/j4M6GdWKs">
+    online-compiler-link
+   </a>
+   <div class="result-value">
+    <div class="result-title" onclick="toggleResult(event)" style="color:white;background-color: rgb(42, 41, 41);width: 100ch;">
+     Result:
+    </div>
+    <pre style="display: none">5228861280688627876
+4736311908585013933
+0
+ 
+</pre>
+   </div>
+  </div>
+ </body>
+</html>

@@ -1,0 +1,49 @@
+<html>
+ <head>
+  <script>
+   function toggleResult(event)
+    {
+        const parentNode = event.target.parentNode;
+        let preTag = parentNode.getElementsByTagName("pre")[0];
+
+        if (preTag.style.display == "none") {
+            preTag.style.display = "block";
+        } else {
+            preTag.style.display = "none";
+        }
+    }
+  </script>
+ </head>
+ <body>
+  <div>
+   <div class="main file" style="border:1px solid rgb(144, 13, 13);padding:0; margin: 10px; width:140ch;">
+    <p class="file-name" style="margin:0; color:white;background-color: rgb(144, 13, 13);">
+     main.cpp
+    </p>
+    <pre style="margin:0;"><code>#include &lt;iostream&gt;
+
+
+int main()
+{
+    int a;
+    int* px = &amp;a;
+
+    if (px)
+        std::cout &lt;&lt; "Pointer is valid: " &lt;&lt; static_cast&lt;void*&gt;(px) &lt;&lt; ' ' &lt;&lt; *px &lt;&lt; '\n';
+
+    return 0;
+}</code></pre>
+   </div>
+   <a class="online-compiler-link" href="https://godbolt.org/z/3h56dv6GP">
+    online-compiler-link
+   </a>
+   <div class="result-value">
+    <div class="result-title" onclick="toggleResult(event)" style="color:white;background-color: rgb(42, 41, 41);width: 100ch;">
+     Result:
+    </div>
+    <pre style="display: none">Pointer is valid: 0x7ffc4cc82224 0
+</pre>
+   </div>
+  </div>
+ </body>
+</html>

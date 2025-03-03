@@ -1,0 +1,47 @@
+<html>
+ <head>
+  <script>
+   function toggleResult(event)
+    {
+        const parentNode = event.target.parentNode;
+        let preTag = parentNode.getElementsByTagName("pre")[0];
+
+        if (preTag.style.display == "none") {
+            preTag.style.display = "block";
+        } else {
+            preTag.style.display = "none";
+        }
+    }
+  </script>
+ </head>
+ <body>
+  <div>
+   <div class="source file" style="border:1px solid rgb(50, 50, 185);padding:0; margin: 10px; width:140ch;">
+    <p class="file-name" style="margin:0; color:white;background-color: rgb(50, 50, 185);">
+     source.cpp
+    </p>
+    <pre style="margin:0;"><code>static int static_variable = 0x111;
+
+void test()
+{
+    static_variable = 0x222;
+}</code></pre>
+   </div>
+   <div class="main file" style="border:1px solid rgb(144, 13, 13);padding:0; margin: 10px; width:140ch;">
+    <p class="file-name" style="margin:0; color:white;background-color: rgb(144, 13, 13);">
+     main.cpp
+    </p>
+    <pre style="margin:0;"><code>static int static_variable;
+
+
+int main()
+{
+    static_variable = 0x333;
+    int x = 0x999;
+
+    return 0;
+}</code></pre>
+   </div>
+  </div>
+ </body>
+</html>

@@ -1,0 +1,63 @@
+<html>
+ <head>
+  <script>
+   function toggleResult(event)
+    {
+        const parentNode = event.target.parentNode;
+        let preTag = parentNode.getElementsByTagName("pre")[0];
+
+        if (preTag.style.display == "none") {
+            preTag.style.display = "block";
+        } else {
+            preTag.style.display = "none";
+        }
+    }
+  </script>
+ </head>
+ <body>
+  <div>
+   <div class="main file" style="border:1px solid rgb(144, 13, 13);padding:0; margin: 10px; width:140ch;">
+    <p class="file-name" style="margin:0; color:white;background-color: rgb(144, 13, 13);">
+     main.cpp
+    </p>
+    <pre style="margin:0;"><code>#include &lt;iostream&gt;
+#include &lt;memory&gt;
+
+
+void func(std::unique_ptr&lt;int&gt; ptr)
+{}
+
+int main()
+{
+    auto ptr = std::unique_ptr&lt;int&gt;(new int(10));
+    func(ptr);
+
+
+    return 0;
+}</code></pre>
+   </div>
+   <a class="online-compiler-link" href="https://godbolt.org/z/5q9168ere">
+    online-compiler-link
+   </a>
+   <div class="result-value">
+    <div class="result-title" onclick="toggleResult(event)" style="color:white;background-color: rgb(42, 41, 41);width: 100ch;">
+     Result:
+    </div>
+    <pre style="display: none">error: use of deleted function 'std::unique_ptr&lt;_Tp, _Dp&gt;::unique_ptr(const std::unique_ptr&lt;_Tp, _Dp&gt;&amp;) [with _Tp = int; _Dp = std::default_delete&lt;int&gt;]'
+   11 |     func(ptr);
+      |     ~~~~^~~~~
+In file included from /opt/compiler-explorer/gcc-14.2.0/include/c++/14.2.0/memory:78,
+                 from &lt;source&gt;:2:
+/opt/compiler-explorer/gcc-14.2.0/include/c++/14.2.0/bits/unique_ptr.h:516:7: note: declared here
+  516 |       unique_ptr(const unique_ptr&amp;) = delete;
+      |       ^~~~~~~~~~
+&lt;source&gt;:11:9: note: use '-fdiagnostics-all-candidates' to display considered candidates
+   11 |     func(ptr);
+      |     ~~~~^~~~~
+&lt;source&gt;:5:32: note:   initializing argument 1 of 'void func(std::unique_ptr&lt;int&gt;)'
+    5 | void func(std::unique_ptr&lt;int&gt; ptr)
+</pre>
+   </div>
+  </div>
+ </body>
+</html>

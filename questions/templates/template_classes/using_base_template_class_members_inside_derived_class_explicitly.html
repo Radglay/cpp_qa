@@ -1,0 +1,94 @@
+<html>
+ <head>
+  <script>
+   function toggleResult(event)
+    {
+        const parentNode = event.target.parentNode;
+        let preTag = parentNode.getElementsByTagName("pre")[0];
+
+        if (preTag.style.display == "none") {
+            preTag.style.display = "block";
+        } else {
+            preTag.style.display = "none";
+        }
+    }
+  </script>
+ </head>
+ <body>
+  <div>
+   <div class="cmake file" style="border: 1px solid rgb(100, 98, 99);padding:0; margin: 10px; width:140ch;">
+    <p class="file-name" style="margin:0; color:white;background-color: rgb(100, 98, 99);">
+     CMakeLists.txt
+    </p>
+    <pre style="margin:0;"><code>cmake_minimum_required(VERSION 3.5)
+
+project(cpp_qa VERSION 1.0 LANGUAGES CXX)
+
+add_executable(main main.cpp)</code></pre>
+   </div>
+   <div class="header file" style="border: 1px solid rgb(130, 27, 198);padding:0; margin: 10px; width:140ch;">
+    <p class="file-name" style="margin:0; color:white;background-color: rgb(130, 27, 198);">
+     class.h
+    </p>
+    <pre style="margin:0;"><code>#pragma once
+
+#include &lt;iostream&gt;
+
+
+template &lt;typename T&gt;
+class Base
+{
+public:
+    void baseFunc()
+    {
+        std::cout &lt;&lt; "base func with no args\n";
+    }
+
+    void baseFuncWithT(const T&amp;)
+    {
+        std::cout &lt;&lt; "base func with T arg\n";
+    }
+};
+
+
+template &lt;typename T&gt;
+class Derived : public Base&lt;T&gt;
+{
+public:
+    using Base&lt;T&gt;::baseFunc;
+
+    void func()
+    {
+        baseFunc();
+        Base&lt;T&gt;::baseFuncWithT(T{});
+    }
+};</code></pre>
+   </div>
+   <div class="main file" style="border:1px solid rgb(144, 13, 13);padding:0; margin: 10px; width:140ch;">
+    <p class="file-name" style="margin:0; color:white;background-color: rgb(144, 13, 13);">
+     main.cpp
+    </p>
+    <pre style="margin:0;"><code>#include "class.h"
+
+
+int main()
+{
+    Derived&lt;int&gt; derived;
+    return 0;
+}</code></pre>
+   </div>
+   <a class="online-compiler-link" href="https://godbolt.org/z/abff3Wx7W">
+    online-compiler-link
+   </a>
+   <div class="result-value">
+    <div class="result-title" onclick="toggleResult(event)" style="color:white;background-color: rgb(42, 41, 41);width: 100ch;">
+     Result:
+    </div>
+    <pre style="display: none">base func with no args
+base func with T arg
+ 
+</pre>
+   </div>
+  </div>
+ </body>
+</html>

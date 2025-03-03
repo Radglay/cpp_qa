@@ -1,0 +1,68 @@
+<html>
+ <head>
+  <script>
+   function toggleResult(event)
+    {
+        const parentNode = event.target.parentNode;
+        let preTag = parentNode.getElementsByTagName("pre")[0];
+
+        if (preTag.style.display == "none") {
+            preTag.style.display = "block";
+        } else {
+            preTag.style.display = "none";
+        }
+    }
+  </script>
+ </head>
+ <body>
+  <div>
+   <div class="main file" style="border:1px solid rgb(144, 13, 13);padding:0; margin: 10px; width:140ch;">
+    <p class="file-name" style="margin:0; color:white;background-color: rgb(144, 13, 13);">
+     main.cpp
+    </p>
+    <pre style="margin:0;"><code>#include &lt;iostream&gt;
+#include &lt;unordered_set&gt;
+#include &lt;utility&gt;
+
+
+template &lt;typename Key, typename Comparator&gt;
+std::ostream&amp; operator&lt;&lt; (std::ostream&amp; out, const std::unordered_multiset&lt;Key,Comparator&gt; uset)
+{
+    for (auto&amp; e : uset)
+        out &lt;&lt; e &lt;&lt; ' ';
+    return out;
+}
+
+
+int main()
+{
+    std::unordered_multiset&lt;int&gt; uset { 1, 1, 1, 1, 1, 2, 2, 2, 3, 4, 5, 6, 6, 7, 8, 9, 9 };
+
+    std::cout &lt;&lt; uset &lt;&lt; '\n';
+    std::cout &lt;&lt; "bucket_count: " &lt;&lt; uset.bucket_count() &lt;&lt; '\n';
+    std::cout &lt;&lt; "load_factor: " &lt;&lt; uset.load_factor() &lt;&lt; '\n';
+
+    uset.rehash(10);
+    std::cout &lt;&lt; "bucket_count: " &lt;&lt; uset.bucket_count() &lt;&lt; '\n';
+    std::cout &lt;&lt; "load_factor: " &lt;&lt; uset.load_factor() &lt;&lt; '\n';
+
+    return 0;
+}</code></pre>
+   </div>
+   <a class="online-compiler-link" href="https://godbolt.org/z/cvhTjcqoW">
+    online-compiler-link
+   </a>
+   <div class="result-value">
+    <div class="result-title" onclick="toggleResult(event)" style="color:white;background-color: rgb(42, 41, 41);width: 100ch;">
+     Result:
+    </div>
+    <pre style="display: none">9 9 8 7 6 6 5 4 3 2 2 2 1 1 1 1 1 
+bucket_count: 17
+load_factor: 1
+bucket_count: 19
+load_factor: 0.894737
+</pre>
+   </div>
+  </div>
+ </body>
+</html>

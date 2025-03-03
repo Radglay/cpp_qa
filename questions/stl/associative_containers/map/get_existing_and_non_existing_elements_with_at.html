@@ -1,0 +1,72 @@
+<html>
+ <head>
+  <script>
+   function toggleResult(event)
+    {
+        const parentNode = event.target.parentNode;
+        let preTag = parentNode.getElementsByTagName("pre")[0];
+
+        if (preTag.style.display == "none") {
+            preTag.style.display = "block";
+        } else {
+            preTag.style.display = "none";
+        }
+    }
+  </script>
+ </head>
+ <body>
+  <div>
+   <div class="main file" style="border:1px solid rgb(144, 13, 13);padding:0; margin: 10px; width:140ch;">
+    <p class="file-name" style="margin:0; color:white;background-color: rgb(144, 13, 13);">
+     main.cpp
+    </p>
+    <pre style="margin:0;"><code>#include &lt;iostream&gt;
+#include &lt;map&gt;
+#include &lt;string&gt;
+#include &lt;utility&gt;
+
+
+template &lt;typename Key, typename Value, typename Comparator&gt;
+std::ostream&amp; operator&lt;&lt; (std::ostream&amp; out, const std::map&lt;Key, Value, Comparator&gt; map)
+{
+    for (auto&amp; e : map)
+        out &lt;&lt; '{' &lt;&lt; e.first &lt;&lt; " : " &lt;&lt; e.second &lt;&lt; '}' &lt;&lt; '\n';
+    return out;
+}
+
+
+
+int main()
+{
+    std::map&lt;int, std::string&gt; map;
+    map.insert(std::make_pair&lt;int, std::string&gt;(1, "test1"));
+    map.insert(std::make_pair&lt;int, std::string&gt;(2, "test2"));
+    map.insert({3, "test3"});
+   
+    std::cout &lt;&lt; "map before:\n";
+    std::cout &lt;&lt; map &lt;&lt; '\n';
+
+    std::cout &lt;&lt; "map.at(3): " &lt;&lt; map.at(3) &lt;&lt; '\n';
+    std::cout &lt;&lt; "map.at(50): " &lt;&lt; map.at(50) &lt;&lt; '\n';
+
+    std::cout &lt;&lt; "\nmap after:\n";
+    std::cout &lt;&lt; map &lt;&lt; '\n';
+
+    return 0;
+}</code></pre>
+   </div>
+   <a class="online-compiler-link" href="https://godbolt.org/z/o7qrG6qP9">
+    online-compiler-link
+   </a>
+   <div class="result-value">
+    <div class="result-title" onclick="toggleResult(event)" style="color:white;background-color: rgb(42, 41, 41);width: 100ch;">
+     Result:
+    </div>
+    <pre style="display: none">terminate called after throwing an instance of 'std::out_of_range'
+  what():  map::at
+Program terminated with signal: SIGSEGV
+</pre>
+   </div>
+  </div>
+ </body>
+</html>

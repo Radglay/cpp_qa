@@ -1,0 +1,78 @@
+<html>
+ <head>
+  <script>
+   function toggleResult(event)
+    {
+        const parentNode = event.target.parentNode;
+        let preTag = parentNode.getElementsByTagName("pre")[0];
+
+        if (preTag.style.display == "none") {
+            preTag.style.display = "block";
+        } else {
+            preTag.style.display = "none";
+        }
+    }
+  </script>
+ </head>
+ <body>
+  <div>
+   <div class="main file" style="border:1px solid rgb(144, 13, 13);padding:0; margin: 10px; width:140ch;">
+    <p class="file-name" style="margin:0; color:white;background-color: rgb(144, 13, 13);">
+     main.cpp
+    </p>
+    <pre style="margin:0;"><code>#include &lt;iostream&gt;
+#include &lt;unordered_set&gt;
+#include &lt;utility&gt;
+
+
+template &lt;typename Key, typename Comparator&gt;
+std::ostream&amp; operator&lt;&lt; (std::ostream&amp; out, const std::unordered_set&lt;Key,Comparator&gt; uset)
+{
+    for (auto&amp; e : uset)
+        out &lt;&lt; e &lt;&lt; ' ';
+    return out;
+}
+
+
+int main()
+{
+    std::unordered_set&lt;int&gt; uset;
+    uset.insert(1);
+    uset.insert(2);
+    uset.insert(3);
+    uset.insert(1);
+
+    std::cout &lt;&lt; uset.bucket_count() &lt;&lt; '\n';
+
+    for (int i = 0; i &lt; uset.bucket_count(); ++i)
+        std::cout &lt;&lt; "bucket_size [" &lt;&lt; i &lt;&lt; "] = " &lt;&lt; uset.bucket_size(i) &lt;&lt; '\n';
+
+    return 0;
+}</code></pre>
+   </div>
+   <a class="online-compiler-link" href="https://godbolt.org/z/qxcjMGEKq">
+    online-compiler-link
+   </a>
+   <div class="result-value">
+    <div class="result-title" onclick="toggleResult(event)" style="color:white;background-color: rgb(42, 41, 41);width: 100ch;">
+     Result:
+    </div>
+    <pre style="display: none">13
+bucket_size [0] = 0
+bucket_size [1] = 1
+bucket_size [2] = 1
+bucket_size [3] = 1
+bucket_size [4] = 0
+bucket_size [5] = 0
+bucket_size [6] = 0
+bucket_size [7] = 0
+bucket_size [8] = 0
+bucket_size [9] = 0
+bucket_size [10] = 0
+bucket_size [11] = 0
+bucket_size [12] = 0
+</pre>
+   </div>
+  </div>
+ </body>
+</html>

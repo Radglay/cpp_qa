@@ -1,0 +1,79 @@
+<html>
+ <head>
+  <script>
+   function toggleResult(event)
+    {
+        const parentNode = event.target.parentNode;
+        let preTag = parentNode.getElementsByTagName("pre")[0];
+
+        if (preTag.style.display == "none") {
+            preTag.style.display = "block";
+        } else {
+            preTag.style.display = "none";
+        }
+    }
+  </script>
+ </head>
+ <body>
+  <div>
+   <div class="main file" style="border:1px solid rgb(144, 13, 13);padding:0; margin: 10px; width:140ch;">
+    <p class="file-name" style="margin:0; color:white;background-color: rgb(144, 13, 13);">
+     main.cpp
+    </p>
+    <pre style="margin:0;"><code>#include &lt;iostream&gt;
+
+
+template &lt;typename T&gt;
+void func(T&amp;&amp;);
+
+template &lt;&gt;
+void func&lt;int&amp;&gt;(int&amp;)
+{
+    std::cout &lt;&lt; "int&amp; version\n";
+}
+
+template &lt;&gt;
+void func&lt;int&gt;(int&amp;&amp;)
+{
+    std::cout &lt;&lt; "int version\n";
+}
+
+int main()
+{
+    int a = 10;
+    int&amp; a_ref = a;
+
+
+    auto&amp;&amp; auto_r_ref1 = 10;
+    auto&amp;&amp; auto_r_ref2 = a;
+    auto&amp;&amp; auto_r_ref3 = a_ref;
+
+    func(10);
+    func(a);
+    func(a_ref);
+    
+    func(auto_r_ref1);
+    func(auto_r_ref2);
+    func(auto_r_ref3);
+
+    return 0;
+}</code></pre>
+   </div>
+   <a class="online-compiler-link" href="https://godbolt.org/z/MvGfW4qbe">
+    online-compiler-link
+   </a>
+   <div class="result-value">
+    <div class="result-title" onclick="toggleResult(event)" style="color:white;background-color: rgb(42, 41, 41);width: 100ch;">
+     Result:
+    </div>
+    <pre style="display: none">int version
+int&amp; version
+int&amp; version
+int&amp; version
+int&amp; version
+int&amp; version
+</pre>
+   </div>
+  </div>
+ </body>
+</html>

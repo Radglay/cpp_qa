@@ -1,0 +1,99 @@
+<html>
+ <head>
+  <script>
+   function toggleResult(event)
+    {
+        const parentNode = event.target.parentNode;
+        let preTag = parentNode.getElementsByTagName("pre")[0];
+
+        if (preTag.style.display == "none") {
+            preTag.style.display = "block";
+        } else {
+            preTag.style.display = "none";
+        }
+    }
+  </script>
+ </head>
+ <body>
+  <div>
+   <div class="main file" style="border:1px solid rgb(144, 13, 13);padding:0; margin: 10px; width:140ch;">
+    <p class="file-name" style="margin:0; color:white;background-color: rgb(144, 13, 13);">
+     main.cpp
+    </p>
+    <pre style="margin:0;"><code>#include &lt;iostream&gt;
+#include &lt;type_traits&gt;
+#include &lt;utility&gt;
+
+
+template &lt;typename T&gt; struct is_prvalue : std::true_type {};
+template &lt;typename T&gt; struct is_prvalue&lt;T&amp;&gt; : std::false_type {};
+template &lt;typename T&gt; struct is_prvalue&lt;T&amp;&amp;&gt; : std::false_type {};
+
+template &lt;typename T&gt; struct is_lvalue : std::false_type {};
+template &lt;typename T&gt; struct is_lvalue&lt;T&amp;&gt; : std::true_type {};
+template &lt;typename T&gt; struct is_lvalue&lt;T&amp;&amp;&gt; : std::false_type {};
+
+template &lt;typename T&gt; struct is_xvalue : std::false_type {};
+template &lt;typename T&gt; struct is_xvalue&lt;T&amp;&gt; : std::false_type {};
+template &lt;typename T&gt; struct is_xvalue&lt;T&amp;&amp;&gt; : std::true_type {};
+
+
+int main()
+{
+    std::cout &lt;&lt; std::boolalpha;
+    std::cout &lt;&lt; "10 -&gt; prvalue: " &lt;&lt; is_prvalue&lt;decltype(10)&gt;::value &lt;&lt; '\n';
+    std::cout &lt;&lt; "10 -&gt; lvalue: " &lt;&lt; is_lvalue&lt;decltype(10)&gt;::value &lt;&lt; '\n';
+    std::cout &lt;&lt; "10 -&gt; xvalue: " &lt;&lt; is_xvalue&lt;decltype(10)&gt;::value &lt;&lt; '\n';
+    std::cout &lt;&lt; "10 -&gt; lvalue_reference: " &lt;&lt; std::is_lvalue_reference&lt;decltype(10)&gt;::value &lt;&lt; '\n';
+    std::cout &lt;&lt; "10 -&gt; rvalue_reference: " &lt;&lt; std::is_rvalue_reference&lt;decltype(10)&gt;::value &lt;&lt; '\n';
+    
+    std::cout &lt;&lt; '\n';
+
+    int a { 10 };
+    std::cout &lt;&lt; "a -&gt; prvalue: " &lt;&lt; is_prvalue&lt;decltype(a)&gt;::value &lt;&lt; '\n';
+    std::cout &lt;&lt; "a -&gt; lvalue: " &lt;&lt; is_lvalue&lt;decltype(a)&gt;::value &lt;&lt; '\n';
+    std::cout &lt;&lt; "a -&gt; xvalue: " &lt;&lt; is_xvalue&lt;decltype(a)&gt;::value &lt;&lt; '\n';
+    std::cout &lt;&lt; "a -&gt; lvalue_reference: " &lt;&lt; std::is_lvalue_reference&lt;decltype(a)&gt;::value &lt;&lt; '\n';
+    std::cout &lt;&lt; "a -&gt; rvalue_reference: " &lt;&lt; std::is_rvalue_reference&lt;decltype(a)&gt;::value &lt;&lt; '\n';
+      
+    std::cout &lt;&lt; '\n';
+
+    int&amp; b { a };
+    std::cout &lt;&lt; "b -&gt; prvalue: " &lt;&lt; is_prvalue&lt;decltype(b)&gt;::value &lt;&lt; '\n';
+    std::cout &lt;&lt; "b -&gt; lvalue: " &lt;&lt; is_lvalue&lt;decltype(b)&gt;::value &lt;&lt; '\n';
+    std::cout &lt;&lt; "b -&gt; xvalue: " &lt;&lt; is_xvalue&lt;decltype(b)&gt;::value &lt;&lt; '\n';
+    std::cout &lt;&lt; "b -&gt; lvalue_reference: " &lt;&lt; std::is_lvalue_reference&lt;decltype(b)&gt;::value &lt;&lt; '\n';
+    std::cout &lt;&lt; "b -&gt; rvalue_reference: " &lt;&lt; std::is_rvalue_reference&lt;decltype(b)&gt;::value &lt;&lt; '\n';
+
+    return 0;
+}</code></pre>
+   </div>
+   <a class="online-compiler-link" href="https://godbolt.org/z/sj7EqqEa5">
+    online-compiler-link
+   </a>
+   <div class="result-value">
+    <div class="result-title" onclick="toggleResult(event)" style="color:white;background-color: rgb(42, 41, 41);width: 100ch;">
+     Result:
+    </div>
+    <pre style="display: none">10 -&gt; prvalue: true
+10 -&gt; lvalue: false
+10 -&gt; xvalue: false
+10 -&gt; lvalue_reference: false
+10 -&gt; rvalue_reference: false
+
+a -&gt; prvalue: false
+a -&gt; lvalue: true
+a -&gt; xvalue: false
+a -&gt; lvalue_reference: true
+a -&gt; rvalue_reference: false
+
+b -&gt; prvalue: false
+b -&gt; lvalue: true
+b -&gt; xvalue: false
+b -&gt; lvalue_reference: true
+b -&gt; rvalue_reference: false
+</pre>
+   </div>
+  </div>
+ </body>
+</html>

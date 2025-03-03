@@ -1,0 +1,78 @@
+<html>
+ <head>
+  <script>
+   function toggleResult(event)
+    {
+        const parentNode = event.target.parentNode;
+        let preTag = parentNode.getElementsByTagName("pre")[0];
+
+        if (preTag.style.display == "none") {
+            preTag.style.display = "block";
+        } else {
+            preTag.style.display = "none";
+        }
+    }
+  </script>
+ </head>
+ <body>
+  <div>
+   <div class="main file" style="border:1px solid rgb(144, 13, 13);padding:0; margin: 10px; width:140ch;">
+    <p class="file-name" style="margin:0; color:white;background-color: rgb(144, 13, 13);">
+     main.cpp
+    </p>
+    <pre style="margin:0;"><code>#include &lt;iostream&gt;
+#include &lt;set&gt;
+
+
+template &lt;typename Comparator&gt;
+std::ostream&amp; operator&lt;&lt; (std::ostream&amp; out, const std::multiset&lt;int, Comparator&gt; set)
+{
+    for (auto e : set)
+        out &lt;&lt; e &lt;&lt; ' ';
+
+    return out;
+}
+
+int main()
+{
+    std::multiset&lt;int&gt; set1 { 1, 3, 4, 2, 5 };
+    std::multiset&lt;int&gt; set2 { 1, 3, 4, 2, 5 };
+
+    std::cout &lt;&lt; "set1: " &lt;&lt; set1 &lt;&lt; '\n';
+    std::cout &lt;&lt; "set2: " &lt;&lt; set2 &lt;&lt; '\n';
+
+    auto it1_set1 = set1.find(1);
+    auto it1_set2 = set2.find(1);
+
+    set1.merge(set2);
+    std::cout &lt;&lt; "\nafter merge\n";
+
+    std::cout &lt;&lt; "set1: " &lt;&lt; set1 &lt;&lt; '\n';
+    std::cout &lt;&lt; "set2: " &lt;&lt; set2 &lt;&lt; '\n';
+
+    
+    std::cout &lt;&lt; std::boolalpha;
+    std::cout &lt;&lt; "are iterators equal? " &lt;&lt; (it1_set1 == it1_set2) &lt;&lt; '\n';
+
+    return 0;
+}</code></pre>
+   </div>
+   <a class="online-compiler-link" href="https://godbolt.org/z/cqdT65ova">
+    online-compiler-link
+   </a>
+   <div class="result-value">
+    <div class="result-title" onclick="toggleResult(event)" style="color:white;background-color: rgb(42, 41, 41);width: 100ch;">
+     Result:
+    </div>
+    <pre style="display: none">set1: 1 2 3 4 5 
+set2: 1 2 3 4 5 
+
+after merge
+set1: 1 1 2 2 3 3 4 4 5 5 
+set2: 
+are iterators equal? false
+</pre>
+   </div>
+  </div>
+ </body>
+</html>

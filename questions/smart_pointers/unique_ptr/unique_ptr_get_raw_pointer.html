@@ -1,0 +1,124 @@
+<html>
+ <head>
+  <script>
+   function toggleResult(event)
+    {
+        const parentNode = event.target.parentNode;
+        let preTag = parentNode.getElementsByTagName("pre")[0];
+
+        if (preTag.style.display == "none") {
+            preTag.style.display = "block";
+        } else {
+            preTag.style.display = "none";
+        }
+    }
+  </script>
+ </head>
+ <body>
+  <div>
+   <div class="cmake file" style="border: 1px solid rgb(100, 98, 99);padding:0; margin: 10px; width:140ch;">
+    <p class="file-name" style="margin:0; color:white;background-color: rgb(100, 98, 99);">
+     CMakeLists.txt
+    </p>
+    <pre style="margin:0;"><code>cmake_minimum_required(VERSION 3.5)
+
+project(cpp_qa VERSION 1.0 LANGUAGES CXX)
+
+add_executable(main main.cpp class.cpp)</code></pre>
+   </div>
+   <div class="header file" style="border: 1px solid rgb(130, 27, 198);padding:0; margin: 10px; width:140ch;">
+    <p class="file-name" style="margin:0; color:white;background-color: rgb(130, 27, 198);">
+     class.h
+    </p>
+    <pre style="margin:0;"><code>#pragma once
+
+
+class Base
+{
+public:
+    virtual void print() = 0;
+    virtual ~Base();
+};
+
+class Derived1 : public Base
+{
+public:
+    void print() override;
+    ~Derived1();
+};
+
+class Derived2 : public Base
+{
+public:
+    void print() override;
+    ~Derived2();
+};</code></pre>
+   </div>
+   <div class="main file" style="border:1px solid rgb(144, 13, 13);padding:0; margin: 10px; width:140ch;">
+    <p class="file-name" style="margin:0; color:white;background-color: rgb(144, 13, 13);">
+     main.cpp
+    </p>
+    <pre style="margin:0;"><code>#include &lt;iostream&gt;
+#include &lt;memory&gt;
+#include "class.h"
+
+
+
+int main()
+{
+    auto ptr = std::unique_ptr&lt;Base&gt;(new Derived1);
+    Base* raw_ptr = ptr.get();
+
+    raw_ptr-&gt;print();
+
+    return 0;
+}</code></pre>
+   </div>
+   <div class="source file" style="border:1px solid rgb(50, 50, 185);padding:0; margin: 10px; width:140ch;">
+    <p class="file-name" style="margin:0; color:white;background-color: rgb(50, 50, 185);">
+     class.cpp
+    </p>
+    <pre style="margin:0;"><code>#include "class.h"
+#include &lt;iostream&gt;
+
+
+Base::~Base()
+{
+    std::cout &lt;&lt; "Base D-tor\n";
+}
+
+void Derived1::print()
+{
+    std::cout &lt;&lt; "Derived1 print\n";
+}
+
+Derived1::~Derived1()
+{
+    std::cout &lt;&lt; "Derived1 D-tor\n";
+}
+
+void Derived2::print()
+{
+    std::cout &lt;&lt; "Derived2 print\n";
+}
+
+Derived2::~Derived2()
+{
+    std::cout &lt;&lt; "Derived2 D-tor\n";
+}</code></pre>
+   </div>
+   <a class="online-compiler-link" href="https://godbolt.org/z/oWeh6PM56">
+    online-compiler-link
+   </a>
+   <div class="result-value">
+    <div class="result-title" onclick="toggleResult(event)" style="color:white;background-color: rgb(42, 41, 41);width: 100ch;">
+     Result:
+    </div>
+    <pre style="display: none">Derived1 print
+Derived1 D-tor
+Base D-tor
+</pre>
+   </div>
+  </div>
+ </body>
+</html>

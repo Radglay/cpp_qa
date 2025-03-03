@@ -1,0 +1,77 @@
+<html>
+ <head>
+  <script>
+   function toggleResult(event)
+    {
+        const parentNode = event.target.parentNode;
+        let preTag = parentNode.getElementsByTagName("pre")[0];
+
+        if (preTag.style.display == "none") {
+            preTag.style.display = "block";
+        } else {
+            preTag.style.display = "none";
+        }
+    }
+  </script>
+ </head>
+ <body>
+  <div>
+   <div class="cmake file" style="border: 1px solid rgb(100, 98, 99);padding:0; margin: 10px; width:140ch;">
+    <p class="file-name" style="margin:0; color:white;background-color: rgb(100, 98, 99);">
+     CMakeLists.txt
+    </p>
+    <pre style="margin:0;"><code>cmake_minimum_required(VERSION 3.5)
+
+project(cpp_qa VERSION 1.0 LANGUAGES CXX)
+
+add_executable(main main.cpp)</code></pre>
+   </div>
+   <div class="header file" style="border: 1px solid rgb(130, 27, 198);padding:0; margin: 10px; width:140ch;">
+    <p class="file-name" style="margin:0; color:white;background-color: rgb(130, 27, 198);">
+     function.h
+    </p>
+    <pre style="margin:0;"><code>#pragma once
+
+
+template &lt;typename T, template&lt;typename&gt; class Container&gt;
+T accumulate(const Container&lt;T&gt;&amp; container)
+{
+    T sum{};
+    for (auto&amp; v : container)
+        sum += v;
+    return sum;
+}</code></pre>
+   </div>
+   <div class="main file" style="border:1px solid rgb(144, 13, 13);padding:0; margin: 10px; width:140ch;">
+    <p class="file-name" style="margin:0; color:white;background-color: rgb(144, 13, 13);">
+     main.cpp
+    </p>
+    <pre style="margin:0;"><code>#include "function.h"
+#include &lt;vector&gt;
+#include &lt;iostream&gt;
+
+
+int main()
+{   
+    std::vector&lt;int&gt; vec { 1, 2, 3, 4, 5 };
+    std::cout &lt;&lt; "accumulate of vec: " &lt;&lt; accumulate(vec) &lt;&lt; '\n';
+    std::cout &lt;&lt; "accumulate of vec: " &lt;&lt; accumulate&lt;int, std::vector&gt;(vec) &lt;&lt; '\n';
+
+    return 0;
+}</code></pre>
+   </div>
+   <a class="online-compiler-link" href="https://godbolt.org/z/s7Mh3sfzK">
+    online-compiler-link
+   </a>
+   <div class="result-value">
+    <div class="result-title" onclick="toggleResult(event)" style="color:white;background-color: rgb(42, 41, 41);width: 100ch;">
+     Result:
+    </div>
+    <pre style="display: none">accumulate of vec: 15
+accumulate of vec: 15
+ 
+</pre>
+   </div>
+  </div>
+ </body>
+</html>

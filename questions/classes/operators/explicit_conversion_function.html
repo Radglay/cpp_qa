@@ -1,0 +1,141 @@
+<html>
+ <head>
+  <script>
+   function toggleResult(event)
+    {
+        const parentNode = event.target.parentNode;
+        let preTag = parentNode.getElementsByTagName("pre")[0];
+
+        if (preTag.style.display == "none") {
+            preTag.style.display = "block";
+        } else {
+            preTag.style.display = "none";
+        }
+    }
+  </script>
+ </head>
+ <body>
+  <div>
+   <div class="cmake file" style="border: 1px solid rgb(100, 98, 99);padding:0; margin: 10px; width:140ch;">
+    <p class="file-name" style="margin:0; color:white;background-color: rgb(100, 98, 99);">
+     CMakeLists.txt
+    </p>
+    <pre style="margin:0;"><code>cmake_minimum_required(VERSION 3.5)
+
+project(cpp_qa VERSION 1.0 LANGUAGES CXX)
+
+add_executable(main main.cpp)</code></pre>
+   </div>
+   <div class="header file" style="border: 1px solid rgb(130, 27, 198);padding:0; margin: 10px; width:140ch;">
+    <p class="file-name" style="margin:0; color:white;background-color: rgb(130, 27, 198);">
+     class.h
+    </p>
+    <pre style="margin:0;"><code>#pragma once
+
+#include &lt;string&gt;
+#include &lt;sstream&gt;
+#include &lt;ostream&gt;
+#include &lt;iostream&gt;
+
+
+class StringNumber
+{
+public:
+    friend std::ostream&amp; operator&lt;&lt;(std::ostream&amp; out, const StringNumber&amp; str)
+    {
+        out &lt;&lt; "StringNumber: " &lt;&lt; str.number;
+        return out;
+    }
+
+    StringNumber(int n)
+        : number{std::to_string(n)}
+    {}
+
+    StringNumber(std::string str)
+    {
+        std::stringstream ss{str};
+        int val {};
+        ss &gt;&gt; val;
+        number = std::to_string(val);
+    }
+
+    explicit operator int()
+    {
+        std::cout &lt;&lt; "conversion to int()\n";
+        return std::stoi(number);
+    }
+
+    explicit operator std::string()
+    {
+        std::cout &lt;&lt; "conversion to std::string()\n";
+        return number;
+    }
+
+
+private:
+    std::string number;
+};</code></pre>
+   </div>
+   <div class="main file" style="border:1px solid rgb(144, 13, 13);padding:0; margin: 10px; width:140ch;">
+    <p class="file-name" style="margin:0; color:white;background-color: rgb(144, 13, 13);">
+     main.cpp
+    </p>
+    <pre style="margin:0;"><code>#include "class.h"
+#include &lt;iostream&gt;
+
+
+void funcInt(int x)
+{
+    std::cout &lt;&lt; x &lt;&lt; '\n';
+}
+
+void funcString(const std::string&amp; str)
+{
+    std::cout &lt;&lt; str &lt;&lt; '\n';
+}
+
+void funcDouble(double d)
+{
+    std::cout &lt;&lt; d &lt;&lt; '\n';
+}
+
+int main()
+{
+    StringNumber str1 { 20 };
+    std::cout &lt;&lt; str1 &lt;&lt; '\n';
+    
+    StringNumber str2 { "abcd1" };
+    std::cout &lt;&lt; str2 &lt;&lt; '\n';
+
+    
+    funcInt(str1);
+    funcString(str1);
+    funcDouble(str1);
+
+    return 0;
+};</code></pre>
+   </div>
+   <a class="online-compiler-link" href="https://godbolt.org/z/KE6aYoT6d
+">
+    online-compiler-link
+   </a>
+   <div class="result-value">
+    <div class="result-title" onclick="toggleResult(event)" style="color:white;background-color: rgb(42, 41, 41);width: 100ch;">
+     Result:
+    </div>
+    <pre style="display: none">main.cpp:29:13: error: cannot convert 'StringNumber' to 'int'
+   29 |     funcInt(str1);
+      |             ^~~~
+      |             |
+      |             StringNumber
+main.cpp:31:16: error: cannot convert 'StringNumber' to 'double'
+   31 |     fucnDouble(str1);
+      |                ^~~~
+      |                |
+      |                StringNumber
+ 
+</pre>
+   </div>
+  </div>
+ </body>
+</html>

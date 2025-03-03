@@ -1,0 +1,59 @@
+<html>
+ <head>
+  <script>
+   function toggleResult(event)
+    {
+        const parentNode = event.target.parentNode;
+        let preTag = parentNode.getElementsByTagName("pre")[0];
+
+        if (preTag.style.display == "none") {
+            preTag.style.display = "block";
+        } else {
+            preTag.style.display = "none";
+        }
+    }
+  </script>
+ </head>
+ <body>
+  <div>
+   <div class="main file" style="border:1px solid rgb(144, 13, 13);padding:0; margin: 10px; width:140ch;">
+    <p class="file-name" style="margin:0; color:white;background-color: rgb(144, 13, 13);">
+     main.cpp
+    </p>
+    <pre style="margin:0;"><code>#include &lt;iostream&gt;
+#include &lt;vector&gt;
+
+
+int main()
+{
+    std::vector&lt;int&gt; vec {1, 2, 3, 4, 5};
+
+    int* ptr = vec.data();
+    std::cout &lt;&lt; "addr: " &lt;&lt; ptr &lt;&lt; ", val: " &lt;&lt; *ptr &lt;&lt; '\n';
+
+    vec.insert(vec.begin(), 5, 10);
+
+    for (int v : vec)
+        std::cout &lt;&lt; v &lt;&lt; ' ';
+    std::cout &lt;&lt; '\n';
+
+    std::cout &lt;&lt; "addr: " &lt;&lt; ptr &lt;&lt; ", val: " &lt;&lt; *ptr &lt;&lt; '\n';
+
+    return 0;
+}</code></pre>
+   </div>
+   <a class="online-compiler-link" href="https://godbolt.org/z/s4zbfTWPT">
+    online-compiler-link
+   </a>
+   <div class="result-value">
+    <div class="result-title" onclick="toggleResult(event)" style="color:white;background-color: rgb(42, 41, 41);width: 100ch;">
+     Result:
+    </div>
+    <pre style="display: none">addr: 0x19782b0, val: 1
+10 10 10 10 10 1 2 3 4 5 
+addr: 0x19782b0, val: 6520
+</pre>
+   </div>
+  </div>
+ </body>
+</html>

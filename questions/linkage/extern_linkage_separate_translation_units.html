@@ -1,0 +1,138 @@
+<html>
+ <head>
+  <script>
+   function toggleResult(event)
+    {
+        const parentNode = event.target.parentNode;
+        let preTag = parentNode.getElementsByTagName("pre")[0];
+
+        if (preTag.style.display == "none") {
+            preTag.style.display = "block";
+        } else {
+            preTag.style.display = "none";
+        }
+    }
+  </script>
+ </head>
+ <body>
+  <div>
+   <div class="cmake file" style="border: 1px solid rgb(100, 98, 99);padding:0; margin: 10px; width:140ch;">
+    <p class="file-name" style="margin:0; color:white;background-color: rgb(100, 98, 99);">
+     CMakeLists.txt
+    </p>
+    <pre style="margin:0;"><code>cmake_minimum_required(VERSION 3.5)
+
+project(cpp_qa VERSION 1.0 LANGUAGES CXX)
+
+add_executable(main main.cpp source1.cpp)</code></pre>
+   </div>
+   <div class="source file" style="border:1px solid rgb(50, 50, 185);padding:0; margin: 10px; width:140ch;">
+    <p class="file-name" style="margin:0; color:white;background-color: rgb(50, 50, 185);">
+     source1.cpp
+    </p>
+    <pre style="margin:0;"><code>#include &lt;iostream&gt;
+
+
+int global = 100;
+extern int extern_global = 200;
+
+extern const int extern_const_global = 300;
+extern constexpr int extern_constexpr_global = 400;
+
+void func()
+{
+    std::cout &lt;&lt; "func()\n";
+}
+
+void extern_func()
+{
+    std::cout &lt;&lt; "extern_func()\n";
+}
+
+
+
+void print_source1_globals()
+{
+    std::cout &lt;&lt; "print_source1_globals()\n";
+    std::cout &lt;&lt; "global: " &lt;&lt; &amp;global 
+              &lt;&lt; ' ' &lt;&lt; global&lt;&lt; '\n';
+    std::cout &lt;&lt; "extern_global: " &lt;&lt; &amp;extern_global 
+              &lt;&lt; ' ' &lt;&lt; extern_global&lt;&lt; '\n';
+    std::cout &lt;&lt; "extern_const_global: " &lt;&lt; &amp;extern_const_global 
+              &lt;&lt; ' ' &lt;&lt; extern_const_global&lt;&lt; '\n';
+    std::cout &lt;&lt; "extern_constexpr_global: " &lt;&lt; &amp;extern_constexpr_global 
+              &lt;&lt; ' ' &lt;&lt; extern_constexpr_global&lt;&lt; '\n';
+    
+    func();
+    extern_func();
+}</code></pre>
+   </div>
+   <div class="main file" style="border:1px solid rgb(144, 13, 13);padding:0; margin: 10px; width:140ch;">
+    <p class="file-name" style="margin:0; color:white;background-color: rgb(144, 13, 13);">
+     main.cpp
+    </p>
+    <pre style="margin:0;"><code>#include &lt;iostream&gt;
+
+
+extern int global;
+extern int extern_global;
+
+extern const int extern_const_global;
+// extern constexpr int extern_constexpr_global;
+
+
+void func();
+void extern_func();
+
+
+void print_source1_globals();
+
+int main()
+{
+    std::cout &lt;&lt; "main()\n";
+    std::cout &lt;&lt; "global: " &lt;&lt; &amp;global 
+              &lt;&lt; ' ' &lt;&lt; global&lt;&lt; '\n';
+    std::cout &lt;&lt; "extern_global: " &lt;&lt; &amp;extern_global 
+              &lt;&lt; ' ' &lt;&lt; extern_global&lt;&lt; '\n';
+    std::cout &lt;&lt; "extern_const_global: " &lt;&lt; &amp;extern_const_global 
+              &lt;&lt; ' ' &lt;&lt; extern_const_global&lt;&lt; '\n';
+    // std::cout &lt;&lt; "extern_constexpr_global: " &lt;&lt; &amp;extern_constexpr_global 
+    //           &lt;&lt; ' ' &lt;&lt; extern_constexpr_global&lt;&lt; '\n';
+    
+    func();
+    extern_func();
+
+    std::cout &lt;&lt; '\n';
+
+    print_source1_globals();
+
+    return 0;
+}</code></pre>
+   </div>
+   <a class="online-compiler-link" href="">
+    online-compiler-link
+   </a>
+   <div class="result-value">
+    <div class="result-title" onclick="toggleResult(event)" style="color:white;background-color: rgb(42, 41, 41);width: 100ch;">
+     Result:
+    </div>
+    <pre style="display: none">main()
+global: 0x404030 100
+extern_global: 0x404034 200
+extern_const_global: 0x402040 300
+// can't use constexpr in another Translation Unit...
+func()
+extern_func()
+
+print_source1_globals()
+global: 0x404030 100
+extern_global: 0x404034 200
+extern_const_global: 0x402040 300
+extern_constexpr_global: 0x402044 400
+func()
+extern_func()
+</pre>
+   </div>
+  </div>
+ </body>
+</html>

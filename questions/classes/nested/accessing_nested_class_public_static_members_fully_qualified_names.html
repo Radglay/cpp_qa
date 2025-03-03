@@ -1,68 +1,36 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
  <head>
-  <meta charset="utf-8"/>
-  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-  <meta content="no-cache" http-equiv="cache-control"/>
-  <meta content="0" http-equiv="expires"/>
-  <meta content="no-cache" http-equiv="pragma"/>
-  <link href="/cpp_qa/static/styles.css" rel="stylesheet"/>
   <script>
    function toggleResult(event)
-        {
-            const parentNode = event.target.parentNode;
-            let preTag = parentNode.getElementsByTagName("pre")[0];
+    {
+        const parentNode = event.target.parentNode;
+        let preTag = parentNode.getElementsByTagName("pre")[0];
 
-            if (preTag.style.display == "none") {
-                preTag.style.display = "block";
-            } else {
-                preTag.style.display = "none";
-            }
-
+        if (preTag.style.display == "none") {
+            preTag.style.display = "block";
+        } else {
+            preTag.style.display = "none";
         }
+    }
   </script>
-  <title>
-  </title>
  </head>
  <body>
-  <div class="content">
-   <div class="project">
-    <div class="cmake file">
-     <p class="file-name">
-      CMakeLists.txt
-     </p>
-     <pre><code>cmake_minimum_required(VERSION 3.5)
+  <div>
+   <div class="cmake file" style="border: 1px solid rgb(100, 98, 99);padding:0; margin: 10px; width:140ch;">
+    <p class="file-name" style="margin:0; color:white;background-color: rgb(100, 98, 99);">
+     CMakeLists.txt
+    </p>
+    <pre style="margin:0;"><code>cmake_minimum_required(VERSION 3.5)
 
 project(cpp_qa VERSION 1.0 LANGUAGES CXX)
 
 add_executable(main main.cpp class.cpp)</code></pre>
-    </div>
-    <div class="source file">
-     <p class="file-name">
-      class.cpp
-     </p>
-     <pre><code>#include "class.h"
-#include &lt;iostream&gt;
-
-
-void Outer::outer_func()
-{
-   int x1 = Outer::Inner::inner_x;
-   Inner::inner_func();
-}
-
-int Outer::Inner::inner_x;
-
-void Outer::Inner::inner_func()
-{
-    std::cout &lt;&lt; "inner_func()\n";
-}</code></pre>
-    </div>
-    <div class="header file">
-     <p class="file-name">
-      class.h
-     </p>
-     <pre><code>#pragma once
+   </div>
+   <div class="header file" style="border: 1px solid rgb(130, 27, 198);padding:0; margin: 10px; width:140ch;">
+    <p class="file-name" style="margin:0; color:white;background-color: rgb(130, 27, 198);">
+     class.h
+    </p>
+    <pre style="margin:0;"><code>#pragma once
 
 
 class Outer
@@ -79,12 +47,12 @@ public:
         static void inner_func();
     };
 };</code></pre>
-    </div>
-    <div class="main file">
-     <p class="file-name">
-      main.cpp
-     </p>
-     <pre><code>#include "class.h"
+   </div>
+   <div class="main file" style="border:1px solid rgb(144, 13, 13);padding:0; margin: 10px; width:140ch;">
+    <p class="file-name" style="margin:0; color:white;background-color: rgb(144, 13, 13);">
+     main.cpp
+    </p>
+    <pre style="margin:0;"><code>#include "class.h"
 
 
 int main()
@@ -92,19 +60,39 @@ int main()
     // Inner inner;
     Outer::Inner inner;
 };</code></pre>
-    </div>
    </div>
-   <div class="result-container">
-    <a class="online-compiler-link" href="https://godbolt.org/z/YodhTrGTs">
-     online-compiler-link
-    </a>
-    <div class="result-value">
-     <div class="result-title" onclick="toggleResult(event)">
-      Result:
-     </div>
-     <pre style="display: none">inner_func()
-</pre>
+   <div class="source file" style="border:1px solid rgb(50, 50, 185);padding:0; margin: 10px; width:140ch;">
+    <p class="file-name" style="margin:0; color:white;background-color: rgb(50, 50, 185);">
+     class.cpp
+    </p>
+    <pre style="margin:0;"><code>#include "class.h"
+#include &lt;iostream&gt;
+
+
+void Outer::outer_func()
+{
+   int x1 = Outer::Inner::inner_x;
+   Inner::inner_func();
+}
+
+int Outer::Inner::inner_x;
+
+void Outer::Inner::inner_func()
+{
+    std::cout &lt;&lt; "inner_func()\n";
+}</code></pre>
+   </div>
+   <a class="online-compiler-link" href="https://godbolt.org/z/YodhTrGTs
+">
+    online-compiler-link
+   </a>
+   <div class="result-value">
+    <div class="result-title" onclick="toggleResult(event)" style="color:white;background-color: rgb(42, 41, 41);width: 100ch;">
+     Result:
     </div>
+    <pre style="display: none">inner_func()
+ 
+</pre>
    </div>
   </div>
  </body>

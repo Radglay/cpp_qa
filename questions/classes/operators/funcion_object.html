@@ -1,0 +1,94 @@
+<html>
+ <head>
+  <script>
+   function toggleResult(event)
+    {
+        const parentNode = event.target.parentNode;
+        let preTag = parentNode.getElementsByTagName("pre")[0];
+
+        if (preTag.style.display == "none") {
+            preTag.style.display = "block";
+        } else {
+            preTag.style.display = "none";
+        }
+    }
+  </script>
+ </head>
+ <body>
+  <div>
+   <div class="cmake file" style="border: 1px solid rgb(100, 98, 99);padding:0; margin: 10px; width:140ch;">
+    <p class="file-name" style="margin:0; color:white;background-color: rgb(100, 98, 99);">
+     CMakeLists.txt
+    </p>
+    <pre style="margin:0;"><code>cmake_minimum_required(VERSION 3.5)
+
+project(cpp_qa VERSION 1.0 LANGUAGES CXX)
+
+add_executable(main main.cpp)</code></pre>
+   </div>
+   <div class="header file" style="border: 1px solid rgb(130, 27, 198);padding:0; margin: 10px; width:140ch;">
+    <p class="file-name" style="margin:0; color:white;background-color: rgb(130, 27, 198);">
+     class.h
+    </p>
+    <pre style="margin:0;"><code>#pragma once
+
+
+class Adder
+{
+public:
+    Adder(int n)
+        : val{n}
+    {}
+
+    int operator() (int x)
+    {
+        return x + val;
+    }
+
+private:
+    int val;
+};</code></pre>
+   </div>
+   <div class="main file" style="border:1px solid rgb(144, 13, 13);padding:0; margin: 10px; width:140ch;">
+    <p class="file-name" style="margin:0; color:white;background-color: rgb(144, 13, 13);">
+     main.cpp
+    </p>
+    <pre style="margin:0;"><code>#include "class.h"
+#include &lt;iostream&gt;
+#include &lt;algorithm&gt;
+
+
+int main()
+{
+    Adder add10 { 10 };
+    int arr[5] { 1, 2, 3, 4, 5 };
+
+    for (int v : arr)
+        std::cout &lt;&lt; v &lt;&lt; ' ';
+    std::cout &lt;&lt; '\n';
+
+    int arr2[5];
+    std::transform(&amp;arr[0], &amp;arr[5], arr2, add10);
+
+    for (int v : arr2)
+        std::cout &lt;&lt; v &lt;&lt; ' ';
+
+    return 0;
+};</code></pre>
+   </div>
+   <a class="online-compiler-link" href="https://godbolt.org/z/7f4Gs6qGj
+">
+    online-compiler-link
+   </a>
+   <div class="result-value">
+    <div class="result-title" onclick="toggleResult(event)" style="color:white;background-color: rgb(42, 41, 41);width: 100ch;">
+     Result:
+    </div>
+    <pre style="display: none">1 2 3 4 5 
+11 12 13 14 15                  
+ 
+</pre>
+   </div>
+  </div>
+ </body>
+</html>

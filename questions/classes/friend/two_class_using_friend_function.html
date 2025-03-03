@@ -1,0 +1,215 @@
+<html>
+ <head>
+  <script>
+   function toggleResult(event)
+    {
+        const parentNode = event.target.parentNode;
+        let preTag = parentNode.getElementsByTagName("pre")[0];
+
+        if (preTag.style.display == "none") {
+            preTag.style.display = "block";
+        } else {
+            preTag.style.display = "none";
+        }
+    }
+  </script>
+ </head>
+ <body>
+  <div>
+   <div class="cmake file" style="border: 1px solid rgb(100, 98, 99);padding:0; margin: 10px; width:140ch;">
+    <p class="file-name" style="margin:0; color:white;background-color: rgb(100, 98, 99);">
+     CMakeLists.txt
+    </p>
+    <pre style="margin:0;"><code>cmake_minimum_required(VERSION 3.5)
+
+project(cpp_qa VERSION 1.0 LANGUAGES CXX)
+
+add_executable(main main.cpp)</code></pre>
+   </div>
+   <div class="header file" style="border: 1px solid rgb(130, 27, 198);padding:0; margin: 10px; width:140ch;">
+    <p class="file-name" style="margin:0; color:white;background-color: rgb(130, 27, 198);">
+     vector.h
+    </p>
+    <pre style="margin:0;"><code>#pragma once
+
+#include &lt;initializer_list&gt;
+#include &lt;algorithm&gt;
+#include &lt;ostream&gt;
+
+class IntMatrix;
+
+
+class IntVector
+{
+public:
+friend IntMatrix operator+ (const IntMatrix&amp;, const IntVector&amp;);
+
+    class BadSize {};
+
+    IntVector(std::initializer_list&lt;int&gt; list)
+        : arr{ new int[list.size()]}, size{list.size()}
+    {
+        std::copy(list.begin(), list.end(), arr);
+    }
+
+    IntVector(const IntVector&amp; other)
+        : arr{ new int[other.size]}, size{other.size}
+    {
+        std::copy(other.arr, other.arr + other.size, arr);
+    }
+
+    ~IntVector()
+    {
+        delete[] arr;
+    }
+
+    // operators
+    friend std::ostream&amp; operator&lt;&lt; (std::ostream&amp; out, const IntVector&amp; vec)
+    {
+        out &lt;&lt; "IntVector: { ";
+        for (int i = 0; i &lt; vec.size; ++i)
+            out &lt;&lt; vec.arr[i] &lt;&lt; ' ';
+        out &lt;&lt; "}\n";
+
+        return out;
+    }
+
+private:
+    int* arr;
+    int size;
+};</code></pre>
+   </div>
+   <div class="header file" style="border: 1px solid rgb(130, 27, 198);padding:0; margin: 10px; width:140ch;">
+    <p class="file-name" style="margin:0; color:white;background-color: rgb(130, 27, 198);">
+     matrix.h
+    </p>
+    <pre style="margin:0;"><code>#pragma once
+
+#include &lt;initializer_list&gt;
+#include &lt;algorithm&gt;
+#include &lt;ostream&gt;
+
+class IntVector;
+
+class IntMatrix
+{
+public:
+friend IntMatrix operator+ (const IntMatrix&amp;, const IntVector&amp;);
+
+    class BadDimensions {};
+
+    IntMatrix(std::initializer_list&lt;std::initializer_list&lt;int&gt;&gt; list)
+        : arr{ new int[list.size() * list.begin()-&gt;size()]}
+        , rows{ list.size() }
+        , columns{ list.begin()-&gt;size() }
+    {
+        int index {};
+        if (rows != 0 and columns != 0)
+        {
+            for (auto row : list)
+            {
+                for (auto column : row)
+                {
+                    arr[index] = column;
+                    ++index;
+                }
+            }
+        }
+    }
+
+    IntMatrix(const IntMatrix&amp; other)
+        : arr{ new int[other.rows * other.columns]}
+        , rows{ other.rows }
+        , columns{ other.columns }
+    {
+        std::copy(other.arr, &amp;other.arr[other.rows * other.columns], arr);
+    }
+
+    ~IntMatrix()
+    {
+        delete[] arr;
+    }
+
+    // operators
+    friend std::ostream&amp; operator&lt;&lt; (std::ostream&amp; out, const IntMatrix&amp; mat)
+    {
+        out &lt;&lt; "IntMatrix: {\n";
+        for (int r = 0; r &lt; mat.rows; ++r)
+        {
+            out &lt;&lt; "{ ";
+            for (int c = 0; c &lt; mat.columns; ++c)
+            {
+                out &lt;&lt; mat.arr[r * mat.columns + c] &lt;&lt; ' ';
+            }
+            out &lt;&lt; "}\n";
+        }
+        out &lt;&lt; "}\n";
+
+        return out;
+    }
+
+private:
+    int* arr;
+    int rows;
+    int columns;
+};</code></pre>
+   </div>
+   <div class="main file" style="border:1px solid rgb(144, 13, 13);padding:0; margin: 10px; width:140ch;">
+    <p class="file-name" style="margin:0; color:white;background-color: rgb(144, 13, 13);">
+     main.cpp
+    </p>
+    <pre style="margin:0;"><code>#include "vector.h"
+#include "matrix.h"
+#include &lt;iostream&gt;
+
+
+IntMatrix operator+ (const IntMatrix&amp; mat, const IntVector&amp; vec)
+{
+    if (vec.size != mat.columns)
+        throw IntVector::BadSize{};
+    
+    IntMatrix temp {mat};
+    for (int r = 0; r &lt; mat.rows; ++r)
+        for (int c = 0; c &lt; mat.columns; ++c)
+            temp.arr[r * mat.columns + c] += vec.arr[c];
+
+    return temp;
+}
+
+
+int main()
+{
+    IntVector vec1 { 1, 2, 3 };
+    std::cout &lt;&lt; vec1;
+
+    IntMatrix mat1 {{1, 2, 3}, {4, 5, 6}};
+    std::cout &lt;&lt; mat1;
+
+    std::cout &lt;&lt; (mat1 + vec1);
+
+    return 0;
+};</code></pre>
+   </div>
+   <a class="online-compiler-link" href="https://godbolt.org/z/oehcxcjed
+">
+    online-compiler-link
+   </a>
+   <div class="result-value">
+    <div class="result-title" onclick="toggleResult(event)" style="color:white;background-color: rgb(42, 41, 41);width: 100ch;">
+     Result:
+    </div>
+    <pre style="display: none">IntVector: { 1 2 3 }
+IntMatrix: {
+{ 1 2 3 }
+{ 4 5 6 }
+}
+IntMatrix: {
+{ 2 4 6 }
+{ 5 7 9 }
+}
+ 
+</pre>
+   </div>
+  </div>
+ </body>
+</html>

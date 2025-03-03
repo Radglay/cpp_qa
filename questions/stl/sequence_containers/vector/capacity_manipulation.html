@@ -1,0 +1,67 @@
+<html>
+ <head>
+  <script>
+   function toggleResult(event)
+    {
+        const parentNode = event.target.parentNode;
+        let preTag = parentNode.getElementsByTagName("pre")[0];
+
+        if (preTag.style.display == "none") {
+            preTag.style.display = "block";
+        } else {
+            preTag.style.display = "none";
+        }
+    }
+  </script>
+ </head>
+ <body>
+  <div>
+   <div class="main file" style="border:1px solid rgb(144, 13, 13);padding:0; margin: 10px; width:140ch;">
+    <p class="file-name" style="margin:0; color:white;background-color: rgb(144, 13, 13);">
+     main.cpp
+    </p>
+    <pre style="margin:0;"><code>#include &lt;vector&gt;
+#include &lt;iostream&gt;
+
+
+int main()
+{
+    std::vector&lt;int&gt; vec;
+    vec.reserve(10);
+
+    vec.push_back(1);
+    vec.push_back(2);
+    vec.push_back(3);
+
+    std::cout &lt;&lt; vec.size() &lt;&lt; ' ' &lt;&lt; vec.capacity() &lt;&lt; '\n';
+    for (auto v : vec)
+        std::cout &lt;&lt; v &lt;&lt; ' ';
+    std::cout &lt;&lt; '\n';
+
+    std::cout &lt;&lt; vec[4] &lt;&lt; '\n';
+    vec[4] = 999;
+    std::cout &lt;&lt; vec[4] &lt;&lt; '\n';
+
+    vec.shrink_to_fit();
+    std::cout &lt;&lt; vec[4] &lt;&lt; '\n';
+
+    return 0;
+}</code></pre>
+   </div>
+   <a class="online-compiler-link" href="https://godbolt.org/z/hzhqscxzq">
+    online-compiler-link
+   </a>
+   <div class="result-value">
+    <div class="result-title" onclick="toggleResult(event)" style="color:white;background-color: rgb(42, 41, 41);width: 100ch;">
+     Result:
+    </div>
+    <pre style="display: none">3 10
+1 2 3 
+0
+999
+0
+</pre>
+   </div>
+  </div>
+ </body>
+</html>

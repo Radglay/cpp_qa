@@ -1,0 +1,97 @@
+<html>
+ <head>
+  <script>
+   function toggleResult(event)
+    {
+        const parentNode = event.target.parentNode;
+        let preTag = parentNode.getElementsByTagName("pre")[0];
+
+        if (preTag.style.display == "none") {
+            preTag.style.display = "block";
+        } else {
+            preTag.style.display = "none";
+        }
+    }
+  </script>
+ </head>
+ <body>
+  <div>
+   <div class="main file" style="border:1px solid rgb(144, 13, 13);padding:0; margin: 10px; width:140ch;">
+    <p class="file-name" style="margin:0; color:white;background-color: rgb(144, 13, 13);">
+     main.cpp
+    </p>
+    <pre style="margin:0;"><code>#include &lt;iostream&gt;
+
+
+struct S
+{
+    char c1;
+    char c2;
+};
+
+struct X
+{
+    int n;
+    char c;
+};
+
+int main()
+{
+    std::cout &lt;&lt; "size of struct: " &lt;&lt; sizeof(S) &lt;&lt; ", size of elements: " &lt;&lt; 2 * sizeof(char) &lt;&lt; '\n';
+    std::cout &lt;&lt; "alignemnt of char: " &lt;&lt; alignof(char) &lt;&lt; '\n';
+    std::cout &lt;&lt; "alignemnt of struct: " &lt;&lt; alignof(S) &lt;&lt; '\n';
+
+    std::cout &lt;&lt; '\n';
+    std::cout &lt;&lt; "size of struct: " &lt;&lt; sizeof(X) &lt;&lt; ", size of elements: " &lt;&lt; sizeof(int) + sizeof(char) &lt;&lt; '\n';
+    std::cout &lt;&lt; "alignemnt of int: " &lt;&lt; alignof(int) &lt;&lt; ", alignemnt of char: " &lt;&lt; alignof(char) &lt;&lt; '\n';
+    std::cout &lt;&lt; "alignemnt of struct: " &lt;&lt; alignof(X) &lt;&lt; '\n';
+
+    X x;
+    x.n = 999;
+    x.c = 45;
+
+    unsigned char* ptr = reinterpret_cast&lt;unsigned char*&gt;(&amp;x);
+
+    std::cout &lt;&lt; "object representation\n";
+    for (int i = 0; i &lt; sizeof(X); ++i)
+        std::cout &lt;&lt; "addr: " &lt;&lt; static_cast&lt;void*&gt;(ptr + i) &lt;&lt; ", value: " &lt;&lt; static_cast&lt;int&gt;(*(ptr + i)) &lt;&lt; '\n';
+    
+    std::cout &lt;&lt; "value representation\n";
+    std::cout &lt;&lt; "addr: " &lt;&lt; static_cast&lt;void*&gt;(&amp;x.n) &lt;&lt; ", value: " &lt;&lt; x.n &lt;&lt; '\n';
+    std::cout &lt;&lt; "addr: " &lt;&lt; static_cast&lt;void*&gt;(&amp;x.c) &lt;&lt; ", value: " &lt;&lt; static_cast&lt;int&gt;(x.c) &lt;&lt; '\n';
+
+
+    return 0;
+}</code></pre>
+   </div>
+   <a class="online-compiler-link" href="https://godbolt.org/z/9bY9vnYY7">
+    online-compiler-link
+   </a>
+   <div class="result-value">
+    <div class="result-title" onclick="toggleResult(event)" style="color:white;background-color: rgb(42, 41, 41);width: 100ch;">
+     Result:
+    </div>
+    <pre style="display: none">size of struct: 2, size of elements: 2
+alignemnt of char: 1
+alignemnt of struct: 1
+
+size of struct: 8, size of elements: 5
+alignemnt of int: 4, alignemnt of char: 1
+alignemnt of struct: 4
+object representation
+addr: 0x7ffd66dda458, value: 231
+addr: 0x7ffd66dda459, value: 3
+addr: 0x7ffd66dda45a, value: 0
+addr: 0x7ffd66dda45b, value: 0
+addr: 0x7ffd66dda45c, value: 45
+addr: 0x7ffd66dda45d, value: 118
+addr: 0x7ffd66dda45e, value: 0
+addr: 0x7ffd66dda45f, value: 0
+value representation
+addr: 0x7ffd66dda458, value: 999
+addr: 0x7ffd66dda45c, value: 45
+</pre>
+   </div>
+  </div>
+ </body>
+</html>

@@ -1,0 +1,119 @@
+<html>
+ <head>
+  <script>
+   function toggleResult(event)
+    {
+        const parentNode = event.target.parentNode;
+        let preTag = parentNode.getElementsByTagName("pre")[0];
+
+        if (preTag.style.display == "none") {
+            preTag.style.display = "block";
+        } else {
+            preTag.style.display = "none";
+        }
+    }
+  </script>
+ </head>
+ <body>
+  <div>
+   <div class="cmake file" style="border: 1px solid rgb(100, 98, 99);padding:0; margin: 10px; width:140ch;">
+    <p class="file-name" style="margin:0; color:white;background-color: rgb(100, 98, 99);">
+     CMakeLists.txt
+    </p>
+    <pre style="margin:0;"><code>cmake_minimum_required(VERSION 3.5)
+
+project(cpp_qa VERSION 1.0 LANGUAGES CXX)
+
+add_executable(main main.cpp)</code></pre>
+   </div>
+   <div class="header file" style="border: 1px solid rgb(130, 27, 198);padding:0; margin: 10px; width:140ch;">
+    <p class="file-name" style="margin:0; color:white;background-color: rgb(130, 27, 198);">
+     class.h
+    </p>
+    <pre style="margin:0;"><code>#pragma once
+
+#include &lt;iostream&gt;
+
+
+class Base
+{
+public:
+    int x {99};
+
+    virtual ~Base() = default;
+
+    virtual void virt_func1()
+    {
+        std::cout &lt;&lt; "Base virt_func1()\n";
+    }
+
+    virtual void virt_func2()
+    {
+        std::cout &lt;&lt; "Base virt_func2()\n";
+    }
+};
+
+class Derived : public Base
+{
+    void virt_func1()
+    {
+        std::cout &lt;&lt; "Derived1 virt_func1()\n";
+    }
+};</code></pre>
+   </div>
+   <div class="main file" style="border:1px solid rgb(144, 13, 13);padding:0; margin: 10px; width:140ch;">
+    <p class="file-name" style="margin:0; color:white;background-color: rgb(144, 13, 13);">
+     main.cpp
+    </p>
+    <pre style="margin:0;"><code>#include "class.h"
+#include &lt;cstddef&gt;
+
+
+template &lt;typename T&gt;
+std::size_t getAddressAsInt(T* t)
+{
+    return reinterpret_cast&lt;std::size_t&gt;(reinterpret_cast&lt;int*&gt;(t));
+}
+
+int main()
+{
+    std::cout &lt;&lt; "sizeof int: " &lt;&lt; sizeof(int) &lt;&lt; '\n';
+    std::cout &lt;&lt; "sizeof Base: " &lt;&lt; sizeof(Base) &lt;&lt; '\n';
+    std::cout &lt;&lt; "sizeof Derived: " &lt;&lt; sizeof(Derived) &lt;&lt; '\n';
+
+    Derived derived;
+    Base* base = &amp;derived;
+    std::cout &lt;&lt; "sizeof base: " &lt;&lt; sizeof(*base) &lt;&lt; '\n';
+
+
+    auto base_addr = getAddressAsInt(&amp;*base);
+    auto base_x_addr = getAddressAsInt(&amp;base-&gt;x);
+    std::cout &lt;&lt; std::hex;
+    std::cout &lt;&lt; "address of base: " &lt;&lt; base_addr &lt;&lt; '\n';
+    std::cout &lt;&lt; "address of base.x: " &lt;&lt; base_x_addr &lt;&lt; '\n';
+    std::cout &lt;&lt; "offset of base.x: " &lt;&lt; (base_x_addr - base_addr) &lt;&lt; '\n';
+
+    return 0;
+}</code></pre>
+   </div>
+   <a class="online-compiler-link" href="https://godbolt.org/z/W46sqKoa5
+">
+    online-compiler-link
+   </a>
+   <div class="result-value">
+    <div class="result-title" onclick="toggleResult(event)" style="color:white;background-color: rgb(42, 41, 41);width: 100ch;">
+     Result:
+    </div>
+    <pre style="display: none">sizeof int: 4
+sizeof Base: 16
+sizeof Derived: 16
+sizeof base: 16
+address of base: 7ffc363237d0
+address of base.x: 7ffc363237d8
+offset of base.x: 8
+ 
+</pre>
+   </div>
+  </div>
+ </body>
+</html>

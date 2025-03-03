@@ -1,0 +1,85 @@
+<html>
+ <head>
+  <script>
+   function toggleResult(event)
+    {
+        const parentNode = event.target.parentNode;
+        let preTag = parentNode.getElementsByTagName("pre")[0];
+
+        if (preTag.style.display == "none") {
+            preTag.style.display = "block";
+        } else {
+            preTag.style.display = "none";
+        }
+    }
+  </script>
+ </head>
+ <body>
+  <div>
+   <div class="main file" style="border:1px solid rgb(144, 13, 13);padding:0; margin: 10px; width:140ch;">
+    <p class="file-name" style="margin:0; color:white;background-color: rgb(144, 13, 13);">
+     main.cpp
+    </p>
+    <pre style="margin:0;"><code>#include &lt;iostream&gt;
+#include &lt;map&gt;
+#include &lt;string&gt;
+#include &lt;utility&gt;
+
+
+template &lt;typename Key, typename Value, typename Comparator&gt;
+std::ostream&amp; operator&lt;&lt; (std::ostream&amp; out, const std::multimap&lt;Key, Value, Comparator&gt; map)
+{
+    for (auto&amp; e : map)
+        out &lt;&lt; '{' &lt;&lt; e.first &lt;&lt; " : " &lt;&lt; e.second &lt;&lt; '}' &lt;&lt; '\n';
+    return out;
+}
+
+
+
+int main()
+{
+    std::multimap&lt;int, std::string&gt; map1 {
+        { 1, "TEST1"},
+        { 1, "TEST2"},
+        { 1, "TEST3"},
+        { 2, "map1_2"},
+        { 3, "map1_3"},
+        { 4, "map1_4"}
+    };
+
+    auto iter1_1 = map1.begin();
+
+    auto iter1_2 = map1.begin();
+    iter1_2++;
+
+    auto iter1_3 = map1.begin();
+    iter1_3++;
+    iter1_3++;
+
+    std::cout &lt;&lt; '{' &lt;&lt; iter1_1-&gt;first &lt;&lt; ": " &lt;&lt; iter1_1-&gt;second &lt;&lt; '}' &lt;&lt; '\n';
+    std::cout &lt;&lt; '{' &lt;&lt; iter1_2-&gt;first &lt;&lt; ": " &lt;&lt; iter1_2-&gt;second &lt;&lt; '}' &lt;&lt; '\n';
+    std::cout &lt;&lt; '{' &lt;&lt; iter1_3-&gt;first &lt;&lt; ": " &lt;&lt; iter1_3-&gt;second &lt;&lt; '}' &lt;&lt; '\n';
+
+
+    auto iter_find = map1.find(1);
+    std::cout &lt;&lt; '{' &lt;&lt; iter_find-&gt;first &lt;&lt; ": " &lt;&lt; iter_find-&gt;second &lt;&lt; '}' &lt;&lt; '\n';
+
+    return 0;
+}</code></pre>
+   </div>
+   <a class="online-compiler-link" href="https://godbolt.org/z/e3Ws1zjGK">
+    online-compiler-link
+   </a>
+   <div class="result-value">
+    <div class="result-title" onclick="toggleResult(event)" style="color:white;background-color: rgb(42, 41, 41);width: 100ch;">
+     Result:
+    </div>
+    <pre style="display: none">{1: TEST1}
+{1: TEST2}
+{1: TEST3}
+{1: TEST1}
+</pre>
+   </div>
+  </div>
+ </body>
+</html>

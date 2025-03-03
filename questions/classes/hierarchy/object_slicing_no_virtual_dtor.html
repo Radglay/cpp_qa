@@ -1,0 +1,123 @@
+<html>
+ <head>
+  <script>
+   function toggleResult(event)
+    {
+        const parentNode = event.target.parentNode;
+        let preTag = parentNode.getElementsByTagName("pre")[0];
+
+        if (preTag.style.display == "none") {
+            preTag.style.display = "block";
+        } else {
+            preTag.style.display = "none";
+        }
+    }
+  </script>
+ </head>
+ <body>
+  <div>
+   <div class="cmake file" style="border: 1px solid rgb(100, 98, 99);padding:0; margin: 10px; width:140ch;">
+    <p class="file-name" style="margin:0; color:white;background-color: rgb(100, 98, 99);">
+     CMakeLists.txt
+    </p>
+    <pre style="margin:0;"><code>cmake_minimum_required(VERSION 3.5)
+
+project(cpp_qa VERSION 1.0 LANGUAGES CXX)
+
+add_executable(main main.cpp)</code></pre>
+   </div>
+   <div class="header file" style="border: 1px solid rgb(130, 27, 198);padding:0; margin: 10px; width:140ch;">
+    <p class="file-name" style="margin:0; color:white;background-color: rgb(130, 27, 198);">
+     class.h
+    </p>
+    <pre style="margin:0;"><code>#pragma once
+
+#include &lt;iostream&gt;
+
+
+class Base
+{
+public:
+    int x { 111 };
+    int y { 222 };
+
+    Base(int p_x, int p_y) : x{p_x}, y{p_y}
+    {
+        std::cout &lt;&lt; "Base C-Tor\n";
+    }
+
+    ~Base()
+    {
+        std::cout &lt;&lt; "Base D-tor\n";
+    }
+
+    void func()
+    {
+        std::cout &lt;&lt; "Base func()\n";
+    }
+
+    virtual void virt_func()
+    {
+        std::cout &lt;&lt; "Base virtual func()\n";
+    }
+};
+
+class Derived : public Base
+{
+public:
+    int z { 333 };
+
+    Derived(int p_z) : Derived(0, 0, p_z)
+    {
+        std::cout &lt;&lt; "Derived 1 C-Tor\n";
+    }
+
+    Derived(int p_x, int p_y, int p_z) : Base(p_x, p_y), z{p_z}
+    {
+        std::cout &lt;&lt; "Derived 2 C-Tor\n";
+    }
+
+    ~Derived()
+    {
+        std::cout &lt;&lt; "Derived D-Tor\n";
+    }
+
+    void virt_func()
+    {
+        std::cout &lt;&lt; "Derived virtual func()\n";
+    }
+};</code></pre>
+   </div>
+   <div class="main file" style="border:1px solid rgb(144, 13, 13);padding:0; margin: 10px; width:140ch;">
+    <p class="file-name" style="margin:0; color:white;background-color: rgb(144, 13, 13);">
+     main.cpp
+    </p>
+    <pre style="margin:0;"><code>#include "class.h"
+#include &lt;iostream&gt;
+
+
+int main()
+{
+    Base* ptr = new Derived(1, 2, 3);
+    delete ptr;
+
+    return 0;
+}</code></pre>
+   </div>
+   <a class="online-compiler-link" href="https://godbolt.org/z/d4jzd6crM
+">
+    online-compiler-link
+   </a>
+   <div class="result-value">
+    <div class="result-title" onclick="toggleResult(event)" style="color:white;background-color: rgb(42, 41, 41);width: 100ch;">
+     Result:
+    </div>
+    <pre style="display: none">Base C-Tor
+Derived 2 C-Tor
+Base D-tor
+ 
+</pre>
+   </div>
+  </div>
+ </body>
+</html>

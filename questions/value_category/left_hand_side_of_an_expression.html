@@ -1,0 +1,73 @@
+<html>
+ <head>
+  <script>
+   function toggleResult(event)
+    {
+        const parentNode = event.target.parentNode;
+        let preTag = parentNode.getElementsByTagName("pre")[0];
+
+        if (preTag.style.display == "none") {
+            preTag.style.display = "block";
+        } else {
+            preTag.style.display = "none";
+        }
+    }
+  </script>
+ </head>
+ <body>
+  <div>
+   <div class="main file" style="border:1px solid rgb(144, 13, 13);padding:0; margin: 10px; width:140ch;">
+    <p class="file-name" style="margin:0; color:white;background-color: rgb(144, 13, 13);">
+     main.cpp
+    </p>
+    <pre style="margin:0;"><code>#include &lt;iostream&gt;
+
+
+template &lt;typename T&gt; struct is_lvalue : std::false_type {};
+template &lt;typename T&gt; struct is_lvalue&lt;T&amp;&gt; : std::true_type {};
+template &lt;typename T&gt; struct is_lvalue&lt;T&amp;&amp;&gt; : std::false_type {};
+
+
+int main()
+{
+    int a;
+    std::cout &lt;&lt; std::boolalpha;
+    std::cout &lt;&lt; "a: " &lt;&lt; is_lvalue&lt;decltype(a)&gt;::value &lt;&lt; '\n';
+    std::cout &lt;&lt; "10: " &lt;&lt; is_lvalue&lt;decltype(10)&gt;::value &lt;&lt; '\n';
+    
+    // 1)
+    a = 10;
+
+    // 2)
+    &amp;a;
+
+    // 3)
+    a = a;
+
+    // 4)
+    10 = 20;
+
+    // 5)
+    &amp;10;
+
+
+    return 0;
+}</code></pre>
+   </div>
+   <a class="online-compiler-link" href="https://godbolt.org/z/8cWcrTj6n">
+    online-compiler-link
+   </a>
+   <div class="result-value">
+    <div class="result-title" onclick="toggleResult(event)" style="color:white;background-color: rgb(42, 41, 41);width: 100ch;">
+     Result:
+    </div>
+    <pre style="display: none">error: lvalue required as left operand of assignment
+   26 |     10 = 20;
+      |     ^~
+&lt;source&gt;:29:6: error: lvalue required as unary '&amp;' operand
+   29 |     &amp;10;
+</pre>
+   </div>
+  </div>
+ </body>
+</html>

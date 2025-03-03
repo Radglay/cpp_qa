@@ -1,0 +1,89 @@
+<html>
+ <head>
+  <script>
+   function toggleResult(event)
+    {
+        const parentNode = event.target.parentNode;
+        let preTag = parentNode.getElementsByTagName("pre")[0];
+
+        if (preTag.style.display == "none") {
+            preTag.style.display = "block";
+        } else {
+            preTag.style.display = "none";
+        }
+    }
+  </script>
+ </head>
+ <body>
+  <div>
+   <div class="main file" style="border:1px solid rgb(144, 13, 13);padding:0; margin: 10px; width:140ch;">
+    <p class="file-name" style="margin:0; color:white;background-color: rgb(144, 13, 13);">
+     main.cpp
+    </p>
+    <pre style="margin:0;"><code>#include &lt;iostream&gt;
+#include &lt;deque&gt;
+#include &lt;cstddef&gt;
+#include &lt;vector&gt;
+
+
+
+template &lt;typename T&gt;
+struct CustomAllocator
+{
+    using value_type = int;
+    using pointer = T*;
+
+    CustomAllocator() = default;
+
+    template &lt;typename P&gt; CustomAllocator(const CustomAllocator&lt;P&gt;&amp;) {}
+
+    T* allocate(std::size_t n)
+    {
+        n *= sizeof(T);
+        std::cout &lt;&lt; "allocating " &lt;&lt; n &lt;&lt; " bytes\n";
+        return static_cast&lt;T*&gt;(::operator new(n));
+    }
+
+    void deallocate(T* p, std::size_t n)
+    {
+        std::cout &lt;&lt; "deallocating " &lt;&lt; n * sizeof *p &lt;&lt; " bytes\n";
+        ::operator delete(p);
+    }
+};
+
+
+int main()
+{
+    std::cout &lt;&lt; "deque:\n";
+    {
+        std::deque&lt;int, CustomAllocator&lt;int&gt;&gt; deq { 1, 3, 5, 6, 4, 2, 7, 9, 8, 10 };
+    }
+
+    std::cout &lt;&lt; "vector: \n";
+    {
+        std::vector&lt;int, CustomAllocator&lt;int&gt;&gt; vec { 1, 3, 5, 6, 4, 2, 7, 9, 8, 10 };
+    }
+
+    return 0;
+}</code></pre>
+   </div>
+   <a class="online-compiler-link" href="https://godbolt.org/z/67Mz4h7Kd">
+    online-compiler-link
+   </a>
+   <div class="result-value">
+    <div class="result-title" onclick="toggleResult(event)" style="color:white;background-color: rgb(42, 41, 41);width: 100ch;">
+     Result:
+    </div>
+    <pre style="display: none">deque:
+allocating 64 bytes
+allocating 512 bytes
+deallocating 512 bytes
+deallocating 64 bytes
+vector: 
+allocating 40 bytes
+deallocating 40 bytes
+</pre>
+   </div>
+  </div>
+ </body>
+</html>

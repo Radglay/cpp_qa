@@ -1,0 +1,133 @@
+<html>
+ <head>
+  <script>
+   function toggleResult(event)
+    {
+        const parentNode = event.target.parentNode;
+        let preTag = parentNode.getElementsByTagName("pre")[0];
+
+        if (preTag.style.display == "none") {
+            preTag.style.display = "block";
+        } else {
+            preTag.style.display = "none";
+        }
+    }
+  </script>
+ </head>
+ <body>
+  <div>
+   <div class="cmake file" style="border: 1px solid rgb(100, 98, 99);padding:0; margin: 10px; width:140ch;">
+    <p class="file-name" style="margin:0; color:white;background-color: rgb(100, 98, 99);">
+     CMakeLists.txt
+    </p>
+    <pre style="margin:0;"><code>cmake_minimum_required(VERSION 3.5)
+
+project(cpp_qa VERSION 1.0 LANGUAGES CXX)
+
+add_executable(main  source1.cpp main.cpp)</code></pre>
+   </div>
+   <div class="source file" style="border:1px solid rgb(50, 50, 185);padding:0; margin: 10px; width:140ch;">
+    <p class="file-name" style="margin:0; color:white;background-color: rgb(50, 50, 185);">
+     source1.cpp
+    </p>
+    <pre style="margin:0;"><code>#include &lt;iostream&gt;
+
+
+inline int global = 100;
+inline extern int extern_global = 200;
+inline extern const int extern_const_global = 300;
+
+inline void func()
+{
+    std::cout &lt;&lt; "func() source1\n";
+}
+
+inline void extern_func()
+{
+    std::cout &lt;&lt; "extern_func() source1\n";
+}
+
+
+
+void print_source1_globals()
+{
+    std::cout &lt;&lt; "print_source1_globals()\n";
+    std::cout &lt;&lt; "global: " &lt;&lt; &amp;global 
+              &lt;&lt; ' ' &lt;&lt; global&lt;&lt; '\n';
+    std::cout &lt;&lt; "extern_global: " &lt;&lt; &amp;extern_global 
+              &lt;&lt; ' ' &lt;&lt; extern_global&lt;&lt; '\n';
+    std::cout &lt;&lt; "extern_const_global: " &lt;&lt; &amp;extern_const_global 
+              &lt;&lt; ' ' &lt;&lt; extern_const_global&lt;&lt; '\n';
+    
+    func();
+    extern_func();
+}</code></pre>
+   </div>
+   <div class="main file" style="border:1px solid rgb(144, 13, 13);padding:0; margin: 10px; width:140ch;">
+    <p class="file-name" style="margin:0; color:white;background-color: rgb(144, 13, 13);">
+     main.cpp
+    </p>
+    <pre style="margin:0;"><code>#include &lt;iostream&gt;
+
+
+inline int global = 10;
+inline extern int extern_global = 20;
+inline extern const int extern_const_global = 30;
+
+inline void func()
+{
+    std::cout &lt;&lt; "func() main\n";
+}
+
+inline void extern_func()
+{
+    std::cout &lt;&lt; "extern_func() main\n";
+}
+
+
+void print_source1_globals();
+
+int main()
+{
+    std::cout &lt;&lt; "main()\n";
+    std::cout &lt;&lt; "global: " &lt;&lt; &amp;global 
+              &lt;&lt; ' ' &lt;&lt; global&lt;&lt; '\n';
+    std::cout &lt;&lt; "extern_global: " &lt;&lt; &amp;extern_global 
+              &lt;&lt; ' ' &lt;&lt; extern_global&lt;&lt; '\n';
+    std::cout &lt;&lt; "extern_const_global: " &lt;&lt; &amp;extern_const_global 
+              &lt;&lt; ' ' &lt;&lt; extern_const_global&lt;&lt; '\n';
+    func();
+    extern_func();
+
+    std::cout &lt;&lt; '\n';
+
+    print_source1_globals();
+
+    return 0;
+}</code></pre>
+   </div>
+   <a class="online-compiler-link" href="https://godbolt.org/z/xv6xbhK5r">
+    online-compiler-link
+   </a>
+   <div class="result-value">
+    <div class="result-title" onclick="toggleResult(event)" style="color:white;background-color: rgb(42, 41, 41);width: 100ch;">
+     Result:
+    </div>
+    <pre style="display: none">main()
+global: 0x404030 100
+extern_global: 0x404034 200
+extern_const_global: 0x402004 30
+func() source1
+extern_func() source1
+
+print_source1_globals()
+global: 0x404030 100
+extern_global: 0x404034 200
+extern_const_global: 0x402004 300
+func() source1
+extern_func() source1
+</pre>
+   </div>
+  </div>
+ </body>
+</html>

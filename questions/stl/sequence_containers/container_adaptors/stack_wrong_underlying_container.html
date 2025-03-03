@@ -1,0 +1,65 @@
+<html>
+ <head>
+  <script>
+   function toggleResult(event)
+    {
+        const parentNode = event.target.parentNode;
+        let preTag = parentNode.getElementsByTagName("pre")[0];
+
+        if (preTag.style.display == "none") {
+            preTag.style.display = "block";
+        } else {
+            preTag.style.display = "none";
+        }
+    }
+  </script>
+ </head>
+ <body>
+  <div>
+   <div class="main file" style="border:1px solid rgb(144, 13, 13);padding:0; margin: 10px; width:140ch;">
+    <p class="file-name" style="margin:0; color:white;background-color: rgb(144, 13, 13);">
+     main.cpp
+    </p>
+    <pre style="margin:0;"><code>#include &lt;iostream&gt;
+#include &lt;stack&gt;
+#include &lt;array&gt;
+
+
+int main()
+{
+    std::stack&lt;int, std::array&lt;int&gt;&gt; stack;
+    stack.push(1);
+    stack.push(2);
+    stack.push(3);
+
+    stack.pop();
+
+    std::cout &lt;&lt; stack.top() &lt;&lt; '\n';
+
+    return 0;
+}</code></pre>
+   </div>
+   <a class="online-compiler-link" href="https://godbolt.org/z/43TMesPof">
+    online-compiler-link
+   </a>
+   <div class="result-value">
+    <div class="result-title" onclick="toggleResult(event)" style="color:white;background-color: rgb(42, 41, 41);width: 100ch;">
+     Result:
+    </div>
+    <pre style="display: none">required from here
+    9 |     stack.push(1);
+      |     ~~~~~~~~~~^~~
+/opt/compiler-explorer/gcc-14.2.0/include/c++/14.2.0/bits/stl_stack.h:264:11: error: 'struct std::array&lt;int, 5&gt;' has no member named 'push_back'
+  264 |       { c.push_back(std::move(__x)); }
+      |         ~~^~~~~~~~~
+/opt/compiler-explorer/gcc-14.2.0/include/c++/14.2.0/bits/stl_stack.h: In instantiation of 'void std::stack&lt;_Tp, _Sequence&gt;::pop() [with _Tp = int; _Sequence = std::array&lt;int, 5&gt;]':
+&lt;source&gt;:13:14:   required from here
+   13 |     stack.pop();
+      |     ~~~~~~~~~^~
+/opt/compiler-explorer/gcc-14.2.0/include/c++/14.2.0/bits/stl_stack.h:294:11: error: 'struct std::array&lt;int, 5&gt;' has no member named 'pop_back'
+  294 |         c.pop_back();
+</pre>
+   </div>
+  </div>
+ </body>
+</html>

@@ -1,0 +1,161 @@
+<html>
+ <head>
+  <script>
+   function toggleResult(event)
+    {
+        const parentNode = event.target.parentNode;
+        let preTag = parentNode.getElementsByTagName("pre")[0];
+
+        if (preTag.style.display == "none") {
+            preTag.style.display = "block";
+        } else {
+            preTag.style.display = "none";
+        }
+    }
+  </script>
+ </head>
+ <body>
+  <div>
+   <div class="main file" style="border:1px solid rgb(144, 13, 13);padding:0; margin: 10px; width:140ch;">
+    <p class="file-name" style="margin:0; color:white;background-color: rgb(144, 13, 13);">
+     main.cpp
+    </p>
+    <pre style="margin:0;"><code>#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;array&gt;
+#include &lt;list&gt;
+#include &lt;deque&gt;
+#include &lt;forward_list&gt;
+#include &lt;new&gt;
+#include &lt;cstddef&gt;
+
+
+
+int allocated_memory = 0;
+
+
+template &lt;typename T&gt;
+struct CustomAllocator
+{
+    using value_type = T;
+    using pointer = T*;
+    using const_pointer = const T*;
+    using reference = T&amp;;
+    using const_reference = const T&amp;;
+    using size_type = std::size_t;
+    using difference_type = std::ptrdiff_t;
+
+
+    CustomAllocator() = default;
+
+    template &lt;typename U&gt;
+    CustomAllocator(const U&amp;) {}
+
+    T* allocate(std::size_t n)
+    {
+        n *= sizeof(T);
+        allocated_memory += n;
+        return static_cast&lt;T*&gt;(::operator new(n));
+    }
+
+    void deallocate(T* ptr, std::size_t n)
+    {
+        allocated_memory = 0;
+        ::operator delete(ptr);
+    }
+};
+
+
+template &lt;typename T, std::size_t N&gt;
+void print_sizeof_n_elements()
+{
+    std::cout &lt;&lt; "N = " &lt;&lt; N &lt;&lt; ", sizeof(T) = " &lt;&lt; sizeof(T) &lt;&lt; '\n';
+    
+    {
+        std::list&lt;T, CustomAllocator&lt;T&gt;&gt; list(N);
+        std::cout &lt;&lt; "list: " &lt;&lt; sizeof(list)
+                  &lt;&lt; ", allocated memory: " &lt;&lt; allocated_memory &lt;&lt; '\n';
+    }
+
+    {
+        std::forward_list&lt;T, CustomAllocator&lt;T&gt;&gt; f_list(N);
+        std::cout &lt;&lt; "forward_list: " &lt;&lt; sizeof(f_list)
+                  &lt;&lt; ", allocated memory: " &lt;&lt; allocated_memory &lt;&lt; '\n';
+    }
+
+    {
+        std::vector&lt;T, CustomAllocator&lt;T&gt;&gt; vec(N);
+        std::cout &lt;&lt; "vector: " &lt;&lt; sizeof(vec)
+                  &lt;&lt; ", allocated memory: " &lt;&lt; allocated_memory &lt;&lt; '\n';
+    }
+    
+    {
+        std::deque&lt;T, CustomAllocator&lt;T&gt;&gt; deq(N);
+        std::cout &lt;&lt; "deque: " &lt;&lt; sizeof(deq)
+                &lt;&lt; ", allocated memory: " &lt;&lt; allocated_memory &lt;&lt; '\n';
+    }
+    {
+        std::array&lt;T, N&gt; arr;
+        std::cout &lt;&lt; "array: " &lt;&lt; sizeof(arr)
+                &lt;&lt; ", allocated memory: " &lt;&lt; allocated_memory &lt;&lt; '\n';
+    }
+}
+
+
+int main()
+{
+    print_sizeof_n_elements&lt;int, 1&gt;();
+    std::cout &lt;&lt; '\n';
+
+    print_sizeof_n_elements&lt;int, 100&gt;();
+    std::cout &lt;&lt; '\n';
+
+    print_sizeof_n_elements&lt;int, 1'000&gt;();
+    std::cout &lt;&lt; '\n';
+
+    print_sizeof_n_elements&lt;int, 10'000&gt;();
+    std::cout &lt;&lt; '\n';
+
+
+    return 0;
+}</code></pre>
+   </div>
+   <a class="online-compiler-link" href="https://godbolt.org/z/Tb8oMbdaj">
+    online-compiler-link
+   </a>
+   <div class="result-value">
+    <div class="result-title" onclick="toggleResult(event)" style="color:white;background-color: rgb(42, 41, 41);width: 100ch;">
+     Result:
+    </div>
+    <pre style="display: none">N = 1, sizeof(T) = 4
+list: 24, allocated memory: 24
+forward_list: 8, allocated memory: 16
+vector: 24, allocated memory: 4
+deque: 80, allocated memory: 576
+array: 4, allocated memory: 0
+
+N = 100, sizeof(T) = 4
+list: 24, allocated memory: 2400
+forward_list: 8, allocated memory: 1600
+vector: 24, allocated memory: 400
+deque: 80, allocated memory: 576
+array: 400, allocated memory: 0
+
+N = 1000, sizeof(T) = 4
+list: 24, allocated memory: 24000
+forward_list: 8, allocated memory: 16000
+vector: 24, allocated memory: 4000
+deque: 80, allocated memory: 4176
+array: 4000, allocated memory: 0
+
+N = 10000, sizeof(T) = 4
+list: 24, allocated memory: 240000
+forward_list: 8, allocated memory: 160000
+vector: 24, allocated memory: 40000
+deque: 80, allocated memory: 41096
+array: 40000, allocated memory: 0
+</pre>
+   </div>
+  </div>
+ </body>
+</html>

@@ -1,0 +1,71 @@
+<html>
+ <head>
+  <script>
+   function toggleResult(event)
+    {
+        const parentNode = event.target.parentNode;
+        let preTag = parentNode.getElementsByTagName("pre")[0];
+
+        if (preTag.style.display == "none") {
+            preTag.style.display = "block";
+        } else {
+            preTag.style.display = "none";
+        }
+    }
+  </script>
+ </head>
+ <body>
+  <div>
+   <div class="main file" style="border:1px solid rgb(144, 13, 13);padding:0; margin: 10px; width:140ch;">
+    <p class="file-name" style="margin:0; color:white;background-color: rgb(144, 13, 13);">
+     main.cpp
+    </p>
+    <pre style="margin:0;"><code>#include &lt;iostream&gt;
+
+
+
+namespace TEST
+{
+    int n = 10;
+    namespace NESTED
+    {
+        int y;
+        int z;
+    }
+    int m = 20;
+}
+
+int TEST::NESTED::y = n;
+int TEST::NESTED::z = m;
+
+int main()
+{
+    std::cout &lt;&lt; TEST::NESTED::y &lt;&lt; '\n';
+    std::cout &lt;&lt; TEST::NESTED::z &lt;&lt; '\n';
+
+    return 0;
+}</code></pre>
+   </div>
+   <a class="online-compiler-link" href="https://godbolt.org/z/oEsjToWGh">
+    online-compiler-link
+   </a>
+   <div class="result-value">
+    <div class="result-title" onclick="toggleResult(event)" style="color:white;background-color: rgb(42, 41, 41);width: 100ch;">
+     Result:
+    </div>
+    <pre style="display: none">error: redefinition of 'int TEST::NESTED::y'
+   16 | int TEST::NESTED::y = n;
+      |     ^~~~
+&lt;source&gt;:10:13: note: 'int TEST::NESTED::y' previously declared here
+   10 |         int y;
+      |             ^
+&lt;source&gt;:17:5: error: redefinition of 'int TEST::NESTED::z'
+   17 | int TEST::NESTED::z = m;
+      |     ^~~~
+&lt;source&gt;:11:13: note: 'int TEST::NESTED::z' previously declared here
+   11 |         int z;
+</pre>
+   </div>
+  </div>
+ </body>
+</html>

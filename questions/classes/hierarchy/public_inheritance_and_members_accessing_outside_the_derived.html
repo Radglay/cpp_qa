@@ -1,0 +1,85 @@
+<html>
+ <head>
+  <script>
+   function toggleResult(event)
+    {
+        const parentNode = event.target.parentNode;
+        let preTag = parentNode.getElementsByTagName("pre")[0];
+
+        if (preTag.style.display == "none") {
+            preTag.style.display = "block";
+        } else {
+            preTag.style.display = "none";
+        }
+    }
+  </script>
+ </head>
+ <body>
+  <div>
+   <div class="cmake file" style="border: 1px solid rgb(100, 98, 99);padding:0; margin: 10px; width:140ch;">
+    <p class="file-name" style="margin:0; color:white;background-color: rgb(100, 98, 99);">
+     CMakeLists.txt
+    </p>
+    <pre style="margin:0;"><code>cmake_minimum_required(VERSION 3.5)
+
+project(cpp_qa VERSION 1.0 LANGUAGES CXX)
+
+add_executable(main main.cpp)</code></pre>
+   </div>
+   <div class="header file" style="border: 1px solid rgb(130, 27, 198);padding:0; margin: 10px; width:140ch;">
+    <p class="file-name" style="margin:0; color:white;background-color: rgb(130, 27, 198);">
+     class.h
+    </p>
+    <pre style="margin:0;"><code>#pragma once
+
+
+class Base
+{
+private:
+    int private_x { 111 };
+protected:
+    int protected_x { 222 };
+public:
+    int public_x { 333 };
+};
+
+class Derived : public Base
+{};</code></pre>
+   </div>
+   <div class="main file" style="border:1px solid rgb(144, 13, 13);padding:0; margin: 10px; width:140ch;">
+    <p class="file-name" style="margin:0; color:white;background-color: rgb(144, 13, 13);">
+     main.cpp
+    </p>
+    <pre style="margin:0;"><code>#include "class.h"
+#include &lt;iostream&gt;
+
+
+int main()
+{
+    Derived derived;
+    std::cout &lt;&lt; derived.public_x &lt;&lt; '\n';
+    std::cout &lt;&lt; derived.protected_x &lt;&lt; '\n';
+    std::cout &lt;&lt; derived.private_x &lt;&lt; '\n';
+    
+
+    return 0;
+}</code></pre>
+   </div>
+   <a class="online-compiler-link" href="https://godbolt.org/z/oqj877d9K
+">
+    online-compiler-link
+   </a>
+   <div class="result-value">
+    <div class="result-title" onclick="toggleResult(event)" style="color:white;background-color: rgb(42, 41, 41);width: 100ch;">
+     Result:
+    </div>
+    <pre style="display: none">main.cpp:9:26: error: 'int Base::protected_x' is protected within this context
+    9 |     std::cout &lt;&lt; derived.protected_x &lt;&lt; '\n';
+main.cpp:10:26: error: 'int Base::private_x' is private within this context
+   10 |     std::cout &lt;&lt; derived.private_x &lt;&lt; '\n';              
+ 
+</pre>
+   </div>
+  </div>
+ </body>
+</html>

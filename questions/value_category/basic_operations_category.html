@@ -1,0 +1,87 @@
+<html>
+ <head>
+  <script>
+   function toggleResult(event)
+    {
+        const parentNode = event.target.parentNode;
+        let preTag = parentNode.getElementsByTagName("pre")[0];
+
+        if (preTag.style.display == "none") {
+            preTag.style.display = "block";
+        } else {
+            preTag.style.display = "none";
+        }
+    }
+  </script>
+ </head>
+ <body>
+  <div>
+   <div class="main file" style="border:1px solid rgb(144, 13, 13);padding:0; margin: 10px; width:140ch;">
+    <p class="file-name" style="margin:0; color:white;background-color: rgb(144, 13, 13);">
+     main.cpp
+    </p>
+    <pre style="margin:0;"><code>#include &lt;iostream&gt;
+#include &lt;type_traits&gt;
+
+
+template &lt;typename T&gt; struct is_lvalue : std::false_type {};
+template &lt;typename T&gt; struct is_lvalue&lt;T&amp;&gt; : std::true_type {};
+template &lt;typename T&gt; struct is_lvalue&lt;T&amp;&amp;&gt; : std::false_type {};
+
+
+
+int global_x = 0;
+
+
+int func() { return 1; }
+int&amp; func_ref() { return global_x; }
+int&amp;&amp; func_r_ref() { return std::move(1); }
+
+int main()
+{
+    int a = 1;
+    int b = 2;
+
+    std::cout &lt;&lt; std::boolalpha;
+    std::cout &lt;&lt; "is lvalue?\n";
+    std::cout &lt;&lt; "a: " &lt;&lt; is_lvalue&lt;decltype(a)&gt;::value &lt;&lt; ", " &lt;&lt; "(a): " &lt;&lt; is_lvalue&lt;decltype((a))&gt;::value &lt;&lt; '\n';
+    std::cout &lt;&lt; "a + b: " &lt;&lt; is_lvalue&lt;decltype(a + b)&gt;::value &lt;&lt; ", " &lt;&lt; "(a + b): " &lt;&lt; is_lvalue&lt;decltype((a + b))&gt;::value &lt;&lt; '\n';
+    std::cout &lt;&lt; "a = b: " &lt;&lt; is_lvalue&lt;decltype(a = b)&gt;::value &lt;&lt; ", " &lt;&lt; "(a = b): " &lt;&lt; is_lvalue&lt;decltype((a = b))&gt;::value &lt;&lt; '\n';
+    std::cout &lt;&lt; "a += b: " &lt;&lt; is_lvalue&lt;decltype(a += b)&gt;::value &lt;&lt; ", " &lt;&lt; "(a += b): " &lt;&lt; is_lvalue&lt;decltype((a += b))&gt;::value &lt;&lt; '\n';
+    std::cout &lt;&lt; "a++: " &lt;&lt; is_lvalue&lt;decltype(a++)&gt;::value &lt;&lt; ", " &lt;&lt; "(a++): " &lt;&lt; is_lvalue&lt;decltype((a++))&gt;::value &lt;&lt; '\n';
+    std::cout &lt;&lt; "++a: " &lt;&lt; is_lvalue&lt;decltype(++a)&gt;::value &lt;&lt; ", " &lt;&lt; "(++a): " &lt;&lt; is_lvalue&lt;decltype((++a))&gt;::value &lt;&lt; '\n';
+    std::cout &lt;&lt; "&amp;a: " &lt;&lt; is_lvalue&lt;decltype(&amp;a)&gt;::value &lt;&lt; ", " &lt;&lt; "(&amp;a): " &lt;&lt; is_lvalue&lt;decltype((&amp;a))&gt;::value &lt;&lt; '\n';
+    std::cout &lt;&lt; "static_cast&lt;int&amp;&gt;(a): " &lt;&lt; is_lvalue&lt;decltype(static_cast&lt;int&amp;&gt;(a))&gt;::value &lt;&lt; ", " &lt;&lt; "(static_cast&lt;int&amp;&gt;(a)): " &lt;&lt; is_lvalue&lt;decltype((static_cast&lt;int&amp;&gt;(a)))&gt;::value &lt;&lt; '\n';
+    std::cout &lt;&lt; "10: " &lt;&lt; is_lvalue&lt;decltype(10)&gt;::value &lt;&lt; ", " &lt;&lt; "(10): " &lt;&lt; is_lvalue&lt;decltype((10))&gt;::value &lt;&lt; '\n';
+    std::cout &lt;&lt; "func(): " &lt;&lt; is_lvalue&lt;decltype(func())&gt;::value &lt;&lt; ", " &lt;&lt; "(func()): " &lt;&lt; is_lvalue&lt;decltype((func()))&gt;::value &lt;&lt; '\n';
+    std::cout &lt;&lt; "func_ref(): " &lt;&lt; is_lvalue&lt;decltype(func_ref())&gt;::value &lt;&lt; ", " &lt;&lt; "(func_ref()): " &lt;&lt; is_lvalue&lt;decltype((func_ref()))&gt;::value &lt;&lt; '\n';
+    std::cout &lt;&lt; "func_r_ref(): " &lt;&lt; is_lvalue&lt;decltype(func_r_ref())&gt;::value &lt;&lt; ", " &lt;&lt; "(func_r_ref()): " &lt;&lt; is_lvalue&lt;decltype((func_r_ref()))&gt;::value &lt;&lt; '\n';
+
+    return 0;
+}</code></pre>
+   </div>
+   <a class="online-compiler-link" href="https://godbolt.org/z/r5sM3PfoG">
+    online-compiler-link
+   </a>
+   <div class="result-value">
+    <div class="result-title" onclick="toggleResult(event)" style="color:white;background-color: rgb(42, 41, 41);width: 100ch;">
+     Result:
+    </div>
+    <pre style="display: none">is lvalue?
+a: false, (a): true
+a + b: false, (a + b): false
+a = b: true, (a = b): true
+a += b: true, (a += b): true
+a++: false, (a++): false
+++a: true, (++a): true
+&amp;a: false, (&amp;a): false
+static_cast&lt;int&amp;&gt;(a): true, (static_cast&lt;int&amp;&gt;(a)): true
+10: false, (10): false
+func(): false, (func()): false
+func_ref(): true, (func_ref()): true
+func_r_ref(): false, (func_r_ref()): false
+</pre>
+   </div>
+  </div>
+ </body>
+</html>

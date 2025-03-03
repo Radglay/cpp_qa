@@ -1,5 +1,5 @@
 **result**:
-```
+ 
 main.cpp:6:13: error: cannot declare variable 'derived' to be of abstract type 'Derived'
     6 |     Derived derived;
       |             ^~~~~~~
@@ -9,5 +9,5 @@ In file included from /app/main.cpp:1:
       |       ^~~~~~~
 /app/class.h:9:18: note:     'virtual void Base::virt_func()'
     9 |     virtual void virt_func() = 0;
-```
+ 
 **godbolt**: https://godbolt.org/z/Gszs6TszP

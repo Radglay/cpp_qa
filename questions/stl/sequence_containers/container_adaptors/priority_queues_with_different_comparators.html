@@ -1,0 +1,66 @@
+<html>
+ <head>
+  <script>
+   function toggleResult(event)
+    {
+        const parentNode = event.target.parentNode;
+        let preTag = parentNode.getElementsByTagName("pre")[0];
+
+        if (preTag.style.display == "none") {
+            preTag.style.display = "block";
+        } else {
+            preTag.style.display = "none";
+        }
+    }
+  </script>
+ </head>
+ <body>
+  <div>
+   <div class="main file" style="border:1px solid rgb(144, 13, 13);padding:0; margin: 10px; width:140ch;">
+    <p class="file-name" style="margin:0; color:white;background-color: rgb(144, 13, 13);">
+     main.cpp
+    </p>
+    <pre style="margin:0;"><code>#include &lt;iostream&gt;
+#include &lt;queue&gt;
+#include &lt;vector&gt;
+#include &lt;functional&gt;
+
+
+template &lt;typename T&gt;
+void print_q(T q)
+{
+    while (!q.empty())
+    {
+        std::cout &lt;&lt; q.top() &lt;&lt; ' ';
+        q.pop();
+    }
+    std::cout &lt;&lt; '\n';
+}
+
+int main()
+{
+    std::vector&lt;int&gt; underlying_container { 1, 3, 6, 9, 8, 7, 4, 5, 2 };
+    std::priority_queue&lt;int&gt; q (std::less&lt;int&gt;{}, underlying_container);
+  
+    print_q(q);
+
+    std::priority_queue&lt;int, std::vector&lt;int&gt;, std::greater&lt;int&gt;&gt; q2 (std::greater&lt;int&gt;{}, underlying_container);
+    print_q(q2);
+
+    return 0;
+}</code></pre>
+   </div>
+   <a class="online-compiler-link" href="https://godbolt.org/z/bbP1bGGMf">
+    online-compiler-link
+   </a>
+   <div class="result-value">
+    <div class="result-title" onclick="toggleResult(event)" style="color:white;background-color: rgb(42, 41, 41);width: 100ch;">
+     Result:
+    </div>
+    <pre style="display: none">9 8 7 6 5 4 3 2 1 
+1 2 3 4 5 6 7 8 9 
+</pre>
+   </div>
+  </div>
+ </body>
+</html>

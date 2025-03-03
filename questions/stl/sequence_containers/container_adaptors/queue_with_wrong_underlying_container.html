@@ -1,0 +1,61 @@
+<html>
+ <head>
+  <script>
+   function toggleResult(event)
+    {
+        const parentNode = event.target.parentNode;
+        let preTag = parentNode.getElementsByTagName("pre")[0];
+
+        if (preTag.style.display == "none") {
+            preTag.style.display = "block";
+        } else {
+            preTag.style.display = "none";
+        }
+    }
+  </script>
+ </head>
+ <body>
+  <div>
+   <div class="main file" style="border:1px solid rgb(144, 13, 13);padding:0; margin: 10px; width:140ch;">
+    <p class="file-name" style="margin:0; color:white;background-color: rgb(144, 13, 13);">
+     main.cpp
+    </p>
+    <pre style="margin:0;"><code>#include &lt;iostream&gt;
+#include &lt;queue&gt;
+#include &lt;vector&gt;
+
+
+int main()
+{
+    std::queue&lt;int, std::vector&lt;int&gt;&gt; q;
+    q.push(1);
+    q.push(2);
+    q.push(3);
+
+    std::cout &lt;&lt; "front: " &lt;&lt; q.front() &lt;&lt; '\n';
+    std::cout &lt;&lt; "back: " &lt;&lt; q.back() &lt;&lt; '\n';
+
+    q.pop();
+    std::cout &lt;&lt; "front: " &lt;&lt; q.front() &lt;&lt; '\n';
+    std::cout &lt;&lt; "back: " &lt;&lt; q.back() &lt;&lt; '\n';
+
+    return 0;
+}</code></pre>
+   </div>
+   <a class="online-compiler-link" href="https://godbolt.org/z/nnzWv6zvW">
+    online-compiler-link
+   </a>
+   <div class="result-value">
+    <div class="result-title" onclick="toggleResult(event)" style="color:white;background-color: rgb(42, 41, 41);width: 100ch;">
+     Result:
+    </div>
+    <pre style="display: none">required from here
+   16 |     q.pop();
+      |     ~~~~~^~
+/opt/compiler-explorer/gcc-14.2.0/include/c++/14.2.0/bits/stl_queue.h:319:11: error: 'class std::vector&lt;int&gt;' has no member named 'pop_front'
+  319 |         c.pop_front();
+</pre>
+   </div>
+  </div>
+ </body>
+</html>

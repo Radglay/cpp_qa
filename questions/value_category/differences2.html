@@ -1,0 +1,100 @@
+<html>
+ <head>
+  <script>
+   function toggleResult(event)
+    {
+        const parentNode = event.target.parentNode;
+        let preTag = parentNode.getElementsByTagName("pre")[0];
+
+        if (preTag.style.display == "none") {
+            preTag.style.display = "block";
+        } else {
+            preTag.style.display = "none";
+        }
+    }
+  </script>
+ </head>
+ <body>
+  <div>
+   <div class="main file" style="border:1px solid rgb(144, 13, 13);padding:0; margin: 10px; width:140ch;">
+    <p class="file-name" style="margin:0; color:white;background-color: rgb(144, 13, 13);">
+     main.cpp
+    </p>
+    <pre style="margin:0;"><code>#include &lt;iostream&gt;
+#include &lt;type_traits&gt;
+#include &lt;utility&gt;
+
+
+template &lt;typename T&gt; struct is_prvalue : std::true_type {};
+template &lt;typename T&gt; struct is_prvalue&lt;T&amp;&gt; : std::false_type {};
+template &lt;typename T&gt; struct is_prvalue&lt;T&amp;&amp;&gt; : std::false_type {};
+
+template &lt;typename T&gt; struct is_lvalue : std::false_type {};
+template &lt;typename T&gt; struct is_lvalue&lt;T&amp;&gt; : std::true_type {};
+template &lt;typename T&gt; struct is_lvalue&lt;T&amp;&amp;&gt; : std::false_type {};
+
+template &lt;typename T&gt; struct is_xvalue : std::false_type {};
+template &lt;typename T&gt; struct is_xvalue&lt;T&amp;&gt; : std::false_type {};
+template &lt;typename T&gt; struct is_xvalue&lt;T&amp;&amp;&gt; : std::true_type {};
+
+
+int main()
+{
+    std::cout &lt;&lt; std::boolalpha;
+
+    int a { 10 };
+    std::cout &lt;&lt; "a -&gt; prvalue: " &lt;&lt; is_prvalue&lt;decltype((a))&gt;::value &lt;&lt; '\n';
+    std::cout &lt;&lt; "a -&gt; lvalue: " &lt;&lt; is_lvalue&lt;decltype((a))&gt;::value &lt;&lt; '\n';
+    std::cout &lt;&lt; "a -&gt; xvalue: " &lt;&lt; is_xvalue&lt;decltype((a))&gt;::value &lt;&lt; '\n';
+    std::cout &lt;&lt; "a -&gt; lvalue_reference: " &lt;&lt; std::is_lvalue_reference&lt;decltype((a))&gt;::value &lt;&lt; '\n';
+    std::cout &lt;&lt; "a -&gt; rvalue_reference: " &lt;&lt; std::is_rvalue_reference&lt;decltype((a))&gt;::value &lt;&lt; '\n';
+
+    std::cout &lt;&lt; '\n';
+
+    int&amp;&amp; c { std::move(a) };
+    std::cout &lt;&lt; "std::move(a) -&gt; prvalue: " &lt;&lt; is_prvalue&lt;decltype((std::move(a)))&gt;::value &lt;&lt; '\n';
+    std::cout &lt;&lt; "std::move(a) -&gt; lvalue: " &lt;&lt; is_lvalue&lt;decltype((std::move(a)))&gt;::value &lt;&lt; '\n';
+    std::cout &lt;&lt; "std::move(a) -&gt; xvalue: " &lt;&lt; is_xvalue&lt;decltype((std::move(a)))&gt;::value &lt;&lt; '\n';
+    std::cout &lt;&lt; "std::move(a) -&gt; lvalue_reference: " &lt;&lt; std::is_lvalue_reference&lt;decltype((std::move(a)))&gt;::value &lt;&lt; '\n';
+    std::cout &lt;&lt; "std::move(a) -&gt; rvalue_reference: " &lt;&lt; std::is_rvalue_reference&lt;decltype((std::move(a)))&gt;::value &lt;&lt; '\n';
+
+    std::cout &lt;&lt; '\n';
+
+    std::cout &lt;&lt; "c -&gt; prvalue: " &lt;&lt; is_prvalue&lt;decltype((c))&gt;::value &lt;&lt; '\n';
+    std::cout &lt;&lt; "c -&gt; lvalue: " &lt;&lt; is_lvalue&lt;decltype((c))&gt;::value &lt;&lt; '\n';
+    std::cout &lt;&lt; "c -&gt; xvalue: " &lt;&lt; is_xvalue&lt;decltype((c))&gt;::value &lt;&lt; '\n';
+    std::cout &lt;&lt; "c -&gt; lvalue_reference: " &lt;&lt; std::is_lvalue_reference&lt;decltype((c))&gt;::value &lt;&lt; '\n';
+    std::cout &lt;&lt; "c -&gt; rvalue_reference: " &lt;&lt; std::is_rvalue_reference&lt;decltype((c))&gt;::value &lt;&lt; '\n';
+
+    return 0;
+}</code></pre>
+   </div>
+   <a class="online-compiler-link" href="https://godbolt.org/z/c39Gjv4dM">
+    online-compiler-link
+   </a>
+   <div class="result-value">
+    <div class="result-title" onclick="toggleResult(event)" style="color:white;background-color: rgb(42, 41, 41);width: 100ch;">
+     Result:
+    </div>
+    <pre style="display: none">a -&gt; prvalue: false
+a -&gt; lvalue: true
+a -&gt; xvalue: false
+a -&gt; lvalue_reference: true
+a -&gt; rvalue_reference: false
+
+std::move(a) -&gt; prvalue: false
+std::move(a) -&gt; lvalue: false
+std::move(a) -&gt; xvalue: true
+std::move(a) -&gt; lvalue_reference: false
+std::move(a) -&gt; rvalue_reference: true
+
+c -&gt; prvalue: false
+c -&gt; lvalue: true
+c -&gt; xvalue: false
+c -&gt; lvalue_reference: true
+c -&gt; rvalue_reference: false
+</pre>
+   </div>
+  </div>
+ </body>
+</html>

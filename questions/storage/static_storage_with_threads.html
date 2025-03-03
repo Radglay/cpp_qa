@@ -1,0 +1,75 @@
+<html>
+ <head>
+  <script>
+   function toggleResult(event)
+    {
+        const parentNode = event.target.parentNode;
+        let preTag = parentNode.getElementsByTagName("pre")[0];
+
+        if (preTag.style.display == "none") {
+            preTag.style.display = "block";
+        } else {
+            preTag.style.display = "none";
+        }
+    }
+  </script>
+ </head>
+ <body>
+  <div>
+   <div class="main file" style="border:1px solid rgb(144, 13, 13);padding:0; margin: 10px; width:140ch;">
+    <p class="file-name" style="margin:0; color:white;background-color: rgb(144, 13, 13);">
+     main.cpp
+    </p>
+    <pre style="margin:0;"><code>#include &lt;iostream&gt;
+#include &lt;thread&gt;
+#include &lt;mutex&gt;
+
+
+std::mutex mutex;
+
+void thread_function()
+{
+    std::lock_guard&lt;std::mutex&gt; guard(mutex);
+    static int res;
+
+    std::cout &lt;&lt; "thread[" &lt;&lt; std::this_thread::get_id() &lt;&lt; "], res: "
+              &lt;&lt; static_cast&lt;void*&gt;(&amp;res) &lt;&lt; '\n';
+}
+
+int main()
+{
+    constexpr int t_count = 5;
+    std::thread t1(thread_function);
+    std::thread t2(thread_function);
+    std::thread t3(thread_function);
+    std::thread t4(thread_function);
+    std::thread t5(thread_function);
+
+    t1.join();
+    t2.join();
+    t3.join();
+    t4.join();
+    t5.join();
+
+
+
+    return 0;
+}</code></pre>
+   </div>
+   <a class="online-compiler-link" href="https://godbolt.org/z/ffx43sfeP">
+    online-compiler-link
+   </a>
+   <div class="result-value">
+    <div class="result-title" onclick="toggleResult(event)" style="color:white;background-color: rgb(42, 41, 41);width: 100ch;">
+     Result:
+    </div>
+    <pre style="display: none">thread[135962912880192], res: 0x404208
+thread[135962904487488], res: 0x404208
+thread[135962818504256], res: 0x404208
+thread[135962826896960], res: 0x404208
+thread[135962810111552], res: 0x404208
+</pre>
+   </div>
+  </div>
+ </body>
+</html>

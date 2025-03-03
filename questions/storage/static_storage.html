@@ -1,0 +1,70 @@
+<html>
+ <head>
+  <script>
+   function toggleResult(event)
+    {
+        const parentNode = event.target.parentNode;
+        let preTag = parentNode.getElementsByTagName("pre")[0];
+
+        if (preTag.style.display == "none") {
+            preTag.style.display = "block";
+        } else {
+            preTag.style.display = "none";
+        }
+    }
+  </script>
+ </head>
+ <body>
+  <div>
+   <div class="main file" style="border:1px solid rgb(144, 13, 13);padding:0; margin: 10px; width:140ch;">
+    <p class="file-name" style="margin:0; color:white;background-color: rgb(144, 13, 13);">
+     main.cpp
+    </p>
+    <pre style="margin:0;"><code>#include &lt;iostream&gt;
+
+
+static int a = 10;
+
+
+class A
+{
+public:
+    int static b;
+};
+
+int A::b = 20;
+
+
+int* func()
+{
+    static int c = 30;
+    return &amp;c;
+}
+
+
+int main()
+{
+    int* ptr = func();
+
+    std::cout &lt;&lt; static_cast&lt;void*&gt;(&amp;a) &lt;&lt; ' ' &lt;&lt; a &lt;&lt; '\n';
+    std::cout &lt;&lt; static_cast&lt;void*&gt;(&amp;A::b) &lt;&lt; ' ' &lt;&lt; A::b &lt;&lt; '\n';
+    std::cout &lt;&lt; static_cast&lt;void*&gt;(ptr) &lt;&lt; ' ' &lt;&lt; *ptr &lt;&lt; '\n';
+
+    return 0;
+}</code></pre>
+   </div>
+   <a class="online-compiler-link" href="https://godbolt.org/z/GsG1f5bcM">
+    online-compiler-link
+   </a>
+   <div class="result-value">
+    <div class="result-title" onclick="toggleResult(event)" style="color:white;background-color: rgb(42, 41, 41);width: 100ch;">
+     Result:
+    </div>
+    <pre style="display: none">0x404028 10
+0x40402c 20
+0x404030 30
+</pre>
+   </div>
+  </div>
+ </body>
+</html>

@@ -1,0 +1,68 @@
+<html>
+ <head>
+  <script>
+   function toggleResult(event)
+    {
+        const parentNode = event.target.parentNode;
+        let preTag = parentNode.getElementsByTagName("pre")[0];
+
+        if (preTag.style.display == "none") {
+            preTag.style.display = "block";
+        } else {
+            preTag.style.display = "none";
+        }
+    }
+  </script>
+ </head>
+ <body>
+  <div>
+   <div class="main file" style="border:1px solid rgb(144, 13, 13);padding:0; margin: 10px; width:140ch;">
+    <p class="file-name" style="margin:0; color:white;background-color: rgb(144, 13, 13);">
+     main.cpp
+    </p>
+    <pre style="margin:0;"><code>#include &lt;iostream&gt;
+
+
+template &lt;typename T&gt;
+void func(T* t)
+{
+    std::cout &lt;&lt; "T*\n";
+}
+
+
+int main()
+{
+    int a;
+    int* ptr1 = &amp;a;
+    const int* ptr2 = &amp;a;
+    int* const ptr3 = &amp;a;
+    const int* const ptr4 = &amp;a;
+
+    const int b = 10;
+
+    func(&amp;a);
+    func(ptr1);
+    func(ptr2);
+    func(ptr3);
+    func(ptr4);
+
+    return 0;
+}</code></pre>
+   </div>
+   <a class="online-compiler-link" href="https://godbolt.org/z/vWj1G4ooW">
+    online-compiler-link
+   </a>
+   <div class="result-value">
+    <div class="result-title" onclick="toggleResult(event)" style="color:white;background-color: rgb(42, 41, 41);width: 100ch;">
+     Result:
+    </div>
+    <pre style="display: none">T*
+T*
+T*
+T*
+T*
+</pre>
+   </div>
+  </div>
+ </body>
+</html>

@@ -1,0 +1,114 @@
+<html>
+ <head>
+  <script>
+   function toggleResult(event)
+    {
+        const parentNode = event.target.parentNode;
+        let preTag = parentNode.getElementsByTagName("pre")[0];
+
+        if (preTag.style.display == "none") {
+            preTag.style.display = "block";
+        } else {
+            preTag.style.display = "none";
+        }
+    }
+  </script>
+ </head>
+ <body>
+  <div>
+   <div class="main file" style="border:1px solid rgb(144, 13, 13);padding:0; margin: 10px; width:140ch;">
+    <p class="file-name" style="margin:0; color:white;background-color: rgb(144, 13, 13);">
+     main.cpp
+    </p>
+    <pre style="margin:0;"><code>#include &lt;iostream&gt;
+#include &lt;map&gt;
+#include &lt;string&gt;
+#include &lt;utility&gt;
+#include &lt;vector&gt;
+#include &lt;chrono&gt;
+#include &lt;functional&gt;
+#include &lt;iomanip&gt;
+
+
+template &lt;typename Key, typename Value, typename Comparator&gt;
+std::ostream&amp; operator&lt;&lt; (std::ostream&amp; out, const std::multimap&lt;Key, Value, Comparator&gt; map)
+{
+    for (auto&amp; e : map)
+        out &lt;&lt; '{' &lt;&lt; e.first &lt;&lt; " : " &lt;&lt; e.second &lt;&lt; '}' &lt;&lt; '\n';
+    return out;
+}
+
+
+void emplace(std::multimap&lt;int, std::string&gt;&amp; map)
+{
+    map.emplace(1999, "new_element");
+}
+
+void emplace_hint(std::multimap&lt;int, std::string&gt;&amp; map)
+{
+    map.emplace_hint(map.end(), 1999, "new_element");
+}
+
+void emplace_hint_pessimistic(std::multimap&lt;int, std::string&gt;&amp; map)
+{
+    map.emplace_hint(map.begin(), 1999, "new_element");
+}
+
+
+void time_operation(std::function&lt;void(std::multimap&lt;int, std::string&gt;&amp;)&gt; func)
+{
+    std::vector&lt;std::pair&lt;int, std::string&gt;&gt; vec(10000);
+    
+    for (int i = 0; i &lt; 10000; ++i)
+    {
+        vec[i].first = i % 2000;
+        vec[i].second = "test" + std::to_string(i);
+    }
+    std::multimap&lt;int, std::string&gt; map(vec.begin(), vec.end());
+
+
+    const auto start = std::chrono::system_clock::now();
+    
+    func(map);
+
+    const auto stop = std::chrono::system_clock::now();
+    std::chrono::duration&lt;double, std::milli&gt; time = stop - start;
+
+    std::cout &lt;&lt; std::setw(8);
+    std::cout &lt;&lt; time.count() &lt;&lt; '\n';
+}
+
+
+
+int main()
+{
+    std::cout &lt;&lt; "emplace:\n";
+    time_operation(emplace);
+
+    std::cout &lt;&lt; "emplace_hint:\n";
+    time_operation(emplace_hint);
+
+    std::cout &lt;&lt; "emplace_hint pessimistic:\n";
+    time_operation(emplace_hint_pessimistic);
+
+    return 0;
+}</code></pre>
+   </div>
+   <a class="online-compiler-link" href="https://godbolt.org/z/sPYafa5Pa">
+    online-compiler-link
+   </a>
+   <div class="result-value">
+    <div class="result-title" onclick="toggleResult(event)" style="color:white;background-color: rgb(42, 41, 41);width: 100ch;">
+     Result:
+    </div>
+    <pre style="display: none">emplace:
+0.006564
+emplace_hint:
+0.001928
+emplace_hint pessimistic:
+0.007065
+</pre>
+   </div>
+  </div>
+ </body>
+</html>

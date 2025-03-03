@@ -1,0 +1,93 @@
+<html>
+ <head>
+  <script>
+   function toggleResult(event)
+    {
+        const parentNode = event.target.parentNode;
+        let preTag = parentNode.getElementsByTagName("pre")[0];
+
+        if (preTag.style.display == "none") {
+            preTag.style.display = "block";
+        } else {
+            preTag.style.display = "none";
+        }
+    }
+  </script>
+ </head>
+ <body>
+  <div>
+   <div class="cmake file" style="border: 1px solid rgb(100, 98, 99);padding:0; margin: 10px; width:140ch;">
+    <p class="file-name" style="margin:0; color:white;background-color: rgb(100, 98, 99);">
+     CMakeLists.txt
+    </p>
+    <pre style="margin:0;"><code>cmake_minimum_required(VERSION 3.5)
+
+project(cpp_qa VERSION 1.0 LANGUAGES CXX)
+
+add_executable(main main.cpp)</code></pre>
+   </div>
+   <div class="header file" style="border: 1px solid rgb(130, 27, 198);padding:0; margin: 10px; width:140ch;">
+    <p class="file-name" style="margin:0; color:white;background-color: rgb(130, 27, 198);">
+     class.h
+    </p>
+    <pre style="margin:0;"><code>#pragma once
+
+#include &lt;iostream&gt;
+
+
+template &lt;typename T = int&gt;
+class Base
+{
+public:
+    void print();
+private:
+    T val;
+};
+
+
+template &lt;typename T&gt;
+void Base&lt;T&gt;::print()
+{
+    std::cout &lt;&lt; "val: " &lt;&lt; val &lt;&lt; '\n';
+}</code></pre>
+   </div>
+   <div class="main file" style="border:1px solid rgb(144, 13, 13);padding:0; margin: 10px; width:140ch;">
+    <p class="file-name" style="margin:0; color:white;background-color: rgb(144, 13, 13);">
+     main.cpp
+    </p>
+    <pre style="margin:0;"><code>#include "class.h"
+#include &lt;iostream&gt;
+#include &lt;typeinfo&gt;
+
+
+int main()
+{
+    Base base;
+    Base&lt;int&gt; baseInt ;
+
+    auto hash1 = typeid(base).hash_code();
+    auto hash2 = typeid(baseInt).hash_code();
+
+    std::cout &lt;&lt; hash1 &lt;&lt; '\n';
+    std::cout &lt;&lt; hash2 &lt;&lt; '\n';
+    std::cout &lt;&lt; (hash1 == hash2) &lt;&lt; '\n';
+
+    return 0;
+}</code></pre>
+   </div>
+   <a class="online-compiler-link" href="https://godbolt.org/z/so9a6E4eM">
+    online-compiler-link
+   </a>
+   <div class="result-value">
+    <div class="result-title" onclick="toggleResult(event)" style="color:white;background-color: rgb(42, 41, 41);width: 100ch;">
+     Result:
+    </div>
+    <pre style="display: none">4428514261934047302
+4428514261934047302
+1
+ 
+</pre>
+   </div>
+  </div>
+ </body>
+</html>

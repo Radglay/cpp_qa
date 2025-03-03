@@ -1,0 +1,80 @@
+<html>
+ <head>
+  <script>
+   function toggleResult(event)
+    {
+        const parentNode = event.target.parentNode;
+        let preTag = parentNode.getElementsByTagName("pre")[0];
+
+        if (preTag.style.display == "none") {
+            preTag.style.display = "block";
+        } else {
+            preTag.style.display = "none";
+        }
+    }
+  </script>
+ </head>
+ <body>
+  <div>
+   <div class="main file" style="border:1px solid rgb(144, 13, 13);padding:0; margin: 10px; width:140ch;">
+    <p class="file-name" style="margin:0; color:white;background-color: rgb(144, 13, 13);">
+     main.cpp
+    </p>
+    <pre style="margin:0;"><code>#include &lt;iostream&gt;
+
+
+
+namespace A
+{
+    
+    int i = 10;
+
+    namespace
+    {
+        int func();
+        int i = 20;
+    }
+}
+
+int i = 30;
+
+int A::func()
+{
+    return i;
+}
+
+int main()
+{
+    std::cout &lt;&lt; A::func() &lt;&lt; '\n';
+
+    return 0;
+}</code></pre>
+   </div>
+   <a class="online-compiler-link" href="https://godbolt.org/z/jEb56oMd4">
+    online-compiler-link
+   </a>
+   <div class="result-value">
+    <div class="result-title" onclick="toggleResult(event)" style="color:white;background-color: rgb(42, 41, 41);width: 100ch;">
+     Result:
+    </div>
+    <pre style="display: none">error: 'int A::func()' should have been declared inside 'A'
+   19 | int A::func()
+      |             ^
+&lt;source&gt;: In function 'int A::func()':
+&lt;source&gt;:21:12: error: reference to 'i' is ambiguous
+   21 |     return i;
+      |            ^
+&lt;source&gt;:13:13: note: candidates are: 'int A::{anonymous}::i'
+   13 |         int i = 20;
+      |             ^
+&lt;source&gt;:8:9: note:                 'int A::i'
+    8 |     int i = 10;
+      |         ^
+&lt;source&gt;: At global scope:
+&lt;source&gt;:12:13: warning: 'int A::{anonymous}::func()' used but never defined
+   12 |         int func();
+</pre>
+   </div>
+  </div>
+ </body>
+</html>

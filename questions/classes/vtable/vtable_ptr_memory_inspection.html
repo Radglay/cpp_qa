@@ -1,0 +1,175 @@
+<html>
+ <head>
+  <script>
+   function toggleResult(event)
+    {
+        const parentNode = event.target.parentNode;
+        let preTag = parentNode.getElementsByTagName("pre")[0];
+
+        if (preTag.style.display == "none") {
+            preTag.style.display = "block";
+        } else {
+            preTag.style.display = "none";
+        }
+    }
+  </script>
+ </head>
+ <body>
+  <div>
+   <div class="cmake file" style="border: 1px solid rgb(100, 98, 99);padding:0; margin: 10px; width:140ch;">
+    <p class="file-name" style="margin:0; color:white;background-color: rgb(100, 98, 99);">
+     CMakeLists.txt
+    </p>
+    <pre style="margin:0;"><code>cmake_minimum_required(VERSION 3.5)
+
+project(cpp_qa VERSION 1.0 LANGUAGES CXX)
+
+add_executable(main main.cpp)</code></pre>
+   </div>
+   <div class="header file" style="border: 1px solid rgb(130, 27, 198);padding:0; margin: 10px; width:140ch;">
+    <p class="file-name" style="margin:0; color:white;background-color: rgb(130, 27, 198);">
+     class.h
+    </p>
+    <pre style="margin:0;"><code>#pragma once
+
+#include &lt;iostream&gt;
+
+
+class Base
+{
+public:
+    int x { 0x33 };
+
+    virtual ~Base() = default;
+
+    virtual void virt_func1()
+    {
+        std::cout &lt;&lt; "Base virt_func1()\n";
+    }
+
+    virtual void virt_func2()
+    {
+        std::cout &lt;&lt; "Base virt_func2()\n";
+    }
+};
+
+class Derived : public Base
+{
+public:
+    void virt_func1()
+    {
+        std::cout &lt;&lt; "Derived1 virt_func1()\n";
+    }
+};</code></pre>
+   </div>
+   <div class="main file" style="border:1px solid rgb(144, 13, 13);padding:0; margin: 10px; width:140ch;">
+    <p class="file-name" style="margin:0; color:white;background-color: rgb(144, 13, 13);">
+     main.cpp
+    </p>
+    <pre style="margin:0;"><code>#include "class.h"
+#include &lt;iostream&gt;
+#include &lt;cstring&gt;
+#include &lt;cstdint&gt;
+#include &lt;type_traits&gt;
+
+
+template &lt;typename T, typename S&gt;
+class vtable_checker
+{
+public:
+    using value_type = T;
+    using address_type = S;
+    using pointer_type = S*;
+    using const_pointer_type = const S*;
+
+    vtable_checker(const T&amp; t)
+        : value{t}, vtable_pointer{getAddressOfVtable()}
+    {}
+
+    const_pointer_type getPointerToVtable()
+    {
+        return vtable_pointer;
+    }
+
+    const_pointer_type getVirtualFunctionPointer()
+    {
+        if (std::has_virtual_destructor_v&lt;T&gt;)
+            return vtable_pointer + 2;
+        return vtable_pointer;
+    }
+
+private:
+    pointer_type getAddressOfVtable()
+    {
+        S buffer;
+        std::memcpy(&amp;buffer, &amp;value, sizeof(S));
+        return reinterpret_cast&lt;pointer_type&gt;(buffer);
+    }   
+
+    const T&amp; value;
+    S* vtable_pointer;
+};
+
+
+int main()
+{
+    std::cout &lt;&lt; std::hex;
+
+    Base base1;
+    Base base2;
+    Base base3;
+
+    vtable_checker&lt;Base, uint64_t&gt; vtab_c1 {base1};
+    vtable_checker&lt;Base, uint64_t&gt; vtab_c2 {base2};
+    vtable_checker&lt;Base, uint64_t&gt; vtab_c3 {base3};
+
+    auto base1_vptr = vtab_c1.getVirtualFunctionPointer();
+    auto base2_vptr = vtab_c2.getVirtualFunctionPointer();
+    auto base3_vptr = vtab_c3.getVirtualFunctionPointer();
+    
+    std::cout &lt;&lt; base1_vptr[0] &lt;&lt; ' ' &lt;&lt; base1_vptr[1] &lt;&lt; '\n';
+    std::cout &lt;&lt; base2_vptr[0] &lt;&lt; ' ' &lt;&lt; base2_vptr[1] &lt;&lt; '\n';
+    std::cout &lt;&lt; base3_vptr[0] &lt;&lt; ' ' &lt;&lt; base3_vptr[1] &lt;&lt; '\n';
+
+    Derived derived1;
+    vtable_checker&lt;Derived, uint64_t&gt; vtab_d1 {derived1};
+
+    auto derived1_vptr = vtab_d1.getVirtualFunctionPointer();
+    std::cout &lt;&lt; derived1_vptr[0] &lt;&lt; ' ' &lt;&lt; derived1_vptr[1] &lt;&lt; '\n';
+
+    auto base_virt_func1 = reinterpret_cast&lt;void(*)()&gt;(base1_vptr[0]);
+    auto base_virt_func2 = reinterpret_cast&lt;void(*)()&gt;(base1_vptr[1]);
+    
+    auto derived_virt_func1 = reinterpret_cast&lt;void(*)()&gt;(derived1_vptr[0]);
+    auto derived_virt_func2 = reinterpret_cast&lt;void(*)()&gt;(derived1_vptr[1]);
+
+    base_virt_func1();
+    base_virt_func2();
+    derived_virt_func1();
+    derived_virt_func2();
+
+    return 0;
+}</code></pre>
+   </div>
+   <a class="online-compiler-link" href="https://godbolt.org/z/6875PKceT
+">
+    online-compiler-link
+   </a>
+   <div class="result-value">
+    <div class="result-title" onclick="toggleResult(event)" style="color:white;background-color: rgb(42, 41, 41);width: 100ch;">
+     Result:
+    </div>
+    <pre style="display: none">401594 4015b2
+401594 4015b2
+401594 4015b2
+4015d0 4015b2
+Base virt_func1()
+Base virt_func2()
+Derived1 virt_func1()
+Base virt_func2()
+ 
+</pre>
+   </div>
+  </div>
+ </body>
+</html>

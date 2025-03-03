@@ -1,0 +1,67 @@
+<html>
+ <head>
+  <script>
+   function toggleResult(event)
+    {
+        const parentNode = event.target.parentNode;
+        let preTag = parentNode.getElementsByTagName("pre")[0];
+
+        if (preTag.style.display == "none") {
+            preTag.style.display = "block";
+        } else {
+            preTag.style.display = "none";
+        }
+    }
+  </script>
+ </head>
+ <body>
+  <div>
+   <div class="main file" style="border:1px solid rgb(144, 13, 13);padding:0; margin: 10px; width:140ch;">
+    <p class="file-name" style="margin:0; color:white;background-color: rgb(144, 13, 13);">
+     main.cpp
+    </p>
+    <pre style="margin:0;"><code>#include &lt;iostream&gt;
+
+
+class Resource
+{
+public:
+    Resource()
+    {
+        std::cout &lt;&lt; "Constructor\n";
+    }
+
+    ~Resource()
+    {
+        std::cout &lt;&lt; "Destructor\n";
+    }
+};
+
+
+
+int main()
+{
+    Resource* res_ptr = new Resource[5];
+    std::cout &lt;&lt; "Were destructors called?\n";
+
+    return 0;
+}</code></pre>
+   </div>
+   <a class="online-compiler-link" href="https://godbolt.org/z/rzxWo7bnf">
+    online-compiler-link
+   </a>
+   <div class="result-value">
+    <div class="result-title" onclick="toggleResult(event)" style="color:white;background-color: rgb(42, 41, 41);width: 100ch;">
+     Result:
+    </div>
+    <pre style="display: none">Constructor
+Constructor
+Constructor
+Constructor
+Constructor
+Were destructors called?
+</pre>
+   </div>
+  </div>
+ </body>
+</html>

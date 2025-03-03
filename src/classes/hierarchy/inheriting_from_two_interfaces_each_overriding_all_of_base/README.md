@@ -1,5 +1,5 @@
 **result**:
-```
+ 
 main.cpp:7:13: error: request for member 'virt_func1' is ambiguous
     7 |     derived.virt_func1();
       |             ^~~~~~~~~~
@@ -24,5 +24,5 @@ In file included from /app/main.cpp:1:
       |          ^~~~~~~~~~
 /app/class.h:21:10: note:                 'virtual void Part1::virt_func2()'
    21 |     void virt_func2() override
-```
+ 
 **godbolt**: https://godbolt.org/z/qMG83arT3

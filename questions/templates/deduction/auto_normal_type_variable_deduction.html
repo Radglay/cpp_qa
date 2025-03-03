@@ -1,0 +1,58 @@
+<html>
+ <head>
+  <script>
+   function toggleResult(event)
+    {
+        const parentNode = event.target.parentNode;
+        let preTag = parentNode.getElementsByTagName("pre")[0];
+
+        if (preTag.style.display == "none") {
+            preTag.style.display = "block";
+        } else {
+            preTag.style.display = "none";
+        }
+    }
+  </script>
+ </head>
+ <body>
+  <div>
+   <div class="main file" style="border:1px solid rgb(144, 13, 13);padding:0; margin: 10px; width:140ch;">
+    <p class="file-name" style="margin:0; color:white;background-color: rgb(144, 13, 13);">
+     main.cpp
+    </p>
+    <pre style="margin:0;"><code>#include &lt;iostream&gt;
+#include &lt;string&gt;
+
+
+int main()
+{
+    auto i = 10;
+    auto c = 'c';
+    auto s1 = "test";
+    auto s2 = std::string("test");
+
+    std::cout &lt;&lt; std::boolalpha;
+    std::cout &lt;&lt; "i -&gt; int? " &lt;&lt; (typeid(i) == typeid(int)) &lt;&lt; '\n';
+    std::cout &lt;&lt; "c -&gt; char? " &lt;&lt; (typeid(c) == typeid(char)) &lt;&lt; '\n';
+    std::cout &lt;&lt; "s1 -&gt; c_string? " &lt;&lt; (typeid(s1) == typeid(const char*)) &lt;&lt; '\n';
+    std::cout &lt;&lt; "s2 -&gt; std::string? " &lt;&lt; (typeid(s2) == typeid(std::string)) &lt;&lt; '\n';
+
+    return 0;
+}</code></pre>
+   </div>
+   <a class="online-compiler-link" href="https://godbolt.org/z/vYad9f356">
+    online-compiler-link
+   </a>
+   <div class="result-value">
+    <div class="result-title" onclick="toggleResult(event)" style="color:white;background-color: rgb(42, 41, 41);width: 100ch;">
+     Result:
+    </div>
+    <pre style="display: none">i -&gt; int? true
+c -&gt; char? true
+s1 -&gt; c_string? true
+s2 -&gt; std::string? true
+</pre>
+   </div>
+  </div>
+ </body>
+</html>

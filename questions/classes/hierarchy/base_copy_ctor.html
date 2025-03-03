@@ -1,0 +1,104 @@
+<html>
+ <head>
+  <script>
+   function toggleResult(event)
+    {
+        const parentNode = event.target.parentNode;
+        let preTag = parentNode.getElementsByTagName("pre")[0];
+
+        if (preTag.style.display == "none") {
+            preTag.style.display = "block";
+        } else {
+            preTag.style.display = "none";
+        }
+    }
+  </script>
+ </head>
+ <body>
+  <div>
+   <div class="cmake file" style="border: 1px solid rgb(100, 98, 99);padding:0; margin: 10px; width:140ch;">
+    <p class="file-name" style="margin:0; color:white;background-color: rgb(100, 98, 99);">
+     CMakeLists.txt
+    </p>
+    <pre style="margin:0;"><code>cmake_minimum_required(VERSION 3.5)
+
+project(cpp_qa VERSION 1.0 LANGUAGES CXX)
+
+add_executable(main main.cpp)</code></pre>
+   </div>
+   <div class="header file" style="border: 1px solid rgb(130, 27, 198);padding:0; margin: 10px; width:140ch;">
+    <p class="file-name" style="margin:0; color:white;background-color: rgb(130, 27, 198);">
+     class.h
+    </p>
+    <pre style="margin:0;"><code>#pragma once
+
+#include &lt;iostream&gt;
+
+
+class Base
+{
+public:
+    Base() = default;
+
+    Base(const Base&amp;)
+    {
+        std::cout &lt;&lt; "Base copy C-Tor\n";
+    }
+
+    Base&amp; operator= (const Base&amp;)
+    {
+        std::cout &lt;&lt; "Base copy operator\n";
+        return *this;
+    }
+
+    virtual ~Base() = default;
+};
+
+class Derived : public Base
+{
+public:
+    Derived() = default;
+
+    Derived(const Derived&amp;)
+    {
+        std::cout &lt;&lt; "Derived copy C-Tor\n";
+    }
+
+    Derived&amp; operator= (const Derived&amp;)
+    {
+        std::cout &lt;&lt; "Derived copy operator\n";
+        return *this;
+    }
+};</code></pre>
+   </div>
+   <div class="main file" style="border:1px solid rgb(144, 13, 13);padding:0; margin: 10px; width:140ch;">
+    <p class="file-name" style="margin:0; color:white;background-color: rgb(144, 13, 13);">
+     main.cpp
+    </p>
+    <pre style="margin:0;"><code>#include "class.h"
+
+
+int main()
+{
+    Derived derived;
+    Base&amp; base = derived;
+    base = derived;
+
+    return 0;
+}</code></pre>
+   </div>
+   <a class="online-compiler-link" href="https://godbolt.org/z/6jzjnh48M
+">
+    online-compiler-link
+   </a>
+   <div class="result-value">
+    <div class="result-title" onclick="toggleResult(event)" style="color:white;background-color: rgb(42, 41, 41);width: 100ch;">
+     Result:
+    </div>
+    <pre style="display: none">Base copy operator
+ 
+</pre>
+   </div>
+  </div>
+ </body>
+</html>

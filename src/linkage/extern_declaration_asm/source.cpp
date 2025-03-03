@@ -1,0 +1,1 @@
+int extern_variable = 0x111;

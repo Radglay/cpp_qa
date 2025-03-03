@@ -1,0 +1,70 @@
+<html>
+ <head>
+  <script>
+   function toggleResult(event)
+    {
+        const parentNode = event.target.parentNode;
+        let preTag = parentNode.getElementsByTagName("pre")[0];
+
+        if (preTag.style.display == "none") {
+            preTag.style.display = "block";
+        } else {
+            preTag.style.display = "none";
+        }
+    }
+  </script>
+ </head>
+ <body>
+  <div>
+   <div class="main file" style="border:1px solid rgb(144, 13, 13);padding:0; margin: 10px; width:140ch;">
+    <p class="file-name" style="margin:0; color:white;background-color: rgb(144, 13, 13);">
+     main.cpp
+    </p>
+    <pre style="margin:0;"><code>#include &lt;iostream&gt;
+#include &lt;memory&gt;
+
+
+class Data
+{
+public:
+    int a;
+    int b;
+
+    Data(int p_a, int p_b) : a(p_a), b(p_b) {};
+};
+
+void deleter(Data* ptr)
+{
+    std::cout &lt;&lt; "Deleter\n";
+    delete ptr;
+}
+
+int main()
+{
+    std::shared_ptr&lt;Data&gt; data_ptr { new Data(10, 20), deleter };
+    std::shared_ptr&lt;int&gt;a_ptr(data_ptr, &amp;data_ptr-&gt;a);
+
+    int* member_ptr = a_ptr.get();
+    
+    a_ptr.reset();
+    data_ptr.reset();
+
+    std::cout &lt;&lt; *member_ptr &lt;&lt; '\n';
+
+    return 0;
+}</code></pre>
+   </div>
+   <a class="online-compiler-link" href="https://godbolt.org/z/Mcn6Yh99Y">
+    online-compiler-link
+   </a>
+   <div class="result-value">
+    <div class="result-title" onclick="toggleResult(event)" style="color:white;background-color: rgb(42, 41, 41);width: 100ch;">
+     Result:
+    </div>
+    <pre style="display: none">Deleter
+1831
+</pre>
+   </div>
+  </div>
+ </body>
+</html>

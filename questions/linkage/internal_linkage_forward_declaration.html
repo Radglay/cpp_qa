@@ -1,0 +1,117 @@
+<html>
+ <head>
+  <script>
+   function toggleResult(event)
+    {
+        const parentNode = event.target.parentNode;
+        let preTag = parentNode.getElementsByTagName("pre")[0];
+
+        if (preTag.style.display == "none") {
+            preTag.style.display = "block";
+        } else {
+            preTag.style.display = "none";
+        }
+    }
+  </script>
+ </head>
+ <body>
+  <div>
+   <div class="cmake file" style="border: 1px solid rgb(100, 98, 99);padding:0; margin: 10px; width:140ch;">
+    <p class="file-name" style="margin:0; color:white;background-color: rgb(100, 98, 99);">
+     CMakeLists.txt
+    </p>
+    <pre style="margin:0;"><code>cmake_minimum_required(VERSION 3.5)
+
+project(cpp_qa VERSION 1.0 LANGUAGES CXX)
+
+add_executable(main main.cpp source1.cpp)</code></pre>
+   </div>
+   <div class="source file" style="border:1px solid rgb(50, 50, 185);padding:0; margin: 10px; width:140ch;">
+    <p class="file-name" style="margin:0; color:white;background-color: rgb(50, 50, 185);">
+     source1.cpp
+    </p>
+    <pre style="margin:0;"><code>#include &lt;iostream&gt;
+
+
+static int static_global = 100;
+
+const int const_global = 200;
+constexpr int constexpr_global = 300;
+
+static const int static_const_global = 400;
+static constexpr int static_constexpr_global = 500;
+
+
+static void static_func()
+{
+    std::cout &lt;&lt; "source1 version\n";
+}</code></pre>
+   </div>
+   <div class="main file" style="border:1px solid rgb(144, 13, 13);padding:0; margin: 10px; width:140ch;">
+    <p class="file-name" style="margin:0; color:white;background-color: rgb(144, 13, 13);">
+     main.cpp
+    </p>
+    <pre style="margin:0;"><code>#include &lt;iostream&gt;
+
+
+extern int static_global;
+
+extern const int const_global;
+extern constexpr int constexpr_global;
+
+extern const int static_const_global;
+extern constexpr int static_constexpr_global;
+
+
+
+static void static_func()
+{
+    std::cout &lt;&lt; "main version\n";
+}
+
+
+int main()
+{
+    std::cout &lt;&lt; "main()\n";
+    std::cout &lt;&lt; "static_global: " &lt;&lt; &amp;static_global 
+              &lt;&lt; ' ' &lt;&lt; static_global&lt;&lt; '\n';
+    std::cout &lt;&lt; "const_global: " &lt;&lt; &amp;const_global 
+              &lt;&lt; ' ' &lt;&lt; const_global&lt;&lt; '\n';
+    std::cout &lt;&lt; "constexpr_global: " &lt;&lt; &amp;constexpr_global 
+              &lt;&lt; ' ' &lt;&lt; constexpr_global&lt;&lt; '\n';
+    std::cout &lt;&lt; "static_const_global: " &lt;&lt; &amp;static_const_global 
+              &lt;&lt; ' ' &lt;&lt; static_const_global&lt;&lt; '\n';
+    std::cout &lt;&lt; "static_constexpr_global: " &lt;&lt; &amp;static_constexpr_global 
+              &lt;&lt; ' ' &lt;&lt; static_constexpr_global&lt;&lt; '\n';
+    
+    static_func();
+
+    return 0;
+}</code></pre>
+   </div>
+   <a class="online-compiler-link" href="https://godbolt.org/z/EK9YasYE7">
+    online-compiler-link
+   </a>
+   <div class="result-value">
+    <div class="result-title" onclick="toggleResult(event)" style="color:white;background-color: rgb(42, 41, 41);width: 100ch;">
+     Result:
+    </div>
+    <pre style="display: none">undefined reference to `static_global'
+undefined reference to `static_global'
+undefined reference to `const_global'
+undefined reference to `const_global'
+undefined reference to `static_const_global'
+undefined reference to `static_const_global'
+undefined reference to `static_func()'
+
+error: declaration of 'constexpr' variable 'constexpr_global' is not a definition
+    7 | extern constexpr int constexpr_global;
+      |                      ^~~~~~~~~~~~~~~~
+/app/main.cpp:10:22: error: declaration of 'constexpr' variable 'static_constexpr_global' is not a definition
+   10 | extern constexpr int static_constexpr_global;
+
+</pre>
+   </div>
+  </div>
+ </body>
+</html>

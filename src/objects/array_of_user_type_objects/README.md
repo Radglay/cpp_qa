@@ -1,0 +1,22 @@
+**result**:
+A C-tor
+A C-tor
+A C-tor
+A C-tor
+A C-tor
+A C-tor
+A C-tor
+A C-tor
+A C-tor
+A C-tor
+A D-tor
+A D-tor
+A D-tor
+A D-tor
+A D-tor
+A D-tor
+A D-tor
+A D-tor
+A D-tor
+A D-tor
+**godbolt**: https://godbolt.org/z/sxK657cE3

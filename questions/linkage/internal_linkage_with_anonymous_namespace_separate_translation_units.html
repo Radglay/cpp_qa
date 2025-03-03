@@ -1,0 +1,139 @@
+<html>
+ <head>
+  <script>
+   function toggleResult(event)
+    {
+        const parentNode = event.target.parentNode;
+        let preTag = parentNode.getElementsByTagName("pre")[0];
+
+        if (preTag.style.display == "none") {
+            preTag.style.display = "block";
+        } else {
+            preTag.style.display = "none";
+        }
+    }
+  </script>
+ </head>
+ <body>
+  <div>
+   <div class="cmake file" style="border: 1px solid rgb(100, 98, 99);padding:0; margin: 10px; width:140ch;">
+    <p class="file-name" style="margin:0; color:white;background-color: rgb(100, 98, 99);">
+     CMakeLists.txt
+    </p>
+    <pre style="margin:0;"><code>cmake_minimum_required(VERSION 3.5)
+
+project(cpp_qa VERSION 1.0 LANGUAGES CXX)
+
+add_executable(main main.cpp source1.cpp)</code></pre>
+   </div>
+   <div class="source file" style="border:1px solid rgb(50, 50, 185);padding:0; margin: 10px; width:140ch;">
+    <p class="file-name" style="margin:0; color:white;background-color: rgb(50, 50, 185);">
+     source1.cpp
+    </p>
+    <pre style="margin:0;"><code>#include &lt;iostream&gt;
+
+
+static int static_global = 100;
+
+const int const_global = 200;
+constexpr int constexpr_global = 300;
+
+static const int static_const_global = 400;
+static constexpr int static_constexpr_global = 500;
+
+
+static void static_func()
+{
+    std::cout &lt;&lt; "source1 version\n";
+}
+
+void print_source1_globals()
+{
+    std::cout &lt;&lt; "print_source1_globals()\n";
+    std::cout &lt;&lt; "static_global: " &lt;&lt; &amp;static_global 
+              &lt;&lt; ' ' &lt;&lt; static_global&lt;&lt; '\n';
+    std::cout &lt;&lt; "const_global: " &lt;&lt; &amp;const_global 
+              &lt;&lt; ' ' &lt;&lt; const_global&lt;&lt; '\n';
+    std::cout &lt;&lt; "constexpr_global: " &lt;&lt; &amp;constexpr_global 
+              &lt;&lt; ' ' &lt;&lt; constexpr_global&lt;&lt; '\n';
+    std::cout &lt;&lt; "static_const_global: " &lt;&lt; &amp;static_const_global 
+              &lt;&lt; ' ' &lt;&lt; static_const_global&lt;&lt; '\n';
+    std::cout &lt;&lt; "static_constexpr_global: " &lt;&lt; &amp;static_constexpr_global 
+              &lt;&lt; ' ' &lt;&lt; static_constexpr_global&lt;&lt; '\n';
+    static_func();
+}</code></pre>
+   </div>
+   <div class="main file" style="border:1px solid rgb(144, 13, 13);padding:0; margin: 10px; width:140ch;">
+    <p class="file-name" style="margin:0; color:white;background-color: rgb(144, 13, 13);">
+     main.cpp
+    </p>
+    <pre style="margin:0;"><code>#include &lt;iostream&gt;
+
+
+static int static_global = 10;
+
+const int const_global = 20;
+constexpr int constexpr_global = 30;
+
+static const int static_const_global = 40;
+static constexpr int static_constexpr_global = 50;
+
+
+void print_source1_globals();
+
+static void static_func()
+{
+    std::cout &lt;&lt; "main version\n";
+}
+
+
+int main()
+{
+    std::cout &lt;&lt; "main()\n";
+    std::cout &lt;&lt; "static_global: " &lt;&lt; &amp;static_global 
+              &lt;&lt; ' ' &lt;&lt; static_global&lt;&lt; '\n';
+    std::cout &lt;&lt; "const_global: " &lt;&lt; &amp;const_global 
+              &lt;&lt; ' ' &lt;&lt; const_global&lt;&lt; '\n';
+    std::cout &lt;&lt; "constexpr_global: " &lt;&lt; &amp;constexpr_global 
+              &lt;&lt; ' ' &lt;&lt; constexpr_global&lt;&lt; '\n';
+    std::cout &lt;&lt; "static_const_global: " &lt;&lt; &amp;static_const_global 
+              &lt;&lt; ' ' &lt;&lt; static_const_global&lt;&lt; '\n';
+    std::cout &lt;&lt; "static_constexpr_global: " &lt;&lt; &amp;static_constexpr_global 
+              &lt;&lt; ' ' &lt;&lt; static_constexpr_global&lt;&lt; '\n';
+    
+    static_func();
+
+    std::cout &lt;&lt; '\n';
+
+    print_source1_globals();
+
+    return 0;
+}</code></pre>
+   </div>
+   <a class="online-compiler-link" href="https://godbolt.org/z/Mj48KvaMf">
+    online-compiler-link
+   </a>
+   <div class="result-value">
+    <div class="result-title" onclick="toggleResult(event)" style="color:white;background-color: rgb(42, 41, 41);width: 100ch;">
+     Result:
+    </div>
+    <pre style="display: none">main()
+static_global: 0x404030 10
+const_global: 0x402004 20
+constexpr_global: 0x402008 30
+static_const_global: 0x40200c 40
+static_constexpr_global: 0x402010 50
+main version
+
+print_source1_globals()
+static_global: 0x404034 100
+const_global: 0x402084 200
+constexpr_global: 0x402088 300
+static_const_global: 0x40208c 400
+static_constexpr_global: 0x402090 500
+source1 version
+</pre>
+   </div>
+  </div>
+ </body>
+</html>

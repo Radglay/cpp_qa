@@ -1,0 +1,81 @@
+<html>
+ <head>
+  <script>
+   function toggleResult(event)
+    {
+        const parentNode = event.target.parentNode;
+        let preTag = parentNode.getElementsByTagName("pre")[0];
+
+        if (preTag.style.display == "none") {
+            preTag.style.display = "block";
+        } else {
+            preTag.style.display = "none";
+        }
+    }
+  </script>
+ </head>
+ <body>
+  <div>
+   <div class="main file" style="border:1px solid rgb(144, 13, 13);padding:0; margin: 10px; width:140ch;">
+    <p class="file-name" style="margin:0; color:white;background-color: rgb(144, 13, 13);">
+     main.cpp
+    </p>
+    <pre style="margin:0;"><code>#include &lt;iostream&gt;
+#include &lt;type_traits&gt;
+#include &lt;utility&gt;
+
+
+template &lt;typename T&gt; struct is_lvalue : std::false_type {};
+template &lt;typename T&gt; struct is_lvalue&lt;T&amp;&gt; : std::true_type {};
+template &lt;typename T&gt; struct is_lvalue&lt;T&amp;&amp;&gt; : std::false_type {};
+
+
+int func() { return 1; }
+
+int main()
+{
+    auto ptr_func1 = func;
+    decltype(func) ptr_func2;
+
+    std::cout &lt;&lt; std::boolalpha;
+    std::cout &lt;&lt; std::is_same_v&lt;decltype(ptr_func1), int&gt; &lt;&lt; '\n';
+    std::cout &lt;&lt; std::is_same_v&lt;decltype(ptr_func1), int(*)()&gt; &lt;&lt; '\n';
+    std::cout &lt;&lt; std::is_same_v&lt;decltype((ptr_func1)), int(*)()&gt; &lt;&lt; '\n';
+    std::cout &lt;&lt; std::is_same_v&lt;decltype((ptr_func1)), int&amp;(*)()&gt; &lt;&lt; '\n';
+    std::cout &lt;&lt; std::is_same_v&lt;decltype((ptr_func1)), int(*&amp;)()&gt; &lt;&lt; '\n';
+    std::cout &lt;&lt; '\n';
+
+    std::cout &lt;&lt; std::is_same_v&lt;decltype(ptr_func2), int&gt; &lt;&lt; '\n';
+    std::cout &lt;&lt; std::is_same_v&lt;decltype(ptr_func2), int(*)()&gt; &lt;&lt; '\n';
+    std::cout &lt;&lt; std::is_same_v&lt;decltype((ptr_func2)), int(*)()&gt; &lt;&lt; '\n';
+    std::cout &lt;&lt; std::is_same_v&lt;decltype((ptr_func2)), int&amp;(*)()&gt; &lt;&lt; '\n';
+    std::cout &lt;&lt; std::is_same_v&lt;decltype((ptr_func2)), int(*&amp;)()&gt; &lt;&lt; '\n';
+    std::cout &lt;&lt; '\n';
+
+
+    return 0;
+}</code></pre>
+   </div>
+   <a class="online-compiler-link" href="https://godbolt.org/z/8q5qYbe6M">
+    online-compiler-link
+   </a>
+   <div class="result-value">
+    <div class="result-title" onclick="toggleResult(event)" style="color:white;background-color: rgb(42, 41, 41);width: 100ch;">
+     Result:
+    </div>
+    <pre style="display: none">false
+true
+false
+false
+true
+
+false
+true
+false
+false
+true
+</pre>
+   </div>
+  </div>
+ </body>
+</html>

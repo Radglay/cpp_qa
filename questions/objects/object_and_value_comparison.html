@@ -1,0 +1,75 @@
+<html>
+ <head>
+  <script>
+   function toggleResult(event)
+    {
+        const parentNode = event.target.parentNode;
+        let preTag = parentNode.getElementsByTagName("pre")[0];
+
+        if (preTag.style.display == "none") {
+            preTag.style.display = "block";
+        } else {
+            preTag.style.display = "none";
+        }
+    }
+  </script>
+ </head>
+ <body>
+  <div>
+   <div class="main file" style="border:1px solid rgb(144, 13, 13);padding:0; margin: 10px; width:140ch;">
+    <p class="file-name" style="margin:0; color:white;background-color: rgb(144, 13, 13);">
+     main.cpp
+    </p>
+    <pre style="margin:0;"><code>#include &lt;iostream&gt;
+
+
+struct S
+{
+    char c1;
+    char c2;
+
+    bool operator==(const S&amp; other)
+    {
+        return c1 == other.c1 and c2 == other.c2;
+    }
+};
+
+template &lt;typename T&gt;
+bool objectComparison(T&amp; lhs, T&amp; rhs)
+{
+    unsigned char* ptr1 = reinterpret_cast&lt;unsigned char*&gt;(&amp;lhs);
+    unsigned char* ptr2 = reinterpret_cast&lt;unsigned char*&gt;(&amp;rhs);
+
+    int size = sizeof(T);
+    for (int i = 0; i &lt; size; ++i)
+        if (*(ptr1 +i) != *(ptr2 + i))
+            return false;
+    return true;
+}
+
+int main()
+{
+    S s1 { 'a', 'b' };
+    S s2 { 'a', 'b' };
+
+    std::cout &lt;&lt; std::boolalpha;
+    std::cout &lt;&lt; "Value comparison: " &lt;&lt; (s1 == s2) &lt;&lt; '\n';
+    std::cout &lt;&lt; "Object comparison: " &lt;&lt; objectComparison(s1, s2) &lt;&lt; '\n';
+
+    return 0;
+}</code></pre>
+   </div>
+   <a class="online-compiler-link" href="https://godbolt.org/z/fzzx65EvT">
+    online-compiler-link
+   </a>
+   <div class="result-value">
+    <div class="result-title" onclick="toggleResult(event)" style="color:white;background-color: rgb(42, 41, 41);width: 100ch;">
+     Result:
+    </div>
+    <pre style="display: none">Value comparison: true
+Object comparison: true
+</pre>
+   </div>
+  </div>
+ </body>
+</html>

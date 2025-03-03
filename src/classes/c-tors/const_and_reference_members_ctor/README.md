@@ -1,5 +1,5 @@
 **result**:
-```
+ 
 class.h: In constructor 'Person::Person(const std::string&, int, std::string&, int&)':
 /app/class.h:9:5: error: uninitialized const member in 'const int' [-fpermissive]
     9 |     Person(const std::string& p_name, int p_age, std::string& p_address, int& p_number)
@@ -21,5 +21,5 @@ class.h: In constructor 'Person::Person(const std::string&, int, std::string&, i
       |          ^~~~~~
 /app/class.h:11:16: error: no match for 'operator=' (operand types are 'const std::string' {aka 'const std::__cxx11::basic_string<char>'} and 'const std::string' {aka 'const std::__cxx11::basic_string<char>'})
    11 |         name = p_name;
-```
+ 
 **godbolt**: https://godbolt.org/z/r1111PfGh

@@ -1,255 +1,3485 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
  <head>
-  <meta charset="utf-8"/>
-  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-  <meta content="no-cache" http-equiv="cache-control"/>
-  <meta content="0" http-equiv="expires"/>
-  <meta content="no-cache" http-equiv="pragma"/>
-  <link href="static/styles.css" rel="stylesheet"/>
-  <title>
-   cpp_qa
-  </title>
+  <script>
+   function toggleDirectory(event)
+    {
+        const parentNode = event.target.parentNode;
+        let directoryContent = parentNode.getElementsByClassName("directory-content")[0];
+
+        if (directoryContent.style.display == "none") {
+            directoryContent.style.display = "block";
+        } else {
+            directoryContent.style.display = "none";
+        }
+    }
+  </script>
  </head>
  <body>
-  <div class="content">
-   <h1>
-    Welcome to cpp_qa website!
-   </h1>
-   <h2>
-    Questions:
-   </h2>
-   <ul class="catalog">
-    <div class="directory">
-     <div class="directory_title">
-      classes
-     </div>
-     <ul>
-      <div class="directory">
-       <div class="directory_title">
-        static
-       </div>
-       <ul>
-        <div class="questions">
-         <div class="q">
-          <a class="question-link" href="questions/classes/static/static_inline_member_function.html">
-           static_inline_member_function.html
-          </a>
-         </div>
-         <div class="q">
-          <a class="question-link" href="questions/classes/static/static_member_variable_in_source_definition.html">
-           static_member_variable_in_source_definition.html
-          </a>
-         </div>
-         <div class="q">
-          <a class="question-link" href="questions/classes/static/static_member_variable_in_header_definition.html">
-           static_member_variable_in_header_definition.html
-          </a>
-         </div>
-         <div class="q">
-          <a class="question-link" href="questions/classes/static/static_member_function_in_class_defined.html">
-           static_member_function_in_class_defined.html
-          </a>
-         </div>
-         <div class="q">
-          <a class="question-link" href="questions/classes/static/static_member_variable_used_and_initialized_in_member_function.html">
-           static_member_variable_used_and_initialized_in_member_function.html
-          </a>
-         </div>
-         <div class="q">
-          <a class="question-link" href="questions/classes/static/static_member_variable_in_class_definition.html">
-           static_member_variable_in_class_definition.html
-          </a>
-         </div>
-         <div class="q">
-          <a class="question-link" href="questions/classes/static/static_member_variable_initialized_in_initializer_list.html">
-           static_member_variable_initialized_in_initializer_list.html
-          </a>
-         </div>
-         <div class="q">
-          <a class="question-link" href="questions/classes/static/static_member_variable_defined_by_static_member_function.html">
-           static_member_variable_defined_by_static_member_function.html
-          </a>
-         </div>
-         <div class="q">
-          <a class="question-link" href="questions/classes/static/static_inline_member_variable.html">
-           static_inline_member_variable.html
-          </a>
-         </div>
-         <div class="q">
-          <a class="question-link" href="questions/classes/static/static_member_function_in_source_defined.html">
-           static_member_function_in_source_defined.html
-          </a>
-         </div>
-         <div class="q">
-          <a class="question-link" href="questions/classes/static/static_member_function_in_header_defined.html">
-           static_member_function_in_header_defined.html
-          </a>
-         </div>
-         <div class="q">
-          <a class="question-link" href="questions/classes/static/static_member_variable_not_defined.html">
-           static_member_variable_not_defined.html
-          </a>
-         </div>
-         <div class="q">
-          <a class="question-link" href="questions/classes/static/static_member_variable_initialized_in_ctor.html">
-           static_member_variable_initialized_in_ctor.html
-          </a>
-         </div>
-         <div class="q">
-          <a class="question-link" href="questions/classes/static/static_member_function_not_defined.html">
-           static_member_function_not_defined.html
-          </a>
-         </div>
-        </div>
-       </ul>
-      </div>
-      <div class="directory">
-       <div class="directory_title">
-        nested
-       </div>
-       <ul>
-        <div class="questions">
-         <div class="q">
-          <a class="question-link" href="questions/classes/nested/accessing_outer_class_private_static_members.html">
-           accessing_outer_class_private_static_members.html
-          </a>
-         </div>
-         <div class="q">
-          <a class="question-link" href="questions/classes/nested/anonymous_nested_class_public_data_members_accessed_outside.html">
-           anonymous_nested_class_public_data_members_accessed_outside.html
-          </a>
-         </div>
-         <div class="q">
-          <a class="question-link" href="questions/classes/nested/accessing_nested_class_public_using_directives.html">
-           accessing_nested_class_public_using_directives.html
-          </a>
-         </div>
-         <div class="q">
-          <a class="question-link" href="questions/classes/nested/accessing_outer_class_public_members.html">
-           accessing_outer_class_public_members.html
-          </a>
-         </div>
-         <div class="q">
-          <a class="question-link" href="questions/classes/nested/accessing_conflicting_nested_class_members.html">
-           accessing_conflicting_nested_class_members.html
-          </a>
-         </div>
-         <div class="q">
-          <a class="question-link" href="questions/classes/nested/accessing_outer_class_public_static_members.html">
-           accessing_outer_class_public_static_members.html
-          </a>
-         </div>
-         <div class="q">
-          <a class="question-link" href="questions/classes/nested/accessing_nested_class_private_using_directives.html">
-           accessing_nested_class_private_using_directives.html
-          </a>
-         </div>
-         <div class="q">
-          <a class="question-link" href="questions/classes/nested/anonymous_nested_class_conflicting_public_data_members.html">
-           anonymous_nested_class_conflicting_public_data_members.html
-          </a>
-         </div>
-         <div class="q">
-          <a class="question-link" href="questions/classes/nested/anonymous_nested_class_public_functions_accessed_outside.html">
-           anonymous_nested_class_public_functions_accessed_outside.html
-          </a>
-         </div>
-         <div class="q">
-          <a class="question-link" href="questions/classes/nested/class_member_of_nested_class_type.html">
-           class_member_of_nested_class_type.html
-          </a>
-         </div>
-         <div class="q">
-          <a class="question-link" href="questions/classes/nested/super_nested_class.html">
-           super_nested_class.html
-          </a>
-         </div>
-         <div class="q">
-          <a class="question-link" href="questions/classes/nested/accessing_outer_using_directives.html">
-           accessing_outer_using_directives.html
-          </a>
-         </div>
-         <div class="q">
-          <a class="question-link" href="questions/classes/nested/accessing_nested_class_public_members.html">
-           accessing_nested_class_public_members.html
-          </a>
-         </div>
-         <div class="q">
-          <a class="question-link" href="questions/classes/nested/accessing_nested_class_public_static_members.html">
-           accessing_nested_class_public_static_members.html
-          </a>
-         </div>
-         <div class="q">
-          <a class="question-link" href="questions/classes/nested/public_nested_class.html">
-           public_nested_class.html
-          </a>
-         </div>
-         <div class="q">
-          <a class="question-link" href="questions/classes/nested/accessing_nested_class_public_static_members_fully_qualified_names.html">
-           accessing_nested_class_public_static_members_fully_qualified_names.html
-          </a>
-         </div>
-         <div class="q">
-          <a class="question-link" href="questions/classes/nested/accessing_nested_class_public_static_members_through_using_declaration.html">
-           accessing_nested_class_public_static_members_through_using_declaration.html
-          </a>
-         </div>
-         <div class="q">
-          <a class="question-link" href="questions/classes/nested/accessing_nested_class_public_members_fully_qualified_names.html">
-           accessing_nested_class_public_members_fully_qualified_names.html
-          </a>
-         </div>
-         <div class="q">
-          <a class="question-link" href="questions/classes/nested/accessing_conflicting_outer_class_members_fully_qualified_names.html">
-           accessing_conflicting_outer_class_members_fully_qualified_names.html
-          </a>
-         </div>
-         <div class="q">
-          <a class="question-link" href="questions/classes/nested/accessing_conflicting_outer_class_members.html">
-           accessing_conflicting_outer_class_members.html
-          </a>
-         </div>
-         <div class="q">
-          <a class="question-link" href="questions/classes/nested/private_nested_class.html">
-           private_nested_class.html
-          </a>
-         </div>
-         <div class="q">
-          <a class="question-link" href="questions/classes/nested/accessing_conflicting_nested_class_members_fully_qualified_names.html">
-           accessing_conflicting_nested_class_members_fully_qualified_names.html
-          </a>
-         </div>
-        </div>
-       </ul>
-      </div>
-      <div class="directory">
-       <div class="directory_title">
-        members
-       </div>
-       <ul>
-        <div class="questions">
-         <div class="q">
-          <a class="question-link" href="questions/classes/members/in_header_inline_class_member_definition.html">
-           in_header_inline_class_member_definition.html
-          </a>
-         </div>
-         <div class="q">
-          <a class="question-link" href="questions/classes/members/in_class_member_definition.html">
-           in_class_member_definition.html
-          </a>
-         </div>
-         <div class="q">
-          <a class="question-link" href="questions/classes/members/in_header_class_member_definition.html">
-           in_header_class_member_definition.html
-          </a>
-         </div>
-        </div>
-       </ul>
-      </div>
-     </ul>
+  <ul class="question-container" style="margin-left:1em;">
+   <div class="directory">
+    <div class="directory-name" onclick="toggleDirectory(event)">
+     storage
     </div>
-   </ul>
-  </div>
+    <ul class="directory-content" style="list-style: none;">
+     <li class="question" style="margin-left:1em;">
+      <a href="questions/storage/static_storage_with_threads.html">
+       static_storage_with_threads
+      </a>
+     </li>
+     <li class="question" style="margin-left:1em;">
+      <a href="questions/storage/static_storage_destructors.html">
+       static_storage_destructors
+      </a>
+     </li>
+     <li class="question" style="margin-left:1em;">
+      <a href="questions/storage/dynamic_storage.html">
+       dynamic_storage
+      </a>
+     </li>
+     <div class="directory">
+      <div class="directory-name" onclick="toggleDirectory(event)">
+       .vscode
+      </div>
+      <ul class="directory-content" style="list-style: none;">
+      </ul>
+     </div>
+     <li class="question" style="margin-left:1em;">
+      <a href="questions/storage/static_storage.html">
+       static_storage
+      </a>
+     </li>
+     <li class="question" style="margin-left:1em;">
+      <a href="questions/storage/automatic_storage_destructors.html">
+       automatic_storage_destructors
+      </a>
+     </li>
+     <li class="question" style="margin-left:1em;">
+      <a href="questions/storage/thread_local_storage.html">
+       thread_local_storage
+      </a>
+     </li>
+    </ul>
+   </div>
+   <div class="directory">
+    <div class="directory-name" onclick="toggleDirectory(event)">
+     scope
+    </div>
+    <ul class="directory-content" style="list-style: none;">
+     <li class="question" style="margin-left:1em;">
+      <a href="questions/scope/namespace_function_defined_outside_namespace3.html">
+       namespace_function_defined_outside_namespace3
+      </a>
+     </li>
+     <li class="question" style="margin-left:1em;">
+      <a href="questions/scope/namespace_extern_variables2.html">
+       namespace_extern_variables2
+      </a>
+     </li>
+     <li class="question" style="margin-left:1em;">
+      <a href="questions/scope/point_of_declaration.html">
+       point_of_declaration
+      </a>
+     </li>
+     <li class="question" style="margin-left:1em;">
+      <a href="questions/scope/namespace_scope.html">
+       namespace_scope
+      </a>
+     </li>
+     <li class="question" style="margin-left:1em;">
+      <a href="questions/scope/function_parameter_scope.html">
+       function_parameter_scope
+      </a>
+     </li>
+     <li class="question" style="margin-left:1em;">
+      <a href="questions/scope/block_scope_shadowing.html">
+       block_scope_shadowing
+      </a>
+     </li>
+     <li class="question" style="margin-left:1em;">
+      <a href="questions/scope/namespace_extern_variables.html">
+       namespace_extern_variables
+      </a>
+     </li>
+     <li class="question" style="margin-left:1em;">
+      <a href="questions/scope/file_scope_visibility.html">
+       file_scope_visibility
+      </a>
+     </li>
+     <li class="question" style="margin-left:1em;">
+      <a href="questions/scope/namespace_function_defined_outside_namespace4.html">
+       namespace_function_defined_outside_namespace4
+      </a>
+     </li>
+     <li class="question" style="margin-left:1em;">
+      <a href="questions/scope/class_lookup_order2.html">
+       class_lookup_order2
+      </a>
+     </li>
+     <li class="question" style="margin-left:1em;">
+      <a href="questions/scope/class_lookup_order4.html">
+       class_lookup_order4
+      </a>
+     </li>
+     <li class="question" style="margin-left:1em;">
+      <a href="questions/scope/namespace_redefinition_of_variable.html">
+       namespace_redefinition_of_variable
+      </a>
+     </li>
+     <li class="question" style="margin-left:1em;">
+      <a href="questions/scope/for_loop_scope.html">
+       for_loop_scope
+      </a>
+     </li>
+     <li class="question" style="margin-left:1em;">
+      <a href="questions/scope/TEST.html">
+       TEST
+      </a>
+     </li>
+     <li class="question" style="margin-left:1em;">
+      <a href="questions/scope/nested_namespace_scope.html">
+       nested_namespace_scope
+      </a>
+     </li>
+     <li class="question" style="margin-left:1em;">
+      <a href="questions/scope/point_of_declaration2.html">
+       point_of_declaration2
+      </a>
+     </li>
+     <li class="question" style="margin-left:1em;">
+      <a href="questions/scope/block_scope_value_change.html">
+       block_scope_value_change
+      </a>
+     </li>
+     <li class="question" style="margin-left:1em;">
+      <a href="questions/scope/class_lookup_order.html">
+       class_lookup_order
+      </a>
+     </li>
+     <li class="question" style="margin-left:1em;">
+      <a href="questions/scope/namespace_function_defined_outside_namespace2.html">
+       namespace_function_defined_outside_namespace2
+      </a>
+     </li>
+     <li class="question" style="margin-left:1em;">
+      <a href="questions/scope/namespace_function_defined_outside_namespace.html">
+       namespace_function_defined_outside_namespace
+      </a>
+     </li>
+     <li class="question" style="margin-left:1em;">
+      <a href="questions/scope/class_lookup_order3.html">
+       class_lookup_order3
+      </a>
+     </li>
+     <li class="question" style="margin-left:1em;">
+      <a href="questions/scope/if_statement_shadowing.html">
+       if_statement_shadowing
+      </a>
+     </li>
+     <li class="question" style="margin-left:1em;">
+      <a href="questions/scope/namespace_function_defined_outside_namespace5.html">
+       namespace_function_defined_outside_namespace5
+      </a>
+     </li>
+    </ul>
+   </div>
+   <div class="directory">
+    <div class="directory-name" onclick="toggleDirectory(event)">
+     objects
+    </div>
+    <ul class="directory-content" style="list-style: none;">
+     <li class="question" style="margin-left:1em;">
+      <a href="questions/objects/temporary_materialization_initialize_reference.html">
+       temporary_materialization_initialize_reference
+      </a>
+     </li>
+     <li class="question" style="margin-left:1em;">
+      <a href="questions/objects/class_and_members_lifetime.html">
+       class_and_members_lifetime
+      </a>
+     </li>
+     <li class="question" style="margin-left:1em;">
+      <a href="questions/objects/copy_elision2.html">
+       copy_elision2
+      </a>
+     </li>
+     <li class="question" style="margin-left:1em;">
+      <a href="questions/objects/object_and_value_comparison.html">
+       object_and_value_comparison
+      </a>
+     </li>
+     <li class="question" style="margin-left:1em;">
+      <a href="questions/objects/copy_elision.html">
+       copy_elision
+      </a>
+     </li>
+     <li class="question" style="margin-left:1em;">
+      <a href="questions/objects/placement_new.html">
+       placement_new
+      </a>
+     </li>
+     <div class="directory">
+      <div class="directory-name" onclick="toggleDirectory(event)">
+       .vscode
+      </div>
+      <ul class="directory-content" style="list-style: none;">
+      </ul>
+     </div>
+     <li class="question" style="margin-left:1em;">
+      <a href="questions/objects/object_and_value_representation.html">
+       object_and_value_representation
+      </a>
+     </li>
+     <li class="question" style="margin-left:1em;">
+      <a href="questions/objects/temporary_object_in_a_return_statement.html">
+       temporary_object_in_a_return_statement
+      </a>
+     </li>
+     <li class="question" style="margin-left:1em;">
+      <a href="questions/objects/union_trivial_members_lifetime.html">
+       union_trivial_members_lifetime
+      </a>
+     </li>
+     <li class="question" style="margin-left:1em;">
+      <a href="questions/objects/TEST.html">
+       TEST
+      </a>
+     </li>
+     <li class="question" style="margin-left:1em;">
+      <a href="questions/objects/object_and_value_comparison_with_padding.html">
+       object_and_value_comparison_with_padding
+      </a>
+     </li>
+     <li class="question" style="margin-left:1em;">
+      <a href="questions/objects/union_user_members_lifetime.html">
+       union_user_members_lifetime
+      </a>
+     </li>
+     <li class="question" style="margin-left:1em;">
+      <a href="questions/objects/dangling_reference.html">
+       dangling_reference
+      </a>
+     </li>
+     <li class="question" style="margin-left:1em;">
+      <a href="questions/objects/temporary_object_in_a_full_expression.html">
+       temporary_object_in_a_full_expression
+      </a>
+     </li>
+     <li class="question" style="margin-left:1em;">
+      <a href="questions/objects/union_with_custom_c_tor.html">
+       union_with_custom_c_tor
+      </a>
+     </li>
+     <li class="question" style="margin-left:1em;">
+      <a href="questions/objects/array_of_user_type_objects.html">
+       array_of_user_type_objects
+      </a>
+     </li>
+    </ul>
+   </div>
+   <div class="directory">
+    <div class="directory-name" onclick="toggleDirectory(event)">
+     .vscode
+    </div>
+    <ul class="directory-content" style="list-style: none;">
+    </ul>
+   </div>
+   <div class="directory">
+    <div class="directory-name" onclick="toggleDirectory(event)">
+     stl
+    </div>
+    <ul class="directory-content" style="list-style: none;">
+     <div class="directory">
+      <div class="directory-name" onclick="toggleDirectory(event)">
+       sequence_containers
+      </div>
+      <ul class="directory-content" style="list-style: none;">
+       <div class="directory">
+        <div class="directory-name" onclick="toggleDirectory(event)">
+         vector
+        </div>
+        <ul class="directory-content" style="list-style: none;">
+         <li class="question" style="margin-left:1em;">
+          <a href="questions/stl/sequence_containers/vector/accessing_vector_elements.html">
+           accessing_vector_elements
+          </a>
+         </li>
+         <li class="question" style="margin-left:1em;">
+          <a href="questions/stl/sequence_containers/vector/raw_data_pointer.html">
+           raw_data_pointer
+          </a>
+         </li>
+         <li class="question" style="margin-left:1em;">
+          <a href="questions/stl/sequence_containers/vector/insert_many_elements_to_vector_explicit_reserve.html">
+           insert_many_elements_to_vector_explicit_reserve
+          </a>
+         </li>
+         <li class="question" style="margin-left:1em;">
+          <a href="questions/stl/sequence_containers/vector/insert_vec_to_other_vec.html">
+           insert_vec_to_other_vec
+          </a>
+         </li>
+         <li class="question" style="margin-left:1em;">
+          <a href="questions/stl/sequence_containers/vector/insert_many_elements_to_vector.html">
+           insert_many_elements_to_vector
+          </a>
+         </li>
+         <li class="question" style="margin-left:1em;">
+          <a href="questions/stl/sequence_containers/vector/polymorphic_type_reference.html">
+           polymorphic_type_reference
+          </a>
+         </li>
+         <li class="question" style="margin-left:1em;">
+          <a href="questions/stl/sequence_containers/vector/emplace_different_ctors.html">
+           emplace_different_ctors
+          </a>
+         </li>
+         <li class="question" style="margin-left:1em;">
+          <a href="questions/stl/sequence_containers/vector/using_not_valid_index_with_at.html">
+           using_not_valid_index_with_at
+          </a>
+         </li>
+         <div class="directory">
+          <div class="directory-name" onclick="toggleDirectory(event)">
+           .vscode
+          </div>
+          <ul class="directory-content" style="list-style: none;">
+          </ul>
+         </div>
+         <li class="question" style="margin-left:1em;">
+          <a href="questions/stl/sequence_containers/vector/removing_vector_element.html">
+           removing_vector_element
+          </a>
+         </li>
+         <li class="question" style="margin-left:1em;">
+          <a href="questions/stl/sequence_containers/vector/capacity_manipulation.html">
+           capacity_manipulation
+          </a>
+         </li>
+         <li class="question" style="margin-left:1em;">
+          <a href="questions/stl/sequence_containers/vector/reserve_capacity_change.html">
+           reserve_capacity_change
+          </a>
+         </li>
+         <li class="question" style="margin-left:1em;">
+          <a href="questions/stl/sequence_containers/vector/implicit_capacity_change.html">
+           implicit_capacity_change
+          </a>
+         </li>
+         <li class="question" style="margin-left:1em;">
+          <a href="questions/stl/sequence_containers/vector/using_not_valid_index.html">
+           using_not_valid_index
+          </a>
+         </li>
+         <li class="question" style="margin-left:1em;">
+          <a href="questions/stl/sequence_containers/vector/polymorphic_type.html">
+           polymorphic_type
+          </a>
+         </li>
+         <li class="question" style="margin-left:1em;">
+          <a href="questions/stl/sequence_containers/vector/polymorphic_type_smart_pointer.html">
+           polymorphic_type_smart_pointer
+          </a>
+         </li>
+         <li class="question" style="margin-left:1em;">
+          <a href="questions/stl/sequence_containers/vector/polymorphic_type_pointer.html">
+           polymorphic_type_pointer
+          </a>
+         </li>
+         <li class="question" style="margin-left:1em;">
+          <a href="questions/stl/sequence_containers/vector/emplace_vs_push.html">
+           emplace_vs_push
+          </a>
+         </li>
+         <li class="question" style="margin-left:1em;">
+          <a href="questions/stl/sequence_containers/vector/insert_vec_to_other_vec2.html">
+           insert_vec_to_other_vec2
+          </a>
+         </li>
+         <li class="question" style="margin-left:1em;">
+          <a href="questions/stl/sequence_containers/vector/removing_vector_element_2.html">
+           removing_vector_element_2
+          </a>
+         </li>
+         <li class="question" style="margin-left:1em;">
+          <a href="questions/stl/sequence_containers/vector/reserve_capacity_change2.html">
+           reserve_capacity_change2
+          </a>
+         </li>
+        </ul>
+       </div>
+       <div class="directory">
+        <div class="directory-name" onclick="toggleDirectory(event)">
+         forward_list
+        </div>
+        <ul class="directory-content" style="list-style: none;">
+         <li class="question" style="margin-left:1em;">
+          <a href="questions/stl/sequence_containers/forward_list/erase_after.html">
+           erase_after
+          </a>
+         </li>
+         <li class="question" style="margin-left:1em;">
+          <a href="questions/stl/sequence_containers/forward_list/invalidating_iterator.html">
+           invalidating_iterator
+          </a>
+         </li>
+         <li class="question" style="margin-left:1em;">
+          <a href="questions/stl/sequence_containers/forward_list/merge.html">
+           merge
+          </a>
+         </li>
+         <li class="question" style="margin-left:1em;">
+          <a href="questions/stl/sequence_containers/forward_list/splice_after.html">
+           splice_after
+          </a>
+         </li>
+         <li class="question" style="margin-left:1em;">
+          <a href="questions/stl/sequence_containers/forward_list/insert_after.html">
+           insert_after
+          </a>
+         </li>
+        </ul>
+       </div>
+       <div class="directory">
+        <div class="directory-name" onclick="toggleDirectory(event)">
+         array
+        </div>
+        <ul class="directory-content" style="list-style: none;">
+         <li class="question" style="margin-left:1em;">
+          <a href="questions/stl/sequence_containers/array/aggregate_ctor.html">
+           aggregate_ctor
+          </a>
+         </li>
+         <li class="question" style="margin-left:1em;">
+          <a href="questions/stl/sequence_containers/array/default_ctor.html">
+           default_ctor
+          </a>
+         </li>
+         <div class="directory">
+          <div class="directory-name" onclick="toggleDirectory(event)">
+           .vscode
+          </div>
+          <ul class="directory-content" style="list-style: none;">
+          </ul>
+         </div>
+         <li class="question" style="margin-left:1em;">
+          <a href="questions/stl/sequence_containers/array/fill.html">
+           fill
+          </a>
+         </li>
+        </ul>
+       </div>
+       <div class="directory">
+        <div class="directory-name" onclick="toggleDirectory(event)">
+         container_adaptors
+        </div>
+        <ul class="directory-content" style="list-style: none;">
+         <li class="question" style="margin-left:1em;">
+          <a href="questions/stl/sequence_containers/container_adaptors/priority_queues_with_different_comparators.html">
+           priority_queues_with_different_comparators
+          </a>
+         </li>
+         <li class="question" style="margin-left:1em;">
+          <a href="questions/stl/sequence_containers/container_adaptors/queue_what_is_front_and_back.html">
+           queue_what_is_front_and_back
+          </a>
+         </li>
+         <li class="question" style="margin-left:1em;">
+          <a href="questions/stl/sequence_containers/container_adaptors/stack_underlying_container.html">
+           stack_underlying_container
+          </a>
+         </li>
+         <li class="question" style="margin-left:1em;">
+          <a href="questions/stl/sequence_containers/container_adaptors/queue_with_wrong_underlying_container_but_not_using_missing_funcionality.html">
+           queue_with_wrong_underlying_container_but_not_using_missing_funcionality
+          </a>
+         </li>
+         <li class="question" style="margin-left:1em;">
+          <a href="questions/stl/sequence_containers/container_adaptors/priority_queue_what_is_top.html">
+           priority_queue_what_is_top
+          </a>
+         </li>
+         <li class="question" style="margin-left:1em;">
+          <a href="questions/stl/sequence_containers/container_adaptors/stack_wrong_underlying_container.html">
+           stack_wrong_underlying_container
+          </a>
+         </li>
+         <li class="question" style="margin-left:1em;">
+          <a href="questions/stl/sequence_containers/container_adaptors/priority_queue_with_other_comparator.html">
+           priority_queue_with_other_comparator
+          </a>
+         </li>
+         <li class="question" style="margin-left:1em;">
+          <a href="questions/stl/sequence_containers/container_adaptors/queue_with_wrong_underlying_container.html">
+           queue_with_wrong_underlying_container
+          </a>
+         </li>
+         <li class="question" style="margin-left:1em;">
+          <a href="questions/stl/sequence_containers/container_adaptors/stack_what_is_top.html">
+           stack_what_is_top
+          </a>
+         </li>
+        </ul>
+       </div>
+       <div class="directory">
+        <div class="directory-name" onclick="toggleDirectory(event)">
+         list
+        </div>
+        <ul class="directory-content" style="list-style: none;">
+         <li class="question" style="margin-left:1em;">
+          <a href="questions/stl/sequence_containers/list/unique_with_custom_predicate.html">
+           unique_with_custom_predicate
+          </a>
+         </li>
+         <li class="question" style="margin-left:1em;">
+          <a href="questions/stl/sequence_containers/list/merger_unsorted_lists.html">
+           merger_unsorted_lists
+          </a>
+         </li>
+         <li class="question" style="margin-left:1em;">
+          <a href="questions/stl/sequence_containers/list/reverse_list.html">
+           reverse_list
+          </a>
+         </li>
+         <li class="question" style="margin-left:1em;">
+          <a href="questions/stl/sequence_containers/list/merge_sorted_lists_with_reverse_comparator.html">
+           merge_sorted_lists_with_reverse_comparator
+          </a>
+         </li>
+         <li class="question" style="margin-left:1em;">
+          <a href="questions/stl/sequence_containers/list/unique_unsorted_list.html">
+           unique_unsorted_list
+          </a>
+         </li>
+         <li class="question" style="margin-left:1em;">
+          <a href="questions/stl/sequence_containers/list/merge_sorted_lists.html">
+           merge_sorted_lists
+          </a>
+         </li>
+         <li class="question" style="margin-left:1em;">
+          <a href="questions/stl/sequence_containers/list/splice_two_lists.html">
+           splice_two_lists
+          </a>
+         </li>
+         <li class="question" style="margin-left:1em;">
+          <a href="questions/stl/sequence_containers/list/merge_and_iterators_change.html">
+           merge_and_iterators_change
+          </a>
+         </li>
+         <li class="question" style="margin-left:1em;">
+          <a href="questions/stl/sequence_containers/list/unique_sorted_list.html">
+           unique_sorted_list
+          </a>
+         </li>
+         <li class="question" style="margin-left:1em;">
+          <a href="questions/stl/sequence_containers/list/remove_if.html">
+           remove_if
+          </a>
+         </li>
+         <li class="question" style="margin-left:1em;">
+          <a href="questions/stl/sequence_containers/list/splice_part_of_the_list.html">
+           splice_part_of_the_list
+          </a>
+         </li>
+         <li class="question" style="margin-left:1em;">
+          <a href="questions/stl/sequence_containers/list/list_front_manip.html">
+           list_front_manip
+          </a>
+         </li>
+        </ul>
+       </div>
+       <div class="directory">
+        <div class="directory-name" onclick="toggleDirectory(event)">
+         comparison
+        </div>
+        <ul class="directory-content" style="list-style: none;">
+         <li class="question" style="margin-left:1em;">
+          <a href="questions/stl/sequence_containers/comparison/space_comparison.html">
+           space_comparison
+          </a>
+         </li>
+        </ul>
+       </div>
+       <div class="directory">
+        <div class="directory-name" onclick="toggleDirectory(event)">
+         deque
+        </div>
+        <ul class="directory-content" style="list-style: none;">
+         <li class="question" style="margin-left:1em;">
+          <a href="questions/stl/sequence_containers/deque/deque_and_vector_allocation_comparison.html">
+           deque_and_vector_allocation_comparison
+          </a>
+         </li>
+         <li class="question" style="margin-left:1em;">
+          <a href="questions/stl/sequence_containers/deque/TEST.html">
+           TEST
+          </a>
+         </li>
+         <li class="question" style="margin-left:1em;">
+          <a href="questions/stl/sequence_containers/deque/checking_deque_allocation.html">
+           checking_deque_allocation
+          </a>
+         </li>
+         <li class="question" style="margin-left:1em;">
+          <a href="questions/stl/sequence_containers/deque/using_deque.html">
+           using_deque
+          </a>
+         </li>
+        </ul>
+       </div>
+      </ul>
+     </div>
+     <div class="directory">
+      <div class="directory-name" onclick="toggleDirectory(event)">
+       .vscode
+      </div>
+      <ul class="directory-content" style="list-style: none;">
+      </ul>
+     </div>
+     <div class="directory">
+      <div class="directory-name" onclick="toggleDirectory(event)">
+       associative_containers
+      </div>
+      <ul class="directory-content" style="list-style: none;">
+       <div class="directory">
+        <div class="directory-name" onclick="toggleDirectory(event)">
+         set
+        </div>
+        <ul class="directory-content" style="list-style: none;">
+         <li class="question" style="margin-left:1em;">
+          <a href="questions/stl/associative_containers/set/set_inserting_new_element.html">
+           set_inserting_new_element
+          </a>
+         </li>
+         <li class="question" style="margin-left:1em;">
+          <a href="questions/stl/associative_containers/set/find_elements.html">
+           find_elements
+          </a>
+         </li>
+         <li class="question" style="margin-left:1em;">
+          <a href="questions/stl/associative_containers/set/sets_with_different_comparators.html">
+           sets_with_different_comparators
+          </a>
+         </li>
+         <li class="question" style="margin-left:1em;">
+          <a href="questions/stl/associative_containers/set/merge_sets.html">
+           merge_sets
+          </a>
+         </li>
+         <li class="question" style="margin-left:1em;">
+          <a href="questions/stl/associative_containers/set/extract_node.html">
+           extract_node
+          </a>
+         </li>
+         <li class="question" style="margin-left:1em;">
+          <a href="questions/stl/associative_containers/set/sets_iterators_after_merge.html">
+           sets_iterators_after_merge
+          </a>
+         </li>
+         <li class="question" style="margin-left:1em;">
+          <a href="questions/stl/associative_containers/set/iterator_after_merge.html">
+           iterator_after_merge
+          </a>
+         </li>
+         <li class="question" style="margin-left:1em;">
+          <a href="questions/stl/associative_containers/set/lower_and_upper_bounds.html">
+           lower_and_upper_bounds
+          </a>
+         </li>
+         <li class="question" style="margin-left:1em;">
+          <a href="questions/stl/associative_containers/set/contains.html">
+           contains
+          </a>
+         </li>
+         <li class="question" style="margin-left:1em;">
+          <a href="questions/stl/associative_containers/set/count_elements.html">
+           count_elements
+          </a>
+         </li>
+         <li class="question" style="margin-left:1em;">
+          <a href="questions/stl/associative_containers/set/merge_sets_with_common_elements.html">
+           merge_sets_with_common_elements
+          </a>
+         </li>
+        </ul>
+       </div>
+       <div class="directory">
+        <div class="directory-name" onclick="toggleDirectory(event)">
+         unordered
+        </div>
+        <ul class="directory-content" style="list-style: none;">
+         <li class="question" style="margin-left:1em;">
+          <a href="questions/stl/associative_containers/unordered/multiset_rehash_bucket_print.html">
+           multiset_rehash_bucket_print
+          </a>
+         </li>
+         <li class="question" style="margin-left:1em;">
+          <a href="questions/stl/associative_containers/unordered/multiset_rehash.html">
+           multiset_rehash
+          </a>
+         </li>
+         <li class="question" style="margin-left:1em;">
+          <a href="questions/stl/associative_containers/unordered/get_buckets_count.html">
+           get_buckets_count
+          </a>
+         </li>
+         <li class="question" style="margin-left:1em;">
+          <a href="questions/stl/associative_containers/unordered/load_factor.html">
+           load_factor
+          </a>
+         </li>
+         <li class="question" style="margin-left:1em;">
+          <a href="questions/stl/associative_containers/unordered/bucket_iterators.html">
+           bucket_iterators
+          </a>
+         </li>
+         <li class="question" style="margin-left:1em;">
+          <a href="questions/stl/associative_containers/unordered/multiset_custom_hashing_function.html">
+           multiset_custom_hashing_function
+          </a>
+         </li>
+         <li class="question" style="margin-left:1em;">
+          <a href="questions/stl/associative_containers/unordered/multiset_reserve.html">
+           multiset_reserve
+          </a>
+         </li>
+        </ul>
+       </div>
+       <div class="directory">
+        <div class="directory-name" onclick="toggleDirectory(event)">
+         map
+        </div>
+        <ul class="directory-content" style="list-style: none;">
+         <li class="question" style="margin-left:1em;">
+          <a href="questions/stl/associative_containers/map/insert_duplicate.html">
+           insert_duplicate
+          </a>
+         </li>
+         <li class="question" style="margin-left:1em;">
+          <a href="questions/stl/associative_containers/map/set_non_existing_element.html">
+           set_non_existing_element
+          </a>
+         </li>
+         <li class="question" style="margin-left:1em;">
+          <a href="questions/stl/associative_containers/map/iterators_after_merge.html">
+           iterators_after_merge
+          </a>
+         </li>
+         <li class="question" style="margin-left:1em;">
+          <a href="questions/stl/associative_containers/map/merge_two_maps.html">
+           merge_two_maps
+          </a>
+         </li>
+         <li class="question" style="margin-left:1em;">
+          <a href="questions/stl/associative_containers/map/get_existing_and_non_existing_elements_with_at.html">
+           get_existing_and_non_existing_elements_with_at
+          </a>
+         </li>
+         <li class="question" style="margin-left:1em;">
+          <a href="questions/stl/associative_containers/map/get_existing_and_non_existing_elements.html">
+           get_existing_and_non_existing_elements
+          </a>
+         </li>
+         <li class="question" style="margin-left:1em;">
+          <a href="questions/stl/associative_containers/map/equal_range.html">
+           equal_range
+          </a>
+         </li>
+         <li class="question" style="margin-left:1em;">
+          <a href="questions/stl/associative_containers/map/try_emplace.html">
+           try_emplace
+          </a>
+         </li>
+        </ul>
+       </div>
+       <div class="directory">
+        <div class="directory-name" onclick="toggleDirectory(event)">
+         multimap
+        </div>
+        <ul class="directory-content" style="list-style: none;">
+         <li class="question" style="margin-left:1em;">
+          <a href="questions/stl/associative_containers/multimap/insert_element_with_duplicated_key.html">
+           insert_element_with_duplicated_key
+          </a>
+         </li>
+         <li class="question" style="margin-left:1em;">
+          <a href="questions/stl/associative_containers/multimap/find_duplicated_element.html">
+           find_duplicated_element
+          </a>
+         </li>
+         <li class="question" style="margin-left:1em;">
+          <a href="questions/stl/associative_containers/multimap/emplace_hint.html">
+           emplace_hint
+          </a>
+         </li>
+         <li class="question" style="margin-left:1em;">
+          <a href="questions/stl/associative_containers/multimap/get_element_from_map.html">
+           get_element_from_map
+          </a>
+         </li>
+         <li class="question" style="margin-left:1em;">
+          <a href="questions/stl/associative_containers/multimap/merging_two_maps.html">
+           merging_two_maps
+          </a>
+         </li>
+        </ul>
+       </div>
+       <div class="directory">
+        <div class="directory-name" onclick="toggleDirectory(event)">
+         multiset
+        </div>
+        <ul class="directory-content" style="list-style: none;">
+         <li class="question" style="margin-left:1em;">
+          <a href="questions/stl/associative_containers/multiset/merge_set_into_multiset.html">
+           merge_set_into_multiset
+          </a>
+         </li>
+         <li class="question" style="margin-left:1em;">
+          <a href="questions/stl/associative_containers/multiset/merge_sets_with_duplicated_elements.html">
+           merge_sets_with_duplicated_elements
+          </a>
+         </li>
+         <li class="question" style="margin-left:1em;">
+          <a href="questions/stl/associative_containers/multiset/merge_multiset_into_sset.html">
+           merge_multiset_into_sset
+          </a>
+         </li>
+         <li class="question" style="margin-left:1em;">
+          <a href="questions/stl/associative_containers/multiset/iterators_after_merge.html">
+           iterators_after_merge
+          </a>
+         </li>
+         <li class="question" style="margin-left:1em;">
+          <a href="questions/stl/associative_containers/multiset/upper_and_lower_bound.html">
+           upper_and_lower_bound
+          </a>
+         </li>
+         <li class="question" style="margin-left:1em;">
+          <a href="questions/stl/associative_containers/multiset/insert_duplicated_elements.html">
+           insert_duplicated_elements
+          </a>
+         </li>
+         <li class="question" style="margin-left:1em;">
+          <a href="questions/stl/associative_containers/multiset/count.html">
+           count
+          </a>
+         </li>
+        </ul>
+       </div>
+      </ul>
+     </div>
+    </ul>
+   </div>
+   <div class="directory">
+    <div class="directory-name" onclick="toggleDirectory(event)">
+     arrays
+    </div>
+    <ul class="directory-content" style="list-style: none;">
+     <li class="question" style="margin-left:1em;">
+      <a href="questions/arrays/pointer_to_pointer_arithmetic3.html">
+       pointer_to_pointer_arithmetic3
+      </a>
+     </li>
+     <li class="question" style="margin-left:1em;">
+      <a href="questions/arrays/reference_to_array_as_a_function_parameter.html">
+       reference_to_array_as_a_function_parameter
+      </a>
+     </li>
+     <li class="question" style="margin-left:1em;">
+      <a href="questions/arrays/reference_to_array_as_a_function_parameter2.html">
+       reference_to_array_as_a_function_parameter2
+      </a>
+     </li>
+     <li class="question" style="margin-left:1em;">
+      <a href="questions/arrays/memory_leakage.html">
+       memory_leakage
+      </a>
+     </li>
+     <li class="question" style="margin-left:1em;">
+      <a href="questions/arrays/passing_pointer_as_an_array.html">
+       passing_pointer_as_an_array
+      </a>
+     </li>
+     <div class="directory">
+      <div class="directory-name" onclick="toggleDirectory(event)">
+       .vscode
+      </div>
+      <ul class="directory-content" style="list-style: none;">
+      </ul>
+     </div>
+     <li class="question" style="margin-left:1em;">
+      <a href="questions/arrays/reference_to_multidimensional_array_as_a_parameter2.html">
+       reference_to_multidimensional_array_as_a_parameter2
+      </a>
+     </li>
+     <li class="question" style="margin-left:1em;">
+      <a href="questions/arrays/pointer_to_pointer_as_a_parameter.html">
+       pointer_to_pointer_as_a_parameter
+      </a>
+     </li>
+     <li class="question" style="margin-left:1em;">
+      <a href="questions/arrays/converting_multidimensional_array_to_other_size_mutlidimensional_array2.html">
+       converting_multidimensional_array_to_other_size_mutlidimensional_array2
+      </a>
+     </li>
+     <li class="question" style="margin-left:1em;">
+      <a href="questions/arrays/converting_multidimensional_array_to_other_size_mutlidimensional_array.html">
+       converting_multidimensional_array_to_other_size_mutlidimensional_array
+      </a>
+     </li>
+     <li class="question" style="margin-left:1em;">
+      <a href="questions/arrays/passing_pointer_as_an_array2.html">
+       passing_pointer_as_an_array2
+      </a>
+     </li>
+     <li class="question" style="margin-left:1em;">
+      <a href="questions/arrays/TEST.html">
+       TEST
+      </a>
+     </li>
+     <li class="question" style="margin-left:1em;">
+      <a href="questions/arrays/pointer_to_array_as_a_parameter.html">
+       pointer_to_array_as_a_parameter
+      </a>
+     </li>
+     <li class="question" style="margin-left:1em;">
+      <a href="questions/arrays/reference_to_multidimensional_array_as_a_parameter.html">
+       reference_to_multidimensional_array_as_a_parameter
+      </a>
+     </li>
+     <li class="question" style="margin-left:1em;">
+      <a href="questions/arrays/deleting_dynamic_memory.html">
+       deleting_dynamic_memory
+      </a>
+     </li>
+     <li class="question" style="margin-left:1em;">
+      <a href="questions/arrays/pointer_to_an_array_implicit_conversion.html">
+       pointer_to_an_array_implicit_conversion
+      </a>
+     </li>
+     <li class="question" style="margin-left:1em;">
+      <a href="questions/arrays/converting_multidimensional_array_to_a_pointer.html">
+       converting_multidimensional_array_to_a_pointer
+      </a>
+     </li>
+     <li class="question" style="margin-left:1em;">
+      <a href="questions/arrays/pointer_to_pointer_arithmetic.html">
+       pointer_to_pointer_arithmetic
+      </a>
+     </li>
+     <li class="question" style="margin-left:1em;">
+      <a href="questions/arrays/dynamic_array.html">
+       dynamic_array
+      </a>
+     </li>
+     <li class="question" style="margin-left:1em;">
+      <a href="questions/arrays/pointer_to_pointer_arithmetic2.html">
+       pointer_to_pointer_arithmetic2
+      </a>
+     </li>
+     <li class="question" style="margin-left:1em;">
+      <a href="questions/arrays/array_as_a_function_parameter.html">
+       array_as_a_function_parameter
+      </a>
+     </li>
+    </ul>
+   </div>
+   <div class="directory">
+    <div class="directory-name" onclick="toggleDirectory(event)">
+     smart_pointers
+    </div>
+    <ul class="directory-content" style="list-style: none;">
+     <div class="directory">
+      <div class="directory-name" onclick="toggleDirectory(event)">
+       shared_ptr
+      </div>
+      <ul class="directory-content" style="list-style: none;">
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/smart_pointers/shared_ptr/shared_ptr_move.html">
+         shared_ptr_move
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/smart_pointers/shared_ptr/shared_ptr_polymorphism_without_virtual_dtor.html">
+         shared_ptr_polymorphism_without_virtual_dtor
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/smart_pointers/shared_ptr/shared_ptr_array.html">
+         shared_ptr_array
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/smart_pointers/shared_ptr/shared_ptr_initialized_with_unique_ptr.html">
+         shared_ptr_initialized_with_unique_ptr
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/smart_pointers/shared_ptr/shared_ptr_use_count.html">
+         shared_ptr_use_count
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/smart_pointers/shared_ptr/shared_ptr_and_member_pointer_user_count.html">
+         shared_ptr_and_member_pointer_user_count
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/smart_pointers/shared_ptr/shared_ptr_invalid_member_ptr.html">
+         shared_ptr_invalid_member_ptr
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/smart_pointers/shared_ptr/shared_ptr_and_member_pointer.html">
+         shared_ptr_and_member_pointer
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/smart_pointers/shared_ptr/shared_ptr_set_to_other_resource.html">
+         shared_ptr_set_to_other_resource
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/smart_pointers/shared_ptr/shared_ptr_accessing_member_ptr_after_first_ptr_reset.html">
+         shared_ptr_accessing_member_ptr_after_first_ptr_reset
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/smart_pointers/shared_ptr/shared_ptr_change_value.html">
+         shared_ptr_change_value
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/smart_pointers/shared_ptr/two_separate_ptrs_pointing_to_the_same_resource.html">
+         two_separate_ptrs_pointing_to_the_same_resource
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/smart_pointers/shared_ptr/shared_ptr_polymorphism.html">
+         shared_ptr_polymorphism
+        </a>
+       </li>
+      </ul>
+     </div>
+     <div class="directory">
+      <div class="directory-name" onclick="toggleDirectory(event)">
+       unique_ptr
+      </div>
+      <ul class="directory-content" style="list-style: none;">
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/smart_pointers/unique_ptr/unique_ptr_implicit_conversion.html">
+         unique_ptr_implicit_conversion
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/smart_pointers/unique_ptr/copying_unique_ptr.html">
+         copying_unique_ptr
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/smart_pointers/unique_ptr/unique_ptr_reset.html">
+         unique_ptr_reset
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/smart_pointers/unique_ptr/move_unique_ptr2.html">
+         move_unique_ptr2
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/smart_pointers/unique_ptr/unique_ptr_factory_function.html">
+         unique_ptr_factory_function
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/smart_pointers/unique_ptr/unique_ptr_reset_with_get_with_deleting.html">
+         unique_ptr_reset_with_get_with_deleting
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/smart_pointers/unique_ptr/release_unique_ptr.html">
+         release_unique_ptr
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/smart_pointers/unique_ptr/unique_ptr_explicit_conversion.html">
+         unique_ptr_explicit_conversion
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/smart_pointers/unique_ptr/passing_unique_ptr_by_rvalue_reference.html">
+         passing_unique_ptr_by_rvalue_reference
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/smart_pointers/unique_ptr/passing_unique_ptr_by_reference.html">
+         passing_unique_ptr_by_reference
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/smart_pointers/unique_ptr/get_double_free.html">
+         get_double_free
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/smart_pointers/unique_ptr/move_unique_ptr_with_reference_deleter.html">
+         move_unique_ptr_with_reference_deleter
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/smart_pointers/unique_ptr/unique_ptr_get_raw_pointer.html">
+         unique_ptr_get_raw_pointer
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/smart_pointers/unique_ptr/raw_pointer_polymorphism.html">
+         raw_pointer_polymorphism
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/smart_pointers/unique_ptr/unique_ptr_array.html">
+         unique_ptr_array
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/smart_pointers/unique_ptr/unique_ptr_reset_with_get_without_deleting.html">
+         unique_ptr_reset_with_get_without_deleting
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/smart_pointers/unique_ptr/move_unique_ptr.html">
+         move_unique_ptr
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/smart_pointers/unique_ptr/unique_ptr_polymorphism.html">
+         unique_ptr_polymorphism
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/smart_pointers/unique_ptr/unique_ptr_custom_deleter.html">
+         unique_ptr_custom_deleter
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/smart_pointers/unique_ptr/unique_ptr_reset_with_release.html">
+         unique_ptr_reset_with_release
+        </a>
+       </li>
+      </ul>
+     </div>
+     <div class="directory">
+      <div class="directory-name" onclick="toggleDirectory(event)">
+       .vscode
+      </div>
+      <ul class="directory-content" style="list-style: none;">
+      </ul>
+     </div>
+     <li class="question" style="margin-left:1em;">
+      <a href="questions/smart_pointers/TEST.html">
+       TEST
+      </a>
+     </li>
+    </ul>
+   </div>
+   <div class="directory">
+    <div class="directory-name" onclick="toggleDirectory(event)">
+     value_category
+    </div>
+    <ul class="directory-content" style="list-style: none;">
+     <li class="question" style="margin-left:1em;">
+      <a href="questions/value_category/lvalues.html">
+       lvalues
+      </a>
+     </li>
+     <li class="question" style="margin-left:1em;">
+      <a href="questions/value_category/decltype_expression.html">
+       decltype_expression
+      </a>
+     </li>
+     <li class="question" style="margin-left:1em;">
+      <a href="questions/value_category/left_hand_side_of_an_expression.html">
+       left_hand_side_of_an_expression
+      </a>
+     </li>
+     <li class="question" style="margin-left:1em;">
+      <a href="questions/value_category/decltype.html">
+       decltype
+      </a>
+     </li>
+     <li class="question" style="margin-left:1em;">
+      <a href="questions/value_category/auto_and_decltype_with_function.html">
+       auto_and_decltype_with_function
+      </a>
+     </li>
+     <li class="question" style="margin-left:1em;">
+      <a href="questions/value_category/basic_operations_category.html">
+       basic_operations_category
+      </a>
+     </li>
+     <li class="question" style="margin-left:1em;">
+      <a href="questions/value_category/differences2.html">
+       differences2
+      </a>
+     </li>
+     <li class="question" style="margin-left:1em;">
+      <a href="questions/value_category/TEST.html">
+       TEST
+      </a>
+     </li>
+     <li class="question" style="margin-left:1em;">
+      <a href="questions/value_category/differences.html">
+       differences
+      </a>
+     </li>
+    </ul>
+   </div>
+   <div class="directory">
+    <div class="directory-name" onclick="toggleDirectory(event)">
+     classes
+    </div>
+    <ul class="directory-content" style="list-style: none;">
+     <div class="directory">
+      <div class="directory-name" onclick="toggleDirectory(event)">
+       vtable
+      </div>
+      <ul class="directory-content" style="list-style: none;">
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/vtable/vtable_ptr_memory_inspection.html">
+         vtable_ptr_memory_inspection
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/vtable/vtable_ptr_placement_in_class.html">
+         vtable_ptr_placement_in_class
+        </a>
+       </li>
+      </ul>
+     </div>
+     <div class="directory">
+      <div class="directory-name" onclick="toggleDirectory(event)">
+       operators
+      </div>
+      <ul class="directory-content" style="list-style: none;">
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/operators/ostream_unary_operator_explicit_and_shorthand_call.html">
+         ostream_unary_operator_explicit_and_shorthand_call
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/operators/levels_of_implicit_conversion.html">
+         levels_of_implicit_conversion
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/operators/static_new_and_delete_operators.html">
+         static_new_and_delete_operators
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/operators/binary_operator_explicit_and_shorthand_call.html">
+         binary_operator_explicit_and_shorthand_call
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/operators/ostream_operator_built_in_type.html">
+         ostream_operator_built_in_type
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/operators/prefix_operator_explicit_and_shorthand_call.html">
+         prefix_operator_explicit_and_shorthand_call
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/operators/ostream_undefined_operator.html">
+         ostream_undefined_operator
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/operators/conversion_ctor_and_function_ambiguity.html">
+         conversion_ctor_and_function_ambiguity
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/operators/postfix_operator_explicit_and_shorthand_call.html">
+         postfix_operator_explicit_and_shorthand_call
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/operators/member_and_non_member_operator_overload.html">
+         member_and_non_member_operator_overload
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/operators/explicit_conversion_function.html">
+         explicit_conversion_function
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/operators/ostream_friend_binary_operator_explicit_and_shorthand_call.html">
+         ostream_friend_binary_operator_explicit_and_shorthand_call
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/operators/conversion_function.html">
+         conversion_function
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/operators/static_binary_operator.html">
+         static_binary_operator
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/operators/funcion_object.html">
+         funcion_object
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/operators/unary_operator_explicit_and_shorthand_call.html">
+         unary_operator_explicit_and_shorthand_call
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/operators/non_member_assignment_operator.html">
+         non_member_assignment_operator
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/operators/conversion_ctor_and_function_ambiguity2.html">
+         conversion_ctor_and_function_ambiguity2
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/operators/explicit_conversion_function_static_cast.html">
+         explicit_conversion_function_static_cast
+        </a>
+       </li>
+      </ul>
+     </div>
+     <div class="directory">
+      <div class="directory-name" onclick="toggleDirectory(event)">
+       pointers_to_members
+      </div>
+      <ul class="directory-content" style="list-style: none;">
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/pointers_to_members/pointer_to_object_member_function_used_with_another_object.html">
+         pointer_to_object_member_function_used_with_another_object
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/pointers_to_members/pointer_to_object_member_function.html">
+         pointer_to_object_member_function
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/pointers_to_members/pointer_to_static_class_member_function.html">
+         pointer_to_static_class_member_function
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/pointers_to_members/pointer_to_class_variable_accessed_through_object.html">
+         pointer_to_class_variable_accessed_through_object
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/pointers_to_members/base_class_pointer_to_member_function_used_with_derived_object.html">
+         base_class_pointer_to_member_function_used_with_derived_object
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/pointers_to_members/derived_class_pointer_to_member_function_converted_to_base.html">
+         derived_class_pointer_to_member_function_converted_to_base
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/pointers_to_members/pointer_to_class_static_variable.html">
+         pointer_to_class_static_variable
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/pointers_to_members/base_class_pointer_to_member_function_converted_to_derived.html">
+         base_class_pointer_to_member_function_converted_to_derived
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/pointers_to_members/pointer_to_member_variable.html">
+         pointer_to_member_variable
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/pointers_to_members/pointer_to_derived_const_member_function_used_with_base_object_without_the_const_version.html">
+         pointer_to_derived_const_member_function_used_with_base_object_without_the_const_version
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/pointers_to_members/base_class_pointer_to_member_function_converted_to_derived_with_static_cast.html">
+         base_class_pointer_to_member_function_converted_to_derived_with_static_cast
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/pointers_to_members/pointer_to_member_variable_but_initialized_with_const_member.html">
+         pointer_to_member_variable_but_initialized_with_const_member
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/pointers_to_members/pointer_to_static_member_function.html">
+         pointer_to_static_member_function
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/pointers_to_members/pointer_to_object_member_function_but_initialized_with_const_function.html">
+         pointer_to_object_member_function_but_initialized_with_const_function
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/pointers_to_members/pointer_to_const_object_member_function_but_initialized_with_non_const_function.html">
+         pointer_to_const_object_member_function_but_initialized_with_non_const_function
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/pointers_to_members/pointer_to_const_member_variable_but_initialized_with_non_const_member.html">
+         pointer_to_const_member_variable_but_initialized_with_non_const_member
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/pointers_to_members/pointer_to_private_member_variable.html">
+         pointer_to_private_member_variable
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/pointers_to_members/pointer_to_class_variable.html">
+         pointer_to_class_variable
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/pointers_to_members/pointer_to_class_static_variable_accessed_through_object.html">
+         pointer_to_class_static_variable_accessed_through_object
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/pointers_to_members/pointer_to_object_member_function_conversion.html">
+         pointer_to_object_member_function_conversion
+        </a>
+       </li>
+      </ul>
+     </div>
+     <div class="directory">
+      <div class="directory-name" onclick="toggleDirectory(event)">
+       static
+      </div>
+      <ul class="directory-content" style="list-style: none;">
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/static/static_member_function_in_class_defined.html">
+         static_member_function_in_class_defined
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/static/static_inline_member_function.html">
+         static_inline_member_function
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/static/static_member_variable_in_source_definition.html">
+         static_member_variable_in_source_definition
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/static/static_member_variable_initialized_in_ctor.html">
+         static_member_variable_initialized_in_ctor
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/static/static_member_variable_in_header_definition.html">
+         static_member_variable_in_header_definition
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/static/static_member_function_in_header_defined.html">
+         static_member_function_in_header_defined
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/static/static_member_variable_not_defined.html">
+         static_member_variable_not_defined
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/static/static_inline_member_variable.html">
+         static_inline_member_variable
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/static/static_member_function_in_source_defined.html">
+         static_member_function_in_source_defined
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/static/static_member_variable_initialized_in_initializer_list.html">
+         static_member_variable_initialized_in_initializer_list
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/static/static_member_variable_defined_by_static_member_function.html">
+         static_member_variable_defined_by_static_member_function
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/static/static_member_variable_used_and_initialized_in_member_function.html">
+         static_member_variable_used_and_initialized_in_member_function
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/static/static_member_function_not_defined.html">
+         static_member_function_not_defined
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/static/static_member_variable_in_class_definition.html">
+         static_member_variable_in_class_definition
+        </a>
+       </li>
+      </ul>
+     </div>
+     <div class="directory">
+      <div class="directory-name" onclick="toggleDirectory(event)">
+       RTTI
+      </div>
+      <ul class="directory-content" style="list-style: none;">
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/RTTI/removing_constness_with_dynamic_cast.html">
+         removing_constness_with_dynamic_cast
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/RTTI/upcasting_diamond_derived_class_pointer_to_most_top_parent.html">
+         upcasting_diamond_derived_class_pointer_to_most_top_parent
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/RTTI/upcasting_to_pointer_with_public_parent_class_with_dynamic_cast.html">
+         upcasting_to_pointer_with_public_parent_class_with_dynamic_cast
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/RTTI/upcasting_to_pointer_when_private_parent_class_with_dynamic_cast.html">
+         upcasting_to_pointer_when_private_parent_class_with_dynamic_cast
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/RTTI/downcasting_to_pointer_with_public_parent_class_with_dynamic_cast.html">
+         downcasting_to_pointer_with_public_parent_class_with_dynamic_cast
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/RTTI/adding_cv_qualifiers_with_dynamic_cast.html">
+         adding_cv_qualifiers_with_dynamic_cast
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/RTTI/removing_volatile_with_dynamic_cast.html">
+         removing_volatile_with_dynamic_cast
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/RTTI/upcasting_to_reference_when_private_parent_class_with_dynamic_cast.html">
+         upcasting_to_reference_when_private_parent_class_with_dynamic_cast
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/RTTI/downcasting_in_member_of_derived_class_with_private_parent.html">
+         downcasting_in_member_of_derived_class_with_private_parent
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/RTTI/downcasting_object_with_dynamic_cast.html">
+         downcasting_object_with_dynamic_cast
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/RTTI/dynamic_cast_pointer_to_non_polymorphic_base_holding_derived_back.html">
+         dynamic_cast_pointer_to_non_polymorphic_base_holding_derived_back
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/RTTI/dynamic_cast_pointer_to_base_holding_derived_back.html">
+         dynamic_cast_pointer_to_base_holding_derived_back
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/RTTI/downcasting_in_friend_func_of_derived_class_with_private_parent.html">
+         downcasting_in_friend_func_of_derived_class_with_private_parent
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/RTTI/removing_constness_from_const_volatile_with_dynamic_cast.html">
+         removing_constness_from_const_volatile_with_dynamic_cast
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/RTTI/dynamic_cast_in_base_ctor.html">
+         dynamic_cast_in_base_ctor
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/RTTI/upcasting_diamond_derived_class_with_virtual_base_pointer_to_most_top_parent.html">
+         upcasting_diamond_derived_class_with_virtual_base_pointer_to_most_top_parent
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/RTTI/downcasting_to_reference_with_public_parent_class_with_dynamic_cast.html">
+         downcasting_to_reference_with_public_parent_class_with_dynamic_cast
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/RTTI/upcasting_to_reference_with_public_parent_class_with_dynamic_cast.html">
+         upcasting_to_reference_with_public_parent_class_with_dynamic_cast
+        </a>
+       </li>
+      </ul>
+     </div>
+     <div class="directory">
+      <div class="directory-name" onclick="toggleDirectory(event)">
+       c-tors
+      </div>
+      <ul class="directory-content" style="list-style: none;">
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/c-tors/const_and_reference_members_ctor.html">
+         const_and_reference_members_ctor
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/c-tors/reference_members_default_ctor.html">
+         reference_members_default_ctor
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/c-tors/in_class_members_initialization_and_ctor.html">
+         in_class_members_initialization_and_ctor
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/c-tors/private_delete_operator.html">
+         private_delete_operator
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/c-tors/built_in_types_default_ctor.html">
+         built_in_types_default_ctor
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/c-tors/deep_copy.html">
+         deep_copy
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/c-tors/private_dtor.html">
+         private_dtor
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/c-tors/base_class_pointer_with_virtual_dtor.html">
+         base_class_pointer_with_virtual_dtor
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/c-tors/base_class_pointer.html">
+         base_class_pointer
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/c-tors/implicit_default_ctor.html">
+         implicit_default_ctor
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/c-tors/base_derived_ctor_and_dtor_order.html">
+         base_derived_ctor_and_dtor_order
+        </a>
+       </li>
+       <div class="directory">
+        <div class="directory-name" onclick="toggleDirectory(event)">
+         .vscode
+        </div>
+        <ul class="directory-content" style="list-style: none;">
+        </ul>
+       </div>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/c-tors/ambiguous_ctor_call.html">
+         ambiguous_ctor_call
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/c-tors/ambiguous_function_vs_class_object_declaration.html">
+         ambiguous_function_vs_class_object_declaration
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/c-tors/ctor_initialization_order.html">
+         ctor_initialization_order
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/c-tors/aggregate_initialization_private_protected_members.html">
+         aggregate_initialization_private_protected_members
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/c-tors/explicit_default_ctor.html">
+         explicit_default_ctor
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/c-tors/private_ctor.html">
+         private_ctor
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/c-tors/in_class_members_initialization.html">
+         in_class_members_initialization
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/c-tors/deleted_ctor.html">
+         deleted_ctor
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/c-tors/delegating_ctor.html">
+         delegating_ctor
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/c-tors/ambiguous_function_vs_class_object_declaration_uniform_initialization.html">
+         ambiguous_function_vs_class_object_declaration_uniform_initialization
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/c-tors/aggregate_initialization.html">
+         aggregate_initialization
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/c-tors/const_and_reference_members_in_class_initialization.html">
+         const_and_reference_members_in_class_initialization
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/c-tors/shallow_copy.html">
+         shallow_copy
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/c-tors/explicit_ctor.html">
+         explicit_ctor
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/c-tors/base_derived_ctor_members_and_dtor_order.html">
+         base_derived_ctor_members_and_dtor_order
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/c-tors/aggregate_with_deleted_default_ctor.html">
+         aggregate_with_deleted_default_ctor
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/c-tors/const_and_reference_members_ctor_initializer_list.html">
+         const_and_reference_members_ctor_initializer_list
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/c-tors/no_default_ctor.html">
+         no_default_ctor
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/c-tors/class_invariants.html">
+         class_invariants
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/c-tors/initializer_list_ctor.html">
+         initializer_list_ctor
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/c-tors/const_members_default_ctor.html">
+         const_members_default_ctor
+        </a>
+       </li>
+      </ul>
+     </div>
+     <div class="directory">
+      <div class="directory-name" onclick="toggleDirectory(event)">
+       nested
+      </div>
+      <ul class="directory-content" style="list-style: none;">
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/nested/private_nested_class.html">
+         private_nested_class
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/nested/accessing_nested_class_private_using_directives.html">
+         accessing_nested_class_private_using_directives
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/nested/accessing_conflicting_nested_class_members.html">
+         accessing_conflicting_nested_class_members
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/nested/public_nested_class.html">
+         public_nested_class
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/nested/accessing_nested_class_public_members_fully_qualified_names.html">
+         accessing_nested_class_public_members_fully_qualified_names
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/nested/accessing_outer_class_public_members.html">
+         accessing_outer_class_public_members
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/nested/accessing_nested_class_public_static_members.html">
+         accessing_nested_class_public_static_members
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/nested/accessing_outer_using_directives.html">
+         accessing_outer_using_directives
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/nested/anonymous_nested_class_conflicting_public_data_members.html">
+         anonymous_nested_class_conflicting_public_data_members
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/nested/class_member_of_nested_class_type.html">
+         class_member_of_nested_class_type
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/nested/super_nested_class.html">
+         super_nested_class
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/nested/anonymous_nested_class_public_data_members_accessed_outside.html">
+         anonymous_nested_class_public_data_members_accessed_outside
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/nested/accessing_nested_class_public_static_members_fully_qualified_names.html">
+         accessing_nested_class_public_static_members_fully_qualified_names
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/nested/accessing_nested_class_public_static_members_through_using_declaration.html">
+         accessing_nested_class_public_static_members_through_using_declaration
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/nested/anonymous_nested_class_public_functions_accessed_outside.html">
+         anonymous_nested_class_public_functions_accessed_outside
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/nested/accessing_nested_class_public_using_directives.html">
+         accessing_nested_class_public_using_directives
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/nested/accessing_conflicting_outer_class_members_fully_qualified_names.html">
+         accessing_conflicting_outer_class_members_fully_qualified_names
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/nested/accessing_conflicting_nested_class_members_fully_qualified_names.html">
+         accessing_conflicting_nested_class_members_fully_qualified_names
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/nested/accessing_outer_class_private_static_members.html">
+         accessing_outer_class_private_static_members
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/nested/accessing_conflicting_outer_class_members.html">
+         accessing_conflicting_outer_class_members
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/nested/accessing_outer_class_public_static_members.html">
+         accessing_outer_class_public_static_members
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/nested/accessing_nested_class_public_members.html">
+         accessing_nested_class_public_members
+        </a>
+       </li>
+      </ul>
+     </div>
+     <div class="directory">
+      <div class="directory-name" onclick="toggleDirectory(event)">
+       hierarchy
+      </div>
+      <ul class="directory-content" style="list-style: none;">
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/hierarchy/overloading_base_function_and_access_through_base_pointer2.html">
+         overloading_base_function_and_access_through_base_pointer2
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/hierarchy/cross_cast_with_static_cast.html">
+         cross_cast_with_static_cast
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/hierarchy/not_overriding_inherited_pure_virtual_func.html">
+         not_overriding_inherited_pure_virtual_func
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/hierarchy/accessing_private_inherited_base_from_grand_derived.html">
+         accessing_private_inherited_base_from_grand_derived
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/hierarchy/downcasting_to_pointer_with_public_parent_class_with_static_cast.html">
+         downcasting_to_pointer_with_public_parent_class_with_static_cast
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/hierarchy/overloading_base_function2.html">
+         overloading_base_function2
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/hierarchy/overriding_different_return_type.html">
+         overriding_different_return_type
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/hierarchy/creating_abstract_class_object.html">
+         creating_abstract_class_object
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/hierarchy/overriden_function_outside_class_definition.html">
+         overriden_function_outside_class_definition
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/hierarchy/accessing_base_member_from_derived_object.html">
+         accessing_base_member_from_derived_object
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/hierarchy/using_declaration_base_class_members_and_private_inheritance.html">
+         using_declaration_base_class_members_and_private_inheritance
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/hierarchy/overriding_non_existing_function.html">
+         overriding_non_existing_function
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/hierarchy/object_slicing_no_virtual_dtor2.html">
+         object_slicing_no_virtual_dtor2
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/hierarchy/pure_virtual_func.html">
+         pure_virtual_func
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/hierarchy/pointer_to_base_and_derived_virtual_class.html">
+         pointer_to_base_and_derived_virtual_class
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/hierarchy/overloading_base_function.html">
+         overloading_base_function
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/hierarchy/inheriting_from_two_interfaces_each_overriding_all_of_base.html">
+         inheriting_from_two_interfaces_each_overriding_all_of_base
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/hierarchy/object_slicing_during_copying_derived_to_base_reference.html">
+         object_slicing_during_copying_derived_to_base_reference
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/hierarchy/diamond_class_ambiguous_call.html">
+         diamond_class_ambiguous_call
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/hierarchy/upcasting_to_object_with_public_parent_class_with_static_cast.html">
+         upcasting_to_object_with_public_parent_class_with_static_cast
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/hierarchy/overriding_different_arguments.html">
+         overriding_different_arguments
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/hierarchy/inheriting_from_two_interfaces_each_overriding_all_of_base_using_declaration.html">
+         inheriting_from_two_interfaces_each_overriding_all_of_base_using_declaration
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/hierarchy/upcasting_to_reference_with_public_parent_class_with_static_cast.html">
+         upcasting_to_reference_with_public_parent_class_with_static_cast
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/hierarchy/virtual_dtor.html">
+         virtual_dtor
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/hierarchy/using_declaration_protected_base_class_members.html">
+         using_declaration_protected_base_class_members
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/hierarchy/derived_class_accessing_public_and_protected_base_members.html">
+         derived_class_accessing_public_and_protected_base_members
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/hierarchy/derived_class_members_with_same_name_as_base_explicit_usage.html">
+         derived_class_members_with_same_name_as_base_explicit_usage
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/hierarchy/using_declaration_base_constructor.html">
+         using_declaration_base_constructor
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/hierarchy/overriding_covariant_return_type.html">
+         overriding_covariant_return_type
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/hierarchy/using_declaration_base_constructor_hidding.html">
+         using_declaration_base_constructor_hidding
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/hierarchy/inheriting_from_two_interfaces_each_overriding_different_part_of_base_using_declaration.html">
+         inheriting_from_two_interfaces_each_overriding_different_part_of_base_using_declaration
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/hierarchy/object_slicing_no_virtual_dtor.html">
+         object_slicing_no_virtual_dtor
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/hierarchy/inheriting_from_two_interfaces_each_overriding_all_of_base_public_using_declaration.html">
+         inheriting_from_two_interfaces_each_overriding_all_of_base_public_using_declaration
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/hierarchy/final_function_not_overriding_base_version.html">
+         final_function_not_overriding_base_version
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/hierarchy/object_slicing_during_copying_derived_to_base.html">
+         object_slicing_during_copying_derived_to_base
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/hierarchy/final_class_function_out_of_class_definition.html">
+         final_class_function_out_of_class_definition
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/hierarchy/derived_class_members_with_same_name_as_base.html">
+         derived_class_members_with_same_name_as_base
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/hierarchy/inheriting_from_two_interfaces_each_overriding_different_part_of_base.html">
+         inheriting_from_two_interfaces_each_overriding_different_part_of_base
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/hierarchy/upcasting_to_pointer_with_public_parent_class_with_static_cast.html">
+         upcasting_to_pointer_with_public_parent_class_with_static_cast
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/hierarchy/pointer_to_base_and_derived_non_virtual_class.html">
+         pointer_to_base_and_derived_non_virtual_class
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/hierarchy/inheriting_from_two_interfaces_each_overriding_different_part_of_virtual_base.html">
+         inheriting_from_two_interfaces_each_overriding_different_part_of_virtual_base
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/hierarchy/virtual_function_of_derived_called_through_derived_ref_in_base_ctor.html">
+         virtual_function_of_derived_called_through_derived_ref_in_base_ctor
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/hierarchy/overriding_different_argument_cv_qualifiers.html">
+         overriding_different_argument_cv_qualifiers
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/hierarchy/base_copy_ctor.html">
+         base_copy_ctor
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/hierarchy/contextual_keyword_final_and_override.html">
+         contextual_keyword_final_and_override
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/hierarchy/using_declaration_ambiguous_member.html">
+         using_declaration_ambiguous_member
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/hierarchy/diamond_class_ambiguous_call_overriden.html">
+         diamond_class_ambiguous_call_overriden
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/hierarchy/private_virtual_dtor.html">
+         private_virtual_dtor
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/hierarchy/accessing_private_inherited_base_from_grand_derived_public_using_declaration.html">
+         accessing_private_inherited_base_from_grand_derived_public_using_declaration
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/hierarchy/private_inheritance_and_members_accessing_outside_the_derived.html">
+         private_inheritance_and_members_accessing_outside_the_derived
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/hierarchy/overloading_base_function_and_access_through_base_pointer.html">
+         overloading_base_function_and_access_through_base_pointer
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/hierarchy/public_inheritance_and_members_accessing_outside_the_derived.html">
+         public_inheritance_and_members_accessing_outside_the_derived
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/hierarchy/using_declaration_private_base_class_members.html">
+         using_declaration_private_base_class_members
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/hierarchy/overriding_at_the_begining_of_function_declaration.html">
+         overriding_at_the_begining_of_function_declaration
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/hierarchy/overriding_different_function_cv_qualifiers.html">
+         overriding_different_function_cv_qualifiers
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/hierarchy/virtual_function_in_ctor_and_dtor.html">
+         virtual_function_in_ctor_and_dtor
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/hierarchy/downcasting_to_reference_with_public_parent_class_with_static_cast.html">
+         downcasting_to_reference_with_public_parent_class_with_static_cast
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/hierarchy/derived_class_accessing_base_members.html">
+         derived_class_accessing_base_members
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/hierarchy/pointer_to_base_and_derived_virtual_class2.html">
+         pointer_to_base_and_derived_virtual_class2
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/hierarchy/final_class.html">
+         final_class
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/hierarchy/using_declaration_implicit_copy_ctor_hidding.html">
+         using_declaration_implicit_copy_ctor_hidding
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/hierarchy/downcasting_to_object_with_public_parent_class_with_static_cast.html">
+         downcasting_to_object_with_public_parent_class_with_static_cast
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/hierarchy/final_function.html">
+         final_function
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/hierarchy/virtual_base_func_without_definition.html">
+         virtual_base_func_without_definition
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/hierarchy/final_function_out_of_class_definition.html">
+         final_function_out_of_class_definition
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/hierarchy/virtual_function_of_derived_called_through_base_ref_in_base_ctor.html">
+         virtual_function_of_derived_called_through_base_ref_in_base_ctor
+        </a>
+       </li>
+      </ul>
+     </div>
+     <div class="directory">
+      <div class="directory-name" onclick="toggleDirectory(event)">
+       members
+      </div>
+      <ul class="directory-content" style="list-style: none;">
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/members/in_header_inline_class_member_definition.html">
+         in_header_inline_class_member_definition
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/members/in_header_class_member_definition.html">
+         in_header_class_member_definition
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/members/in_class_member_definition.html">
+         in_class_member_definition
+        </a>
+       </li>
+      </ul>
+     </div>
+     <div class="directory">
+      <div class="directory-name" onclick="toggleDirectory(event)">
+       friend
+      </div>
+      <ul class="directory-content" style="list-style: none;">
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/friend/other_class_member_public_function.html">
+         other_class_member_public_function
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/friend/other_class_member_private_function.html">
+         other_class_member_private_function
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/friend/friend_class_inheriting_private_base.html">
+         friend_class_inheriting_private_base
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/friend/transitive_friend_class.html">
+         transitive_friend_class
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/friend/outer_class_friend_accesing_nested_class.html">
+         outer_class_friend_accesing_nested_class
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/friend/nested_class_friend_accessing_outer_class.html">
+         nested_class_friend_accessing_outer_class
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/friend/two_class_using_friend_function.html">
+         two_class_using_friend_function
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/classes/friend/friend_class.html">
+         friend_class
+        </a>
+       </li>
+      </ul>
+     </div>
+    </ul>
+   </div>
+   <div class="directory">
+    <div class="directory-name" onclick="toggleDirectory(event)">
+     templates
+    </div>
+    <ul class="directory-content" style="list-style: none;">
+     <div class="directory">
+      <div class="directory-name" onclick="toggleDirectory(event)">
+       template_functions
+      </div>
+      <ul class="directory-content" style="list-style: none;">
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/template_functions/template_function_overloading_most_specialized_version.html">
+         template_function_overloading_most_specialized_version
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/template_functions/template_function_overloading.html">
+         template_function_overloading
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/template_functions/function_template_argument_deduction_partial2.html">
+         function_template_argument_deduction_partial2
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/template_functions/function_template_argument_deduction_when_initializing_pointer_to_function.html">
+         function_template_argument_deduction_when_initializing_pointer_to_function
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/template_functions/template_functions_with_different_return_type.html">
+         template_functions_with_different_return_type
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/template_functions/template_functions_with_different_constness_in_args.html">
+         template_functions_with_different_constness_in_args
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/template_functions/use_template_defined_in_different_translation_unit.html">
+         use_template_defined_in_different_translation_unit
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/template_functions/template_function_overloading_when_implicit_conversion_needed.html">
+         template_function_overloading_when_implicit_conversion_needed
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/template_functions/use_template_defined_in_header_file_in_multiple_translation_units.html">
+         use_template_defined_in_header_file_in_multiple_translation_units
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/template_functions/template_function_explicit_args_conversion.html">
+         template_function_explicit_args_conversion
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/template_functions/template_function_no_promotion_when_template_argument_deduction.html">
+         template_function_no_promotion_when_template_argument_deduction
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/template_functions/template_functions_with_different_constness_in_parameters.html">
+         template_functions_with_different_constness_in_parameters
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/template_functions/template_functions_with_different_reference_types.html">
+         template_functions_with_different_reference_types
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/template_functions/function_template_argument_deduction_partial.html">
+         function_template_argument_deduction_partial
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/template_functions/use_template_defined_in_header_file.html">
+         use_template_defined_in_header_file
+        </a>
+       </li>
+      </ul>
+     </div>
+     <div class="directory">
+      <div class="directory-name" onclick="toggleDirectory(event)">
+       metaprograming
+      </div>
+      <ul class="directory-content" style="list-style: none;">
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/metaprograming/wrapper_with_invalid_access_to_overloaded_pointer_operator.html">
+         wrapper_with_invalid_access_to_overloaded_pointer_operator
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/metaprograming/compile_time_select_type_template.html">
+         compile_time_select_type_template
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/metaprograming/wrapper_with_enable_if_detecting_when_to_allow_access_to_overloaded_pointer_operator.html">
+         wrapper_with_enable_if_detecting_when_to_allow_access_to_overloaded_pointer_operator
+        </a>
+       </li>
+      </ul>
+     </div>
+     <div class="directory">
+      <div class="directory-name" onclick="toggleDirectory(event)">
+       specialization
+      </div>
+      <ul class="directory-content" style="list-style: none;">
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/specialization/specialized_template_function_declared_before_primary_template_function.html">
+         specialized_template_function_declared_before_primary_template_function
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/specialization/specialized_template_class_pointer_vs_regular_types.html">
+         specialized_template_class_pointer_vs_regular_types
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/specialization/container_template_for_all_types.html">
+         container_template_for_all_types
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/specialization/most_specialized_template_class.html">
+         most_specialized_template_class
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/specialization/specialized_template_function_used_before_definition.html">
+         specialized_template_function_used_before_definition
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/specialization/specialized_class_without_primary_template_definition.html">
+         specialized_class_without_primary_template_definition
+        </a>
+       </li>
+      </ul>
+     </div>
+     <div class="directory">
+      <div class="directory-name" onclick="toggleDirectory(event)">
+       deduction
+      </div>
+      <ul class="directory-content" style="list-style: none;">
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/deduction/array_vs_pointer_with_reference_template_param2.html">
+         array_vs_pointer_with_reference_template_param2
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/deduction/array_vs_pointer_template_param.html">
+         array_vs_pointer_template_param
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/deduction/function_vs_function_ptr_as_template_universal_reference_parameter.html">
+         function_vs_function_ptr_as_template_universal_reference_parameter
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/deduction/auto_reference_variable_array.html">
+         auto_reference_variable_array
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/deduction/auto_normal_type_variable_deduction.html">
+         auto_normal_type_variable_deduction
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/deduction/const_c_string_passed_by_value.html">
+         const_c_string_passed_by_value
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/deduction/auto_with_decltype_universal_reference_template_parameter.html">
+         auto_with_decltype_universal_reference_template_parameter
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/deduction/auto_normal_type_variable_constness.html">
+         auto_normal_type_variable_constness
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/deduction/universal_reference_passing_const_reference.html">
+         universal_reference_passing_const_reference
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/deduction/auto_with_decltype_return.html">
+         auto_with_decltype_return
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/deduction/decltype_return_type.html">
+         decltype_return_type
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/deduction/passing_std_container_as_array.html">
+         passing_std_container_as_array
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/deduction/auto_with_decltype_variable.html">
+         auto_with_decltype_variable
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/deduction/pointer_vs_pointer_to_const_template_param.html">
+         pointer_vs_pointer_to_const_template_param
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/deduction/auto_reference_variable_function.html">
+         auto_reference_variable_function
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/deduction/universal_reference_passing_lvalue_vs_rvalue_ref.html">
+         universal_reference_passing_lvalue_vs_rvalue_ref
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/deduction/initializer_list_auto_variable.html">
+         initializer_list_auto_variable
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/deduction/empty_initializer_list_auto_variable.html">
+         empty_initializer_list_auto_variable
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/deduction/array_vs_pointer_overloaded_functions.html">
+         array_vs_pointer_overloaded_functions
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/deduction/const_pointer_to_const_passed_by_value.html">
+         const_pointer_to_const_passed_by_value
+        </a>
+       </li>
+       <div class="directory">
+        <div class="directory-name" onclick="toggleDirectory(event)">
+         .vscode
+        </div>
+        <ul class="directory-content" style="list-style: none;">
+        </ul>
+       </div>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/deduction/auto_return_type_removing_reference.html">
+         auto_return_type_removing_reference
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/deduction/decltype_with_variable_names.html">
+         decltype_with_variable_names
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/deduction/is_template_param_a_pointer.html">
+         is_template_param_a_pointer
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/deduction/auto_return_initializer_list.html">
+         auto_return_initializer_list
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/deduction/reference_param_type.html">
+         reference_param_type
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/deduction/const_auto_type_variable_deduction.html">
+         const_auto_type_variable_deduction
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/deduction/is_template_param_a_reference.html">
+         is_template_param_a_reference
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/deduction/initializer_list_and_template_parameter.html">
+         initializer_list_and_template_parameter
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/deduction/auto_reference_type_variable_constness.html">
+         auto_reference_type_variable_constness
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/deduction/array_vs_pointer_with_reference_template_param.html">
+         array_vs_pointer_with_reference_template_param
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/deduction/pointer_param_type.html">
+         pointer_param_type
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/deduction/TEST.html">
+         TEST
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/deduction/function_vs_function_ptr_as_template_reference_parameter.html">
+         function_vs_function_ptr_as_template_reference_parameter
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/deduction/const_param_template.html">
+         const_param_template
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/deduction/auto_variable_array_decay.html">
+         auto_variable_array_decay
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/deduction/function_as_template_parameter.html">
+         function_as_template_parameter
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/deduction/initializer_list_and_template_parameter2.html">
+         initializer_list_and_template_parameter2
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/deduction/universal_reference.html">
+         universal_reference
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/deduction/function_pointer_or_reference.html">
+         function_pointer_or_reference
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/deduction/const_param_template2.html">
+         const_param_template2
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/deduction/auto_lvalue_vs_rvalue_ref.html">
+         auto_lvalue_vs_rvalue_ref
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/deduction/auto_return_template_type_deduction.html">
+         auto_return_template_type_deduction
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/deduction/reference_vs_const_reference_template_param.html">
+         reference_vs_const_reference_template_param
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/deduction/auto_variable_function_decay.html">
+         auto_variable_function_decay
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/deduction/pointer_vs_const_pointer_template_param.html">
+         pointer_vs_const_pointer_template_param
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/deduction/array_as_a_two_parameters_template.html">
+         array_as_a_two_parameters_template
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/deduction/auto_template_function.html">
+         auto_template_function
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/deduction/pass_by_value_template_param.html">
+         pass_by_value_template_param
+        </a>
+       </li>
+      </ul>
+     </div>
+     <div class="directory">
+      <div class="directory-name" onclick="toggleDirectory(event)">
+       nested
+      </div>
+      <ul class="directory-content" style="list-style: none;">
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/nested/nested_template_function.html">
+         nested_template_function
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/nested/template_parameter_tmeplate_function_used_in_template_function_with_ecplicit_template_keyword.html">
+         template_parameter_tmeplate_function_used_in_template_function_with_ecplicit_template_keyword
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/nested/template_parameter_tmeplate_function_used_in_template_function.html">
+         template_parameter_tmeplate_function_used_in_template_function
+        </a>
+       </li>
+      </ul>
+     </div>
+     <div class="directory">
+      <div class="directory-name" onclick="toggleDirectory(event)">
+       SFINAE
+      </div>
+      <ul class="directory-content" style="list-style: none;">
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/SFINAE/template_function_iterator_vs_pointer.html">
+         template_function_iterator_vs_pointer
+        </a>
+       </li>
+      </ul>
+     </div>
+     <div class="directory">
+      <div class="directory-name" onclick="toggleDirectory(event)">
+       instantiation
+      </div>
+      <ul class="directory-content" style="list-style: none;">
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/instantiation/extern_template_in_all_translation_unit.html">
+         extern_template_in_all_translation_unit
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/instantiation/implicit_class_template_instantiation_when_member_function_is_wrong_and_used.html">
+         implicit_class_template_instantiation_when_member_function_is_wrong_and_used
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/instantiation/function_used_in_template_with_definition_before_and_after_template_definition.html">
+         function_used_in_template_with_definition_before_and_after_template_definition
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/instantiation/explicit_function_template_instantiation_but_used_different_version.html">
+         explicit_function_template_instantiation_but_used_different_version
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/instantiation/function_with_template_arg_and_extern_local_declaration_used_in_template_with_definition_before_and_after_template_definition.html">
+         function_with_template_arg_and_extern_local_declaration_used_in_template_with_definition_before_and_after_template_definition
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/instantiation/function_with_template_arg_used_in_template_with_definition_before_and_after_template_definition.html">
+         function_with_template_arg_used_in_template_with_definition_before_and_after_template_definition
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/instantiation/function_used_in_template_defined_after_template_definition.html">
+         function_used_in_template_defined_after_template_definition
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/instantiation/non_existing_function_using_template_type_object_as_argument_instantiated.html">
+         non_existing_function_using_template_type_object_as_argument_instantiated
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/instantiation/non_existing_function_using_template_type_object_as_argument.html">
+         non_existing_function_using_template_type_object_as_argument
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/instantiation/non_existing_function_inside_template.html">
+         non_existing_function_inside_template
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/instantiation/implicit_instantiated_class_template_with_function_using_function_defined_after_class_definition.html">
+         implicit_instantiated_class_template_with_function_using_function_defined_after_class_definition
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/instantiation/explicit_class_template_instantiation_when_member_function_is_wrong_and_not_used.html">
+         explicit_class_template_instantiation_when_member_function_is_wrong_and_not_used
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/instantiation/explicit_class_template_instantiation_in_main.html">
+         explicit_class_template_instantiation_in_main
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/instantiation/extern_template_multiple_translation_units_each_with_its_own_template_definition.html">
+         extern_template_multiple_translation_units_each_with_its_own_template_definition
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/instantiation/implicit_class_template_instantiation_when_member_function_is_wrong_but_not_used.html">
+         implicit_class_template_instantiation_when_member_function_is_wrong_but_not_used
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/instantiation/explicit_function_template_instantiation.html">
+         explicit_function_template_instantiation
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/instantiation/explicit_class_template_instantiation_in_main_and_extern_in_other_translation_units.html">
+         explicit_class_template_instantiation_in_main_and_extern_in_other_translation_units
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/instantiation/multiple_translation_units_each_with_its_own_template_definition_2.html">
+         multiple_translation_units_each_with_its_own_template_definition_2
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/instantiation/multiple_translation_units_each_with_its_own_template_definition_1.html">
+         multiple_translation_units_each_with_its_own_template_definition_1
+        </a>
+       </li>
+      </ul>
+     </div>
+     <div class="directory">
+      <div class="directory-name" onclick="toggleDirectory(event)">
+       template_classes
+      </div>
+      <ul class="directory-content" style="list-style: none;">
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/template_classes/template_class_template_conversion_operator.html">
+         template_class_template_conversion_operator
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/template_classes/nested_template_class_with_default_parameter.html">
+         nested_template_class_with_default_parameter
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/template_classes/nested_enumeration_class_in_template_class_definition.html">
+         nested_enumeration_class_in_template_class_definition
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/template_classes/template_class_int_parameter_evaluated_at_compile_time.html">
+         template_class_int_parameter_evaluated_at_compile_time
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/template_classes/template_member_function_inside_template_class_definition_with_same_parameter_name.html">
+         template_member_function_inside_template_class_definition_with_same_parameter_name
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/template_classes/template_class_alias_templated_version.html">
+         template_class_alias_templated_version
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/template_classes/template_class_member_template_function_as_a_friend.html">
+         template_class_member_template_function_as_a_friend
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/template_classes/class_inheriting_template_parameter_explicit_base_class_function_usage.html">
+         class_inheriting_template_parameter_explicit_base_class_function_usage
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/template_classes/template_classes_with_different_types_implicit_conversion.html">
+         template_classes_with_different_types_implicit_conversion
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/template_classes/template_class_outside_the_class_members_definition_with_templated_class_name.html">
+         template_class_outside_the_class_members_definition_with_templated_class_name
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/template_classes/template_class_member_defined_when_used.html">
+         template_class_member_defined_when_used
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/template_classes/class_inheriting_template_parameter.html">
+         class_inheriting_template_parameter
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/template_classes/inheritng_template_base_class_with_specified_template_clause_by_normal_class2.html">
+         inheritng_template_base_class_with_specified_template_clause_by_normal_class2
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/template_classes/using_base_template_class_members_inside_derived_class_explicitly.html">
+         using_base_template_class_members_inside_derived_class_explicitly
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/template_classes/template_class_specialized_template_class_copy_constructor.html">
+         template_class_specialized_template_class_copy_constructor
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/template_classes/template_member_function_inside_template_class_definition.html">
+         template_member_function_inside_template_class_definition
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/template_classes/template_member_function_outside_template_class_definition_with_both_templates_provided_and_parameter_u.html">
+         template_member_function_outside_template_class_definition_with_both_templates_provided_and_parameter_u
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/template_classes/inheriting_template_base_class_by_other_template_class.html">
+         inheriting_template_base_class_by_other_template_class
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/template_classes/inheritng_concrete_template_base_class_by_normal_class2.html">
+         inheritng_concrete_template_base_class_by_normal_class2
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/template_classes/inheritng_template_base_class_with_specified_template_clause_with_different_param_name_by_normal_class.html">
+         inheritng_template_base_class_with_specified_template_clause_with_different_param_name_by_normal_class
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/template_classes/template_class_as_a_friend_with_template_param.html">
+         template_class_as_a_friend_with_template_param
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/template_classes/using_base_template_concrete_class_members_inside_derived_class2.html">
+         using_base_template_concrete_class_members_inside_derived_class2
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/template_classes/nested_enumeration_class_outside_class_template_definition.html">
+         nested_enumeration_class_outside_class_template_definition
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/template_classes/template_class_member_function_as_a_friend.html">
+         template_class_member_function_as_a_friend
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/template_classes/template_class_alias.html">
+         template_class_alias
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/template_classes/template_class_outside_the_class_members_definition_classname_with_template_arg.html">
+         template_class_outside_the_class_members_definition_classname_with_template_arg
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/template_classes/nested_template_class_with_the_same_parameter.html">
+         nested_template_class_with_the_same_parameter
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/template_classes/default_template_parameter.html">
+         default_template_parameter
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/template_classes/concrete_template_class_as_a_friend.html">
+         concrete_template_class_as_a_friend
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/template_classes/nested_enumeration_with_specified_underlying_enumerator_type_outside_class_template_definition.html">
+         nested_enumeration_with_specified_underlying_enumerator_type_outside_class_template_definition
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/template_classes/template_class_member_defined_when_used2.html">
+         template_class_member_defined_when_used2
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/template_classes/template_class_parametrized_with_aliases_to_the_same_type.html">
+         template_class_parametrized_with_aliases_to_the_same_type
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/template_classes/template_class_as_a_friend.html">
+         template_class_as_a_friend
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/template_classes/using_base_template_concrete_class_members_inside_derived_class_this_pointer.html">
+         using_base_template_concrete_class_members_inside_derived_class_this_pointer
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/template_classes/template_member_function_outside_template_class_definition.html">
+         template_member_function_outside_template_class_definition
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/template_classes/template_class_specialized_template_class_copy_constructor_used_by_this_class.html">
+         template_class_specialized_template_class_copy_constructor_used_by_this_class
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/template_classes/template_class_outside_the_class_members_definition.html">
+         template_class_outside_the_class_members_definition
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/template_classes/using_base_template_class_members_inside_derived_class.html">
+         using_base_template_class_members_inside_derived_class
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/template_classes/nested_types_are_same_or_not.html">
+         nested_types_are_same_or_not
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/template_classes/template_class_paramet_used_outside_the_class_with_usage_of_alias.html">
+         template_class_paramet_used_outside_the_class_with_usage_of_alias
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/template_classes/using_base_template_concrete_class_members_inside_derived_class.html">
+         using_base_template_concrete_class_members_inside_derived_class
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/template_classes/nested_enumeration_outside_class_template_definition.html">
+         nested_enumeration_outside_class_template_definition
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/template_classes/template_class_in_class_members_definition.html">
+         template_class_in_class_members_definition
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/template_classes/template_virtual_function.html">
+         template_virtual_function
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/template_classes/nested_enumeration_with_specified_underlying_enumerator_type_outside_class_template_definition but_without_underlying_type_in_definition.html">
+         nested_enumeration_with_specified_underlying_enumerator_type_outside_class_template_definition but_without_underlying_type_in_definition
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/template_classes/class_inheriting_other_template_class_with_explicit_template_type_object_usage.html">
+         class_inheriting_other_template_class_with_explicit_template_type_object_usage
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/template_classes/class_inheriting_other_template_class.html">
+         class_inheriting_other_template_class
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/template_classes/template_class_conversion_to_int_operator.html">
+         template_class_conversion_to_int_operator
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/template_classes/inheritng_template_base_class_by_normal_class.html">
+         inheritng_template_base_class_by_normal_class
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/template_classes/inheritng_template_base_class_with_specified_template_clause_by_normal_class.html">
+         inheritng_template_base_class_with_specified_template_clause_by_normal_class
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/template_classes/template_class_paramet_used_outside_the_class.html">
+         template_class_paramet_used_outside_the_class
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/template_classes/template_class_alias_templated_version_outside_the_block.html">
+         template_class_alias_templated_version_outside_the_block
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/template_classes/nested_class_in_template_class_definition.html">
+         nested_class_in_template_class_definition
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/template_classes/static_member_and_different_classes_instantiations.html">
+         static_member_and_different_classes_instantiations
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/template_classes/template_member_function_outside_template_class_definition_with_both_templates_provided.html">
+         template_member_function_outside_template_class_definition_with_both_templates_provided
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/template_classes/template_class_member_function_as_a_friend_without_template_clause.html">
+         template_class_member_function_as_a_friend_without_template_clause
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/template_classes/inheritng_concrete_template_base_class_by_normal_class.html">
+         inheritng_concrete_template_base_class_by_normal_class
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/template_classes/nested_class_outside_template_class_definition.html">
+         nested_class_outside_template_class_definition
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/template_classes/inheriting_template_base_class_by_other_template_class_with_same_template_parameter_name.html">
+         inheriting_template_base_class_by_other_template_class_with_same_template_parameter_name
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/template_classes/template_class_virtual_function.html">
+         template_class_virtual_function
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/template_classes/template_classes_with_different_types_explicit_conversion.html">
+         template_classes_with_different_types_explicit_conversion
+        </a>
+       </li>
+       <li class="question" style="margin-left:1em;">
+        <a href="questions/templates/template_classes/nested_enumeration_in_template_class_definition.html">
+         nested_enumeration_in_template_class_definition
+        </a>
+       </li>
+      </ul>
+     </div>
+    </ul>
+   </div>
+   <div class="directory">
+    <div class="directory-name" onclick="toggleDirectory(event)">
+     linkage
+    </div>
+    <ul class="directory-content" style="list-style: none;">
+     <li class="question" style="margin-left:1em;">
+      <a href="questions/linkage/template_function_definition_in_header.html">
+       template_function_definition_in_header
+      </a>
+     </li>
+     <li class="question" style="margin-left:1em;">
+      <a href="questions/linkage/no_linkage.html">
+       no_linkage
+      </a>
+     </li>
+     <li class="question" style="margin-left:1em;">
+      <a href="questions/linkage/class_definition_asm.html">
+       class_definition_asm
+      </a>
+     </li>
+     <div class="directory">
+      <div class="directory-name" onclick="toggleDirectory(event)">
+       .vscode
+      </div>
+      <ul class="directory-content" style="list-style: none;">
+      </ul>
+     </div>
+     <li class="question" style="margin-left:1em;">
+      <a href="questions/linkage/is_function_template_a_real_function.html">
+       is_function_template_a_real_function
+      </a>
+     </li>
+     <li class="question" style="margin-left:1em;">
+      <a href="questions/linkage/inline_variables_and_functions_in_separate_translation_units.html">
+       inline_variables_and_functions_in_separate_translation_units
+      </a>
+     </li>
+     <li class="question" style="margin-left:1em;">
+      <a href="questions/linkage/extern_declaration_asm.html">
+       extern_declaration_asm
+      </a>
+     </li>
+     <li class="question" style="margin-left:1em;">
+      <a href="questions/linkage/extern_linkage_forward_declaration.html">
+       extern_linkage_forward_declaration
+      </a>
+     </li>
+     <li class="question" style="margin-left:1em;">
+      <a href="questions/linkage/TEST.html">
+       TEST
+      </a>
+     </li>
+     <li class="question" style="margin-left:1em;">
+      <a href="questions/linkage/internal_linkage_forward_declaration.html">
+       internal_linkage_forward_declaration
+      </a>
+     </li>
+     <li class="question" style="margin-left:1em;">
+      <a href="questions/linkage/inline_variables_and_functions_in_separate_translation_units_with_different_linkage_order.html">
+       inline_variables_and_functions_in_separate_translation_units_with_different_linkage_order
+      </a>
+     </li>
+     <li class="question" style="margin-left:1em;">
+      <a href="questions/linkage/internal_linkage_with_anonymous_namespace_separate_translation_units.html">
+       internal_linkage_with_anonymous_namespace_separate_translation_units
+      </a>
+     </li>
+     <li class="question" style="margin-left:1em;">
+      <a href="questions/linkage/extern_template.html">
+       extern_template
+      </a>
+     </li>
+     <li class="question" style="margin-left:1em;">
+      <a href="questions/linkage/internal_declaration_asm.html">
+       internal_declaration_asm
+      </a>
+     </li>
+     <li class="question" style="margin-left:1em;">
+      <a href="questions/linkage/extern_linkage_separate_translation_units.html">
+       extern_linkage_separate_translation_units
+      </a>
+     </li>
+     <li class="question" style="margin-left:1em;">
+      <a href="questions/linkage/internal_linkage_separate_translation_units.html">
+       internal_linkage_separate_translation_units
+      </a>
+     </li>
+     <li class="question" style="margin-left:1em;">
+      <a href="questions/linkage/inline_separete_translation_units_asm.html">
+       inline_separete_translation_units_asm
+      </a>
+     </li>
+     <li class="question" style="margin-left:1em;">
+      <a href="questions/linkage/template_function_definition.html">
+       template_function_definition
+      </a>
+     </li>
+    </ul>
+   </div>
+   <div class="directory">
+    <div class="directory-name" onclick="toggleDirectory(event)">
+     pointers
+    </div>
+    <ul class="directory-content" style="list-style: none;">
+     <li class="question" style="margin-left:1em;">
+      <a href="questions/pointers/const_pointer2.html">
+       const_pointer2
+      </a>
+     </li>
+     <li class="question" style="margin-left:1em;">
+      <a href="questions/pointers/pointer_to_pointer.html">
+       pointer_to_pointer
+      </a>
+     </li>
+     <li class="question" style="margin-left:1em;">
+      <a href="questions/pointers/initialized_pointer2.html">
+       initialized_pointer2
+      </a>
+     </li>
+     <li class="question" style="margin-left:1em;">
+      <a href="questions/pointers/advanced_pointer_aithmetic.html">
+       advanced_pointer_aithmetic
+      </a>
+     </li>
+     <li class="question" style="margin-left:1em;">
+      <a href="questions/pointers/comparison_of_ptr_addresses.html">
+       comparison_of_ptr_addresses
+      </a>
+     </li>
+     <li class="question" style="margin-left:1em;">
+      <a href="questions/pointers/const_pointer.html">
+       const_pointer
+      </a>
+     </li>
+     <li class="question" style="margin-left:1em;">
+      <a href="questions/pointers/pointer_to_const.html">
+       pointer_to_const
+      </a>
+     </li>
+     <li class="question" style="margin-left:1em;">
+      <a href="questions/pointers/passing_const_pointer_by_reference.html">
+       passing_const_pointer_by_reference
+      </a>
+     </li>
+     <li class="question" style="margin-left:1em;">
+      <a href="questions/pointers/passing_pointer_to_const.html">
+       passing_pointer_to_const
+      </a>
+     </li>
+     <div class="directory">
+      <div class="directory-name" onclick="toggleDirectory(event)">
+       .vscode
+      </div>
+      <ul class="directory-content" style="list-style: none;">
+      </ul>
+     </div>
+     <li class="question" style="margin-left:1em;">
+      <a href="questions/pointers/passing_pointer_to_const_as_normal_pointer.html">
+       passing_pointer_to_const_as_normal_pointer
+      </a>
+     </li>
+     <li class="question" style="margin-left:1em;">
+      <a href="questions/pointers/initialized_pointer3.html">
+       initialized_pointer3
+      </a>
+     </li>
+     <li class="question" style="margin-left:1em;">
+      <a href="questions/pointers/passing_pointer_as_pointer_to_const.html">
+       passing_pointer_as_pointer_to_const
+      </a>
+     </li>
+     <li class="question" style="margin-left:1em;">
+      <a href="questions/pointers/initialized_pointer.html">
+       initialized_pointer
+      </a>
+     </li>
+     <li class="question" style="margin-left:1em;">
+      <a href="questions/pointers/initialized_pointer4.html">
+       initialized_pointer4
+      </a>
+     </li>
+     <li class="question" style="margin-left:1em;">
+      <a href="questions/pointers/passing_const_pointer_as_normal_pointer.html">
+       passing_const_pointer_as_normal_pointer
+      </a>
+     </li>
+     <li class="question" style="margin-left:1em;">
+      <a href="questions/pointers/pointer_to_const2.html">
+       pointer_to_const2
+      </a>
+     </li>
+     <li class="question" style="margin-left:1em;">
+      <a href="questions/pointers/dangling_pointer.html">
+       dangling_pointer
+      </a>
+     </li>
+     <li class="question" style="margin-left:1em;">
+      <a href="questions/pointers/pointer_to_user_defined_type.html">
+       pointer_to_user_defined_type
+      </a>
+     </li>
+     <li class="question" style="margin-left:1em;">
+      <a href="questions/pointers/passing_const_pointer_as_pointer_to_const.html">
+       passing_const_pointer_as_pointer_to_const
+      </a>
+     </li>
+     <li class="question" style="margin-left:1em;">
+      <a href="questions/pointers/TEST.html">
+       TEST
+      </a>
+     </li>
+     <li class="question" style="margin-left:1em;">
+      <a href="questions/pointers/changing_pointer_passed_by_reference_address_in_func.html">
+       changing_pointer_passed_by_reference_address_in_func
+      </a>
+     </li>
+     <li class="question" style="margin-left:1em;">
+      <a href="questions/pointers/changing_pointer_address_in_func.html">
+       changing_pointer_address_in_func
+      </a>
+     </li>
+     <li class="question" style="margin-left:1em;">
+      <a href="questions/pointers/nullptr.html">
+       nullptr
+      </a>
+     </li>
+     <li class="question" style="margin-left:1em;">
+      <a href="questions/pointers/passing_pointer_as_const_pointer.html">
+       passing_pointer_as_const_pointer
+      </a>
+     </li>
+     <li class="question" style="margin-left:1em;">
+      <a href="questions/pointers/pointer_to_an_array_implicit_conversion.html">
+       pointer_to_an_array_implicit_conversion
+      </a>
+     </li>
+     <li class="question" style="margin-left:1em;">
+      <a href="questions/pointers/pointer_to_other_type.html">
+       pointer_to_other_type
+      </a>
+     </li>
+     <li class="question" style="margin-left:1em;">
+      <a href="questions/pointers/initialized_pointer5.html">
+       initialized_pointer5
+      </a>
+     </li>
+     <li class="question" style="margin-left:1em;">
+      <a href="questions/pointers/advanced_pointer_aithmetic2.html">
+       advanced_pointer_aithmetic2
+      </a>
+     </li>
+     <li class="question" style="margin-left:1em;">
+      <a href="questions/pointers/uinitialized_pointer.html">
+       uinitialized_pointer
+      </a>
+     </li>
+     <li class="question" style="margin-left:1em;">
+      <a href="questions/pointers/pointer_arithmetic.html">
+       pointer_arithmetic
+      </a>
+     </li>
+     <li class="question" style="margin-left:1em;">
+      <a href="questions/pointers/const_pointer_to_const.html">
+       const_pointer_to_const
+      </a>
+     </li>
+     <li class="question" style="margin-left:1em;">
+      <a href="questions/pointers/passing_pointer_to_const_as_const_pointer.html">
+       passing_pointer_to_const_as_const_pointer
+      </a>
+     </li>
+     <li class="question" style="margin-left:1em;">
+      <a href="questions/pointers/pointer_to_void.html">
+       pointer_to_void
+      </a>
+     </li>
+     <li class="question" style="margin-left:1em;">
+      <a href="questions/pointers/NULL_pointer.html">
+       NULL_pointer
+      </a>
+     </li>
+     <li class="question" style="margin-left:1em;">
+      <a href="questions/pointers/pointer_passed_by_reference_address.html">
+       pointer_passed_by_reference_address
+      </a>
+     </li>
+    </ul>
+   </div>
+  </ul>
  </body>
 </html>
