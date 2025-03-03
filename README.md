@@ -9,7 +9,7 @@
 4) download necessary python requirements:
   * `python3 -m pip install -r requirements.txt`
 5) run parser:
-  * `python3 parser.py`
+  * `python3 CppCodeInHTMLEmbedding/parser.py`
 
 ## How to ad new qa?
 1) create new project's subdirectory in the sources tree e.g ./src/../project_dir
